@@ -1,6 +1,6 @@
 {
 	"name": "webbuild",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Bundle CommonJS modules for web browser",
 	"keywords": ["modules", "build", "web", "browser", "deploy", "bundle",
 		"package", "builder", "packager", "generator"],
@@ -8,8 +8,13 @@
 	"main": "lib/webbuild",
 	"repository": {
 		"type": "git",
-		"url": "http://github.com/medikoo/commonjs-webbuild.git"
+		"url": "git://github.com/medikoo/commonjs-webbuild.git"
+	},
+	"bugs": {
+		"mail": "medikoo+webbuild@medikoo.com",
+		"web": "https://github.com/medikoo/commonjs-webbuild/issues"
 	},
 	"scripts": { "test": "node test/all.js" },
-	"dependencies": { "test": ">=0.0.5" }
+	"dependencies": { "test": ">=0.0.5" },
+	"engines": [ "node >=0.1.30" ]
 }
