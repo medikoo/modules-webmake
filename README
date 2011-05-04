@@ -1,0 +1,23 @@
+commonjs-webbuild --- Bundle CommonJS modules for browser
+
+http://www.commonjs.org/
+http://www.commonjs.org/specs/modules/1.0/
+
+At the time tested only with node
+
+Usage:
+
+var webbuild = require('path/to/webbuild');
+webbuild(input, output, callback);
+
+input - path to javascript file, not module itself, but within this file
+	you require and make use of modules that need to be bundled
+output - output script filename
+callback - called after build is done
+
+See test/all.js for working example.
+
+TODO:
+- Support for top-level modules
+- Support for Narwhal and Rhino
+- Better, error free require calls lookup

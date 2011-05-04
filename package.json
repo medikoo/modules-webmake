@@ -1,0 +1,15 @@
+{
+	"name": "webbuild",
+	"version": "0.1.0",
+	"description": "Bundle CommonJS modules for web browser",
+	"keywords": ["modules", "build", "web", "browser", "deploy", "bundle",
+		"package", "builder", "packager", "generator"],
+	"author": "Mariusz Nowak <medikoo+webbuild@medikoo.com> (http://www.medikoo.com/)",
+	"main": "lib/webbuild",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/medikoo/commonjs-webbuild.git"
+	},
+	"scripts": { "test": "node test/all.js" },
+	"dependencies": { "test": ">=0.0.5" }
+}
