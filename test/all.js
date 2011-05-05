@@ -4,7 +4,12 @@ var input = __dirname + '/playground/program.js';
 var output = __dirname + '/build.js';
 
 exports["test Build"] = function (assert, done) {
-	webbuild(input, output, function () {
+	webbuild(input, output, function (err) {
+		if (err) {
+			assert.fail(err);
+			done();
+			return;
+		}
 		var program = require('./build');
 
 		assert.equal(typeof program.a, "object",
@@ -20,9 +25,11 @@ exports["test Build"] = function (assert, done) {
 		assert.equal(c.b.name, 'b',
 			"require within required module");
 		assert.ok(c === c.b.c,
-			"circular dependencies");
+			"circular dependency");
 		done();
 	});
 };
 
-(module == require.main) && require('test').run(exports);
+if (module == require.main) {
+	require('test').run(exports);
+}
