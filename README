@@ -3,15 +3,20 @@ commonjs-webbuild --- Bundle CommonJS modules for browser
 http://www.commonjs.org/
 http://www.commonjs.org/specs/modules/1.0/
 
-At the time tested only with node
+At the time works only with node.js
+
+It's published on npm:
+npm install webbuild
 
 Usage:
 
-var webbuild = require('path/to/webbuild');
+var webbuild = require('webbuild');
 webbuild(input, output, callback);
 
-input - path to javascript file, not module itself, but within this file
-	you require and make use of modules that need to be bundled
+input - path to your javascript program. Doesn't have to be module itself,
+	within this file you work with modules you need. Webbuild will read what
+	modules you've required and would bundle them with their dependencies and
+	program code into output file.
 output - output script filename
 callback - called after build is done
 
