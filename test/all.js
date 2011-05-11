@@ -17,7 +17,7 @@ exports["test Build"] = function (assert, done) {
 		assert.equal(program.a.name, 'a',
 			"make sure it's expected module");
 		var c = program.a.getC();
-		assert.equal(c.name, 'c',
+		assert.equal(c && c.name, 'c',
 			"require module via defered call");
 		var c2 = program.a.getC();
 		assert.ok(c === c2,
