@@ -1,10 +1,10 @@
-var webbuild = require('../lib/webbuild');
+var webmake = require('../lib/webmake');
 
 var input = __dirname + '/playground/program.js';
 var output = __dirname + '/build.js';
 
-exports["test Build"] = function (assert, done) {
-	webbuild(input, output, function (err) {
+exports["test make"] = function (assert, done) {
+	webmake(input, output, function (err) {
 		if (err) {
 			assert.fail(err);
 			done();

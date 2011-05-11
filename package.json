@@ -1,17 +1,17 @@
 {
-	"name": "webbuild",
+	"name": "webmake",
 	"version": "0.2.1",
-	"description": "Bundle CommonJS modules for web browser",
-	"keywords": ["modules", "build", "web", "browser", "deploy", "bundle", "package", "builder", "packager", "generator"],
-	"author": "Mariusz Nowak <medikoo+webbuild@medikoo.com> (http://www.medikoo.com/)",
-	"main": "lib/webbuild",
+	"description": "Bundle CommonJS modules into single script for web browser",
+	"keywords": ["modules", "make", "build", "web", "browser", "deploy", "bundle", "package", "builder", "packager", "generator"],
+	"author": "Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
+	"main": "lib/webmake",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/medikoo/commonjs-webbuild.git"
+		"url": "git://github.com/medikoo/commonjs-webmake.git"
 	},
 	"bugs": {
-		"mail": "medikoo+webbuild@medikoo.com",
-		"web": "https://github.com/medikoo/commonjs-webbuild/issues"
+		"mail": "medikoo+webmake@medikoo.com",
+		"web": "https://github.com/medikoo/commonjs-webmake/issues"
 	},
 	"scripts": { "test": "node test/all.js" },
 	"dependencies": { "test": ">=0.0.5" },
