@@ -1,6 +1,6 @@
 {
 	"name": "webbuild",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Bundle CommonJS modules for web browser",
 	"keywords": ["modules", "build", "web", "browser", "deploy", "bundle", "package", "builder", "packager", "generator"],
 	"author": "Mariusz Nowak <medikoo+webbuild@medikoo.com> (http://www.medikoo.com/)",
