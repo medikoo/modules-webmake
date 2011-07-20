@@ -34,7 +34,7 @@
 				return require(scope, [].concat(tree), path);
 			};
 		};
-		return getRequire(modules['.'], [modules]);
+		return getRequire(modulesPATH, [TREE]);
 	})(MODULES);
 
 	PROGRAM

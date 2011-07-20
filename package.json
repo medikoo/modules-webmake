@@ -1,6 +1,6 @@
 {
 	"name": "webmake",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Bundle CommonJS modules into single script for web browser",
 	"keywords": ["modules", "make", "build", "web", "browser", "deploy", "bundle", "package", "builder", "packager", "generator"],
 	"author": "Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
@@ -14,6 +14,11 @@
 		"web": "https://github.com/medikoo/commonjs-webmake/issues"
 	},
 	"scripts": { "test": "node test/all.js" },
+	"dependencies": {
+		"nopt": "1.x",
+		"es5-ext": "0.3.x",
+		"next": "0.1.x"
+	},
 	"devDependencies": {
 		"test": "0.1.x"
 	},
