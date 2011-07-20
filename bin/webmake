@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var nopt    = require('nopt')
+
+  , webmake = require('../lib/webmake')
+
+  , options, input, output, die;
+
+die = function (why) {
+	console.warn(why);
+	console.warn("Usage: " + process.argv[1] + " <program> <output>");
+	process.exit(1);
+};
+
+options = nopt();
+input = options.argv.remain[0];
+output = options.argv.remain[1];
+
+if (!input || !output) {
+	die("No files specified.");
+}
+
+webmake(input, output, function (err) {
+	if (err) {
+		throw err;
+	}
+	console.log("..Done");
+	process.exit();
+});
