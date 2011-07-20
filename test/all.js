@@ -12,15 +12,14 @@ exports["test make"] = function (assert, done) {
 		}
 		var program = require('./build');
 
-		assert.equal(typeof program.a, "object",
+		assert.ok(program.a instanceof Object,
 			"require module");
 		assert.equal(program.a.name, 'a',
 			"make sure it's expected module");
 		var c = program.a.getC();
 		assert.equal(c && c.name, 'c',
 			"require module via defered call");
-		var c2 = program.a.getC();
-		assert.ok(c === c2,
+		assert.ok(c === program.a.getC(),
 			"require same module twice (both calls should return same object)");
 		assert.equal(c.b.name, 'b',
 			"require within required module");
