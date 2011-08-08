@@ -13,14 +13,14 @@
 		"mail": "medikoo+webmake@medikoo.com",
 		"web": "https://github.com/medikoo/commonjs-webmake/issues"
 	},
-	"scripts": { "test": "node test/all.js" },
 	"dependencies": {
 		"nopt": "1.x",
 		"es5-ext": "0.3.x",
 		"next": "0.1.x"
 	},
+	"scripts": { "test": "./node_modules/tad/bin/tad lib" },
 	"devDependencies": {
-		"test": "0.1.x"
+		"tad": "0.1.x"
 	},
 	"engines": [ "node >=0.1.30" ]
 }
