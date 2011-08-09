@@ -3,21 +3,21 @@ var unlink = require('fs').unlink
 
 module.exports = function (t, a, d) {
 	var output = pg + '/build.js';
-	t(pg + '/program.js', output, function (err) {
+	t(pg + '/lib/program.js', output, function (err) {
 		if (err) {
 			d(err);
 			return;
 		}
 		var program = require(output);
-
-		a.ok(program.a instanceof Object, "Require module");
-		a(program.a.name, 'a', "Make sure it's expected module");
-		var c = program.a.getC();
-		a(c && c.name, 'c', "Require module via defered call");
-		a.ok(c === program.a.getC(),
-			"Require same module twice (both calls should return same object)");
-		a(c.b.name, 'b', "Require within required module");
-		a.ok(c === c.b.c, "Circular dependency");
+		a(program.x.name, "x", "Same path require");
+		a(program.x.getZ().name, "z", "Deferred call");
+		a(program.x.getZ(), program.x.getZ(),
+			"Requiring same object twice, should return same object");
+		a(program.y.z.name, "z", "Require within required module");
+		a(program.y.z.y.name, "y", "Circular dependency");
+		a(program.outer.name, "outer", "Require module up tree");
+		// a(program.external.other.name, "external-other", "Require module from other package");
+		// a(program.external.main.name, "external-main", "Require main module from other package");
 
 		unlink(output, d);
 	});
