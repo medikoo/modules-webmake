@@ -5,7 +5,7 @@
 		};
 	};
 	var getModule = function (scope, tree, path) {
-		var name, dir, module = { exports: {} }, require, build;
+		var name, dir, exports = {}, module = { exports: exports }, require, build;
 		path = path.split('/');
 		name = path.pop();
 		while ((dir = path.shift())) {
@@ -19,7 +19,7 @@
 		require = getRequire(scope, tree);
 		build = scope[name];
 		scope[name] = getBuild(module);
-		build.call(module.exports, module.exports, module, require);
+		build.call(exports, exports, module, require);
 		return module.exports;
 	};
 	var require = function (scope, tree, path) {
