@@ -16,7 +16,7 @@ http://www.commonjs.org/specs/modules/1.0/
 
 	$ webmake path/to/program-module.js path/to/output.js
 
-Program module it's the main file, in which you require needed stuff, and do what you need with it
+Program module it's the main file in which you require needed stuff and make use of it.
 
 ### Programmatically:
 
@@ -27,9 +27,9 @@ Program module it's the main file, in which you require needed stuff, and do wha
 
 ## Limitations
 
-Applications calculates dependencies by reading require paths from source code
+Application calculates dependencies by reading require paths from source code
 
-### Only plain written paths works
+### Only plain written paths work
 
 Following won't work:
 
@@ -62,7 +62,7 @@ stay tuned, it will be fixed.
 
 ### Different versions of same package will colide (TODO)
 
-Let's say, required package A uses version 0.2 of package C and required package B uses version 0.3 of same version, it will most likely crash. Currently webmake will take C in version that was called first and will give it to both A and B.
+Let's say, required package A uses version 0.2 of package C and required package B uses version 0.3 of same package, it will most likely crash. Currently webmake will take C in version that was called first and will give it to both A and B.
 
 ## TODO
 
