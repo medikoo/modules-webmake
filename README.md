@@ -1,6 +1,6 @@
 # modules-webmake - Bundle CommonJS modules for web browser
 
-It's about organizing JavaScript code for browser, same way as we do for Node.js.
+It's about organizing JavaScript code for browser same way as we do for Node.js.
 __Modules rocks__
 
 If you're not that familiar with it (yet), see spec:
@@ -16,7 +16,7 @@ http://www.commonjs.org/specs/modules/1.0/
 
 	$ webmake path/to/program-module.js path/to/output.js
 
-Program module it's the main file in which you require needed stuff and make use of it.
+Program module is the main file in which you require needed stuff and make use of it.
 
 ### Programmatically:
 
