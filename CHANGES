@@ -1,0 +1,28 @@
+v0.3.0  --  2011.08.11
+* Rewritten whole logic with help of promises
+* Packages support (!)
+* webmake function now takes only input path paramater and returns source
+  code as result. Shell binary still takes input and output paths as arguments
+* Binary is now visible in PATH (when installed globally via npm)
+* Better documentation
+* Makefile
+* Tests configured for TAD suite
+
+v0.2.2  --  2011.07.20
+* Renamed to webmake
+* Support for modules located in upper paths than program, it didn't work (!)
+* Binary file
+
+v0.2.1  --  2011.05.11
+* Fixed assignment error
+* Documentation improvements
+
+v0.2.0  --  2011.05.05
+Use widely accepted convention for error handling. Callback passed to webbuild()
+will now be called with error (if any) as first argument, and result in second.
+
+v0.1.1  --  2011.05.04
+Meta data: more details in package.json
+
+v0.1.0  --  2011.05.04
+Initial version
