@@ -1,21 +1,13 @@
-(function (require) {
-	PROGRAM
-}((function (modules) {
+(function (modules) {
 	var getBuild = function (build) {
 		return function (ignore, module) {
 			module.exports = build.exports;
 		};
 	};
-	var require = function (scope, tree, path) {
+	var getModule = function (scope, tree, path) {
 		var name, dir, module = { exports: {} }, require, build;
 		path = path.split('/');
 		name = path.pop();
-		if (path[0] === '.') {
-			path.shift();
-		} else if (path[0] !== '..') {
-			scope = tree[0];
-			tree = [];
-		}
 		while ((dir = path.shift())) {
 			if (dir === '..') {
 				scope = tree.pop();
@@ -27,13 +19,26 @@
 		require = getRequire(scope, tree);
 		build = scope[name];
 		scope[name] = getBuild(module);
-		build(module.exports, module, require);
+		build.call(module.exports, module.exports, module, require);
 		return module.exports;
+	};
+	var require = function (scope, tree, path) {
+		var name;
+		if (path.charAt(0) !== '.') {
+			name = path.split('/', 1)[0];
+			path = path.slice(name.length + 1);
+			scope = modules[name];
+			tree = [];
+			if (!path) {
+				path = scope[':mainpath:'];
+			}
+		}
+		return getModule(scope, tree, path);
 	};
 	var getRequire = function (scope, tree) {
 		return function (path) {
 			return require(scope, [].concat(tree), path);
 		};
 	};
-	return getRequire(modulesPATH, [TREE]);
-})(MODULES)));
+	return getRequire(modules['.'], []);
+})

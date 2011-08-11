@@ -2,30 +2,30 @@
 
 'use strict';
 
-var nopt    = require('nopt')
+var argv = require('optimist')
+	.usage("Usage: $0 <input> <output>")
+	.demand(2).argv
+  , writeFile = require('fs').writeFile
+  , webmake   = require('../lib/webmake')
 
-  , webmake = require('../lib/webmake')
+  , input = argv._[0], output = argv._[1];
 
-  , options, input, output, die;
-
-die = function (why) {
-	console.warn(why);
-	console.warn("Usage: " + process.argv[1] + " <program> <output>");
-	process.exit(1);
-};
-
-options = nopt();
-input = options.argv.remain[0];
-output = options.argv.remain[1];
-
-if (!input || !output) {
-	die("No files specified.");
+if (input[0] !== '/') {
+	input = process.env.PWD + '/' + input;
+}
+if (output[0] !== '/') {
+	output = process.env.PWD + '/' + output;
 }
 
-webmake(input, output, function (err) {
+webmake(input, function (err, result) {
 	if (err) {
 		throw err;
 	}
-	console.log("..Done");
-	process.exit();
+	writeFile(output, result, function (err) {
+		if (err) {
+			throw err;
+		}
+		console.log("...Done");
+		process.exit();
+	});
 });

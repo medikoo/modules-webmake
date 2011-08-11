@@ -1,8 +1,8 @@
 {
 	"name": "webmake",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "Bundle CommonJS modules into single script for web browser",
-	"keywords": ["modules", "make", "build", "web", "browser", "deploy", "bundle", "package", "builder", "packager", "generator"],
+	"keywords": ["modules", "make", "build", "web", "browser", "deploy", "bundle", "package", "builder", "packager", "generator", "browserify"],
 	"author": "Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
 	"main": "lib/webmake",
 	"repository": {
@@ -14,9 +14,10 @@
 		"web": "https://github.com/medikoo/commonjs-webmake/issues"
 	},
 	"dependencies": {
-		"nopt": "1.x",
-		"es5-ext": "0.3.x",
-		"next": "0.1.x"
+		"deferred": "0.2.x",
+		"es5-ext": "0.6.x",
+		"next": "0.2.x",
+		"optimist": "0.2.x"
 	},
 	"scripts": { "test": "./node_modules/tad/bin/tad lib" },
 	"devDependencies": {
