@@ -1,3 +1,6 @@
+v0.3.1  --  2011.08.11
+* Fixed links in package.json (rename aftermath)
+
 v0.3.0  --  2011.08.11
 * Rewritten whole logic with help of promises
 * Packages support (!)
