@@ -1,27 +1,27 @@
-# modules-webmake - Bundle CommonJS modules into single script for web browser
+# modules-webmake - Bundle CommonJS modules for web browser
 
 It's about organizing JavaScript code for browser, same way as we do for Node.js.
 __Modules rocks__
 
-If your not that familiar with it (yet), see spec:
+If you're not that familiar with it (yet), see spec:
 http://www.commonjs.org/specs/modules/1.0/
 
 ## Installation
 
-	$ npm install webmake
+	$ npm install -g webmake
 
 ## Usage
 
 ### From the shell:
 
-	$ path/to/bin/webmake path/to/program-module.js path/to/output.js
+	$ webmake path/to/program-module.js path/to/output.js
 
 Program module it's the main file, in which you require needed stuff, and do what you need with it
 
-### Programatically:
+### Programmatically:
 
 	var webmake = require('webmake');
-	webmake('/path/to/program-module.js', function (err, src) {
+	webmake('/path/to/program-module.js', function (err, source) {
 		// Do whatever you need with generated source
 	});
 
@@ -37,7 +37,7 @@ Following won't work:
 	require(readFromVariable);
 	require(generatePath());
 
-### Supported are only relative paths and outer packages paths
+### Supported are relative paths and outer packages paths
 
 This will work:
 
@@ -62,11 +62,11 @@ stay tuned, it will be fixed.
 
 ### Different versions of same package will colide (TODO)
 
-Let's say, required package A uses version 0.2 of package C and required package B uses version 0.3 of C package, it will most likely crash. Currently webmake will take C in version that was called first and will give it to both A and B.
+Let's say, required package A uses version 0.2 of package C and required package B uses version 0.3 of same version, it will most likely crash. Currently webmake will take C in version that was called first and will give it to both A and B.
 
 ## TODO
 
-* Better dependency parsing (probably with help of UglifyJS)
+* Right dependency parsing (probably with help of UglifyJS)
 * Absolute path lookups
 * Support different package versions
 * Compiled version (no boilerplate code overhead, trimed requires)
