@@ -8,11 +8,11 @@
 	"main": "lib/webmake",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/medikoo/commonjs-webmake.git"
+		"url": "git://github.com/medikoo/modules-webmake.git"
 	},
 	"bugs": {
 		"mail": "medikoo+webmake@medikoo.com",
-		"web": "https://github.com/medikoo/commonjs-webmake/issues"
+		"web": "https://github.com/medikoo/modules-webmake/issues"
 	},
 	"dependencies": {
 		"deferred": "0.2.x",
