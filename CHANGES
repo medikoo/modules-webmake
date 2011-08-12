@@ -1,3 +1,11 @@
+v0.3.2  --  2011.08.12
+Fixes, following now works:
+* Require paths ending with js file extension
+* Requiring modules from packages that not have main module
+
+Maintanance:
+* Update up to es5-ext@0.6.2
+
 v0.3.1  --  2011.08.11
 * Fixed links in package.json (rename aftermath)
 
