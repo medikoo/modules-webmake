@@ -21,16 +21,21 @@ module.exports = function (t, a, d) {
 			}
 
 			var program = require(output);
-			a(program.x.name, "x", "Same path require");
-			a(program.x.getZ().name, "z", "Deferred call");
+			a(program.x.name, 'x', "Same path require");
+			a(program.x.getZ().name, 'z', "Deferred call");
 			a(program.x.getZ(), program.x.getZ(),
 				"Requiring same object twice, should return same object");
-			a(program.y.z.name, "z", "Require within required module");
-			a(program.y.z.y.name, "y", "Circular dependency");
-			a(program.outer.name, "outer", "Require module up tree");
-			a(program.external.other.name, "external-other", "Require module from other package");
-			a(program.external.main.name, "external-main", "Require main module from other package");
-			a(program.external.main.module.name, "module", "Require module within other package");
+			a(program.y.z.name, 'z', "Require within required module");
+			a(program.y.z.y.name, 'y', "Circular dependency");
+			a(program.outer.name, 'outer', "Require module up tree");
+			a(program.external.other.name, 'external-other',
+				"Require module from other package");
+			a(program.external.main.name, 'external-main',
+				"Require main module from other package");
+			a(program.external.main.module.name, 'module',
+				"Require module within other package");
+			a(program.external.noMain.name, 'no-main',
+				"Require from package that doesn't have main module");
 
 			unlink(output, d);
 		});
