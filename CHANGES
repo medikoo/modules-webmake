@@ -30,7 +30,7 @@ v0.2.1  --  2011.05.11
 
 v0.2.0  --  2011.05.05
 Use widely accepted convention for error handling. Callback passed to webbuild()
-will now be called with error (if any) as first argument, and result in second.
+will now be called with error (if any) as first argument, and result as second.
 
 v0.1.1  --  2011.05.04
 Meta data: more details in package.json
