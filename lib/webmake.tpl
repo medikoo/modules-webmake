@@ -37,7 +37,8 @@
 	};
 	var getRequire = function (scope, tree) {
 		return function (path) {
-			return require(scope, [].concat(tree), path);
+			return require(scope, [].concat(tree),
+				(path.slice(-3) === '.js') ? path.slice(0, -3) : path);
 		};
 	};
 	return getRequire(modules['.'], []);
