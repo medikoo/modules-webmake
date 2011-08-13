@@ -1,4 +1,4 @@
-(function (modules) {
+(function (global, modules) {
 	var getBuild = function (build) {
 		return function (ignore, module) {
 			module.exports = build.exports;
@@ -19,7 +19,7 @@
 		require = getRequire(scope, tree);
 		build = scope[name];
 		scope[name] = getBuild(module);
-		build.call(exports, exports, module, require);
+		build.call(exports, exports, module, require, global);
 		return module.exports;
 	};
 	var require = function (scope, tree, path) {
