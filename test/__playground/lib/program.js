@@ -7,3 +7,8 @@ exports.external = {
 	other: require('test/lib/other.js'),
 	noMain: require('no-main/lib/some-module')
 };
+
+this.thisTest = 'available';
+exports.globalAvailable = (typeof global !== 'undefined');
+if (exports.globalAvailable)
+	exports.globalName = global.name;
