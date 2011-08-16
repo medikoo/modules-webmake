@@ -2,26 +2,23 @@
 
 var fs         = require('fs')
   , startsWith = require('es5-ext/lib/String/starts-with').call
+  , lock       = require('es5-ext/lib/Function/lock').call
+  , ba2p       = require('deferred/lib/async-to-promise').bind
 
-  , writeFile = fs.writeFile, unlink = fs.unlink
+  , writeFile = ba2p(fs.writeFile), readFile = ba2p(fs.readFile)
+  , unlink = ba2p(fs.unlink)
 
   , pg = __dirname + '/__playground';
 
 module.exports = {
 	"": function (t, a, d) {
-		var output = pg + '/build.js';
-		t(pg + '/lib/program.js', function (err, result) {
-			if (err) {
-				d(err);
-				return;
-			}
-
-			writeFile(output, 'module.exports = ' + result, function (err) {
-				if (err) {
-					d(err);
-					return;
-				}
-
+		var input = pg + '/lib/program.js'
+		  , output = pg + '/build.js';
+		t = ba2p(t);
+		t(input)
+		(function (result) {
+			return writeFile(output, 'module.exports = ' + result)
+			(function () {
 				var program = require(output);
 				a(program.x.name, 'x', "Same path require");
 				a(program.x.getZ().name, 'z', "Deferred call");
@@ -39,9 +36,17 @@ module.exports = {
 				a(program.external.noMain.name, 'no-main',
 					"Require from package that doesn't have main module");
 
-				unlink(output, d);
+				return unlink(output)
+				(function () {
+					return t(input, output)
+					(lock(readFile, output, 'utf8'))
+					(function (content) {
+						a(result, content, "Write to file");
+						return unlink(output);
+					});
+				});
 			});
-		});
+		}).cb(d);
 	},
 	"Error on native": function (t, a, d) {
 		t(pg + '/require-native.js', function (err) {
