@@ -16,6 +16,11 @@
 				scope = scope[dir];
 			}
 		}
+		if (typeof scope[name] === 'object') {
+			tree.push(scope);
+			scope = scope[name];
+			name = 'index';
+		}
 		require = getRequire(scope, tree);
 		build = scope[name];
 		scope[name] = getBuild(module);

@@ -26,6 +26,7 @@ module.exports = {
 					"Requiring same object twice, should return same object");
 				a(program.y.z.name, 'z', "Require within required module");
 				a(program.y.z.y.name, 'y', "Circular dependency");
+				a(program.indexed.name, 'indexed', "Folder index");
 				a(program.outer.name, 'outer', "Require module up tree");
 				a(program.external.other.name, 'external-other',
 					"Require module from other package");

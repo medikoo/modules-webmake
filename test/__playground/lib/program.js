@@ -1,6 +1,7 @@
-exports.x = require("./x");
-exports.y = require("./y.js");
-exports.outer = require("../outer");
+exports.x = require('./x');
+exports.y = require('./y.js');
+exports.indexed = require('./indexed');
+exports.outer = require('../outer');
 
 exports.external = {
 	main:  require('test'),
