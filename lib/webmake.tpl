@@ -29,11 +29,13 @@
 	};
 	var require = function (scope, tree, path) {
 		var name;
-		if (path.charAt(0) !== '.') {
+		if (path.charAt(0) === '/') {
+			path = path.slice(1);
+			scope = modules['/']; tree = [];
+		} else if (path.charAt(0) !== '.') {
 			name = path.split('/', 1)[0];
 			path = path.slice(name.length + 1);
-			scope = modules[name];
-			tree = [];
+			scope = modules[name]; tree = [];
 			if (!path) {
 				path = scope[':mainpath:'];
 			}
