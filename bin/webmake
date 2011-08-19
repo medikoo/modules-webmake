@@ -17,15 +17,10 @@ if (output[0] !== '/') {
 	output = process.env.PWD + '/' + output;
 }
 
-webmake(input, function (err, result) {
+webmake(input, { output: output }, function (err, result) {
 	if (err) {
 		throw err;
 	}
-	writeFile(output, result, function (err) {
-		if (err) {
-			throw err;
-		}
-		console.log("...Done");
-		process.exit();
-	});
+	console.log("...Done");
+	process.exit();
 });
