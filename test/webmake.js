@@ -36,7 +36,7 @@ module.exports = {
 			a(program.external.noMain.name, 'no-main',
 				"Require from package that doesn't have main module");
 
-			return t(input, output)
+			return t(input, { output: output })
 			(lock(readFile, output, 'utf8'))
 			(function (content) {
 				a(result, content, "Write to file");
