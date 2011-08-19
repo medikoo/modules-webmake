@@ -42,7 +42,7 @@ module.exports = {
 				a(result, content, "Write to file");
 				return unlink(output);
 			});
-		}).cb(d);
+		})(d, d).end();
 	},
 	"Error on native": function (t, a, d) {
 		t(pg + '/require-native.js', function (err) {
