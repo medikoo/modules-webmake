@@ -46,5 +46,5 @@
 				(path.slice(-3) === '.js') ? path.slice(0, -3) : path);
 		};
 	};
-	return getRequire(modules['.'], []);
+	return getRequire(modules, []);
 })
