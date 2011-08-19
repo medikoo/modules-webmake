@@ -34,11 +34,8 @@
 			scope = modules['/']; tree = [];
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
-			path = path.slice(name.length + 1);
 			scope = modules[name]; tree = [];
-			if (!path) {
-				path = scope[':mainpath:'];
-			}
+			path = path.slice(name.length + 1) || scope[':mainpath:'];
 		}
 		return getModule(scope, tree, path);
 	};
