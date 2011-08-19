@@ -28,11 +28,11 @@
 		return module.exports;
 	};
 	var require = function (scope, tree, path) {
-		var name;
-		if (path.charAt(0) === '/') {
+		var name, t = path.charAt(0);
+		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/']; tree = [];
-		} else if (path.charAt(0) !== '.') {
+		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
 			path = path.slice(name.length + 1);
 			scope = modules[name]; tree = [];
