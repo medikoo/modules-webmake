@@ -14,9 +14,10 @@ var fs              = require('fs')
 module.exports = {
 	"": function (t, a, d) {
 		var input = pg + '/lib/program.js'
-		  , output = pg + '/build.js';
+		  , output = pg + '/build.js'
+		  , options = { include: pg + '/lib/included' };
 		t = ba2p(t);
-		t(input)
+		t(input, options)
 		(function (result) {
 			var program = runInNewContext(result, {});
 			a(program.x.name, 'x', "Same path require");
@@ -26,6 +27,8 @@ module.exports = {
 			a(program.y.z.name, 'z', "Require within required module");
 			a(program.y.z.y.name, 'y', "Circular dependency");
 			a(program.indexed.name, 'indexed', "Folder index");
+			a(program.included.a.name, 'included.a', "Manually included #1");
+			a(program.included.b.name, 'included.b', "Manually included #2");
 			a(program.outer.name, 'outer', "Require module up tree");
 			a(program.external.other.name, 'external-other',
 				"Require module from other package");
@@ -36,7 +39,8 @@ module.exports = {
 			a(program.external.noMain.name, 'no-main',
 				"Require from package that doesn't have main module");
 
-			return t(input, { output: output })
+			options.output = output;
+			return t(input, options)
 			(lock(readFile, output, 'utf8'))
 			(function (content) {
 				a(result, content, "Write to file");
