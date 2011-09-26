@@ -30,6 +30,9 @@ module.exports = {
 			a(program.included.a.name, 'included.a', "Manually included #1");
 			a(program.included.b.name, 'included.b', "Manually included #2");
 			a(program.outer.name, 'outer', "Require module up tree");
+			a(program.pathFile.name, 'path.js', "Dir/file collision: file");
+			a(program.pathIndex.name, 'path', "Dir/file collision: index");
+			a(program.pathOther.name, 'path/other', "Dir/file collision: other");
 			a(program.external.other.name, 'external-other',
 				"Require module from other package");
 			a(program.external.main.name, 'external-main',

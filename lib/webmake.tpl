@@ -16,10 +16,13 @@
 					scope = scope[dir];
 				}
 			}
+			if (scope[name + '.js']) {
+				name += '.js';
+			}
 			if (typeof scope[name] === 'object') {
 				tree.push(scope);
 				scope = scope[name];
-				name = 'index';
+				name = 'index.js';
 			}
 			fn = scope[name];
 			scope[name] = wrap(module);
@@ -45,8 +48,7 @@
 	};
 	getRequire = function (scope, tree) {
 		return function (path) {
-			return require(scope, [].concat(tree),
-				(path.slice(-3) === '.js') ? path.slice(0, -3) : path);
+			return require(scope, [].concat(tree), path);
 		};
 	};
 	return getRequire(modules, []);

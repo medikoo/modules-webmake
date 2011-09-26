@@ -5,6 +5,10 @@ exports.y = require('./y.js');
 exports.indexed = require('./indexed');
 exports.outer = require('../outer');
 
+exports.pathFile = require('./path');
+exports.pathIndex = require('./path/index');
+exports.pathOther = require('./path/other');
+
 exports.included = {
 	a: indirectRequire('./included/a'),
 	b: indirectRequire('./included/b')
