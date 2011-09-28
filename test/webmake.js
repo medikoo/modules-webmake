@@ -33,6 +33,7 @@ module.exports = {
 			a(program.pathFile.name, 'path.js', "Dir/file collision: file");
 			a(program.pathIndex.name, 'path', "Dir/file collision: index");
 			a(program.pathOther.name, 'path/other', "Dir/file collision: other");
+			a(program.nlComment, 'nlComment', "New line / Comment");
 			a(program.external.other.name, 'external-other',
 				"Require module from other package");
 			a(program.external.main.name, 'external-main',
