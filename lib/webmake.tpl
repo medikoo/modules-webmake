@@ -4,7 +4,7 @@
 (function (modules) {
 	var getModule, getRequire, require;
 	getModule = (function (wrap) {
-		return function (scope, tree, path) {
+		return function (scope, tree, path, fullpath) {
 			var name, dir, exports = {}, module = { exports: exports }, fn;
 			path = path.split('/');
 			name = path.pop();
@@ -25,6 +25,9 @@
 				name = 'index.js';
 			}
 			fn = scope[name];
+			if (!fn) {
+				throw new Error("Could not find module '" + fullpath + "'");
+			}
 			scope[name] = wrap(module);
 			fn.call(exports, exports, module, getRequire(scope, tree));
 			return module.exports;
@@ -34,8 +37,8 @@
 			module.exports = cmodule.exports;
 		};
 	});
-	require = function (scope, tree, path) {
-		var name, t = path.charAt(0);
+	require = function (scope, tree, fullpath) {
+		var name, path = fullpath, t = fullpath[0];
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/']; tree = [];
@@ -44,7 +47,7 @@
 			scope = modules[name]; tree = [];
 			path = path.slice(name.length + 1) || scope[':mainpath:'];
 		}
-		return getModule(scope, tree, path);
+		return getModule(scope, tree, path, fullpath);
 	};
 	getRequire = function (scope, tree) {
 		return function (path) {
