@@ -38,7 +38,7 @@
 		};
 	});
 	require = function (scope, tree, fullpath) {
-		var name, path = fullpath, t = fullpath[0];
+		var name, path = fullpath, t = fullpath.charAt(0);
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/']; tree = [];
