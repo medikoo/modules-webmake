@@ -12,6 +12,6 @@ module.exports = {
 			a(path, "__playground/lib/program", "Path");
 			a.deep(Object.keys(parser.modules).sort(),
 				['__playground', 'no-main', 'test'], "Modules");
-		})(d, d).end();
+		}).end(d);
 	}
 };

@@ -2,12 +2,13 @@
 
 var fs              = require('fs')
   , runInNewContext = require('vm').runInNewContext
-  , startsWith      = require('es5-ext/lib/String/starts-with').call
-  , lock            = require('es5-ext/lib/Function/lock').call
-  , ba2p            = require('deferred/lib/async-to-promise').bind
+  , startsWith      = require('es5-ext/lib/String/prototype/starts-with')
+  , lock            = require('es5-ext/lib/Function/prototype/lock')
+  , deferred        = require('deferred')
 
-  , writeFile = ba2p(fs.writeFile), readFile = ba2p(fs.readFile)
-  , unlink = ba2p(fs.unlink)
+  , writeFile = deferred.promisify(fs.writeFile)
+  , readFile = deferred.promisify(fs.readFile)
+  , unlink = deferred.promisify(fs.unlink)
 
   , pg = __dirname + '/__playground';
 
@@ -16,7 +17,7 @@ module.exports = {
 		var input = pg + '/lib/program.js'
 		  , output = pg + '/build.js'
 		  , options = { include: pg + '/lib/included' };
-		t = ba2p(t);
+		t = deferred.promisify(t);
 		t(input, options)
 		(function (result) {
 			var program = runInNewContext(result, {});
@@ -45,16 +46,16 @@ module.exports = {
 
 			options.output = output;
 			return t(input, options)
-			(lock(readFile, output, 'utf8'))
+			(lock.call(readFile, output, 'utf8'))
 			(function (content) {
 				a(result, content, "Write to file");
 				return unlink(output);
 			});
-		})(d, d).end();
+		}).end(d);
 	},
 	"Error on native": function (t, a, d) {
 		t(pg + '/require-native.js', function (err) {
-			a.ok(startsWith(err.message, "Cannot require")); d();
+			a.ok(startsWith.call(err.message, "Cannot require")); d();
 		});
 	}
 };
