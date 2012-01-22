@@ -53,6 +53,16 @@ module.exports = {
 			});
 		}).end(d);
 	},
+	"No includes": function (t, a, d) {
+		var input = pg + '/lib/x.js';
+		t = deferred.promisify(t);
+		t(input)
+		(function (result) {
+			var program = runInNewContext(result, {}, input);
+			a(program.name, 'x', "Same path require");
+			a(program.getZ().name, 'z', "External name");
+		}).end(d);
+	},
 	"Error on native": function (t, a, d) {
 		t(pg + '/require-native.js', function (err) {
 			a.ok(startsWith.call(err.message, "Cannot require")); d();
