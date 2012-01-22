@@ -11,10 +11,10 @@ var argv = require('optimist')
   , input = argv._[0], output = argv._[1];
 
 if (input[0] !== '/') {
-	input = process.env.PWD + '/' + input;
+	input = process.cwd() + '/' + input;
 }
 if (output[0] !== '/') {
-	output = process.env.PWD + '/' + output;
+	output = process.cwd() + '/' + output;
 }
 
 webmake(input, { output: output }, function (err, result) {
