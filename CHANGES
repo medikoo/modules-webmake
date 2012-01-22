@@ -1,3 +1,19 @@
+v0.3.4  --  2012.01.22
+* Now programatically webmake can write output file (before it was just returning content)
+* Byte order mark awaraness
+* Pack properly modules without EOL at EOF
+* Better 'require' calls parser (but still primitive)
+* Allow more input files via options
+* More efficient parser
+* Generate modules tree always in alphabetical order (diff friendly)
+* Better error messages
+* Support for packing programs that are not in package context
+* Take out parser as separate module, thanks to that, more can be done programatically
+* Use '.js' in paths, without that e.g. dir 'foo' collided with 'foo.js' module
+* Webmake template now safe for old JS implementations that doesn't support indexes on strings
+* Windows support
+* Travis CI Configuration
+
 v0.3.3  --  2011.08.12
 Meaningful error when requiring one of node's specific modules
 
