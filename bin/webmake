@@ -5,16 +5,17 @@
 var argv = require('optimist')
 	.usage("Usage: $0 <input> <output>")
 	.demand(2).argv
+  , resolve   = require('path').resolve
   , writeFile = require('fs').writeFile
   , webmake   = require('../lib/webmake')
 
   , input = argv._[0], output = argv._[1];
 
 if (input[0] !== '/') {
-	input = process.cwd() + '/' + input;
+	input = resolve(process.cwd() + '/' + input);
 }
 if (output[0] !== '/') {
-	output = process.cwd() + '/' + output;
+	output = resolve(process.cwd() + '/' + output);
 }
 
 webmake(input, { output: output }, function (err, result) {
