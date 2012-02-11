@@ -23,7 +23,8 @@
 		"deferred": "0.4.x",
 		"es5-ext": "0.7.x",
 		"next": "0.2.x",
-		"optimist": "0.2.x"
+		"optimist": "0.2.x",
+		"bloodhound": "1.0.x"
 	},
 	"scripts": {
 		"test": "node ./node_modules/tad/bin/tad lib"
