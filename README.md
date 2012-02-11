@@ -66,7 +66,6 @@ Let's say, required package A uses version 0.2 of package C and required package
 
 ## TODO
 
-* Right dependency parsing (probably with help of UglifyJS)
 * Absolute path lookups
 * Support different package versions
 * Compiled version (no boilerplate code overhead, trimed requires)
