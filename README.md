@@ -51,14 +51,6 @@ This will work:
 
 	require('/Users/foo/projects/awesome/my-module');
 
-### Commented requires or requires found in strings will be picked up (TODO)
-
-Current dependency parsing is rudimentary, unfortunately following will be picked up:
-
-	// require('./well/i/dont/need/that')
-	var generatedCode = 'var s = require("used/somewhere/else");';
-
-stay tuned, it will be fixed.
 
 ### Different versions of same package will colide (TODO)
 
