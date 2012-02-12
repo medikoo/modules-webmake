@@ -1,0 +1,8 @@
+@root
+indent 2
+maxlen 80
+eqeq
+nomen
+plusplus
+tabs
+predef __dirname, console, process
