@@ -46,7 +46,7 @@ v0.3.0  --  2011.08.11
 v0.2.2  --  2011.07.20
 * Renamed to webmake
 * Support for modules located in upper paths than program, it didn't work (!)
-* Binary file
+* Shell (/bin) script
 
 v0.2.1  --  2011.05.11
 * Fixed assignment error
