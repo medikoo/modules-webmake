@@ -8,8 +8,7 @@ module.exports = {
 		var input, parser;
 		input = normalize(pg + '/lib/program.js');
 		parser = t();
-		parser.readInput(input)
-		(function (path) {
+		parser.readInput(input)(function (path) {
 			a(path, "__playground/lib/program", "Path");
 			a.deep(Object.keys(parser.modules).sort(),
 				['__playground', 'no-main', 'test'], "Modules");

@@ -18,8 +18,7 @@ module.exports = {
 		  , output = pg + '/build.js'
 		  , options = { include: pg + '/lib/included' };
 		t = deferred.promisify(t);
-		t(input, options)
-		(function (result) {
+		t(input, options)(function (result) {
 			var program = runInNewContext(result, {});
 			a(program.x.name, 'x', "Same path require");
 			a(program.x.getZ().name, 'z', "Deferred call");
@@ -45,19 +44,18 @@ module.exports = {
 				"Require from package that doesn't have main module");
 
 			options.output = output;
-			return t(input, options)
-			(lock.call(readFile, output, 'utf8'))
-			(function (content) {
-				a(result, content, "Write to file");
-				return unlink(output);
-			});
+			return t(input, options)(lock.call(readFile, output, 'utf8'))(
+				function (content) {
+					a(result, content, "Write to file");
+					return unlink(output);
+				}
+			);
 		}).end(d);
 	},
 	"No includes": function (t, a, d) {
 		var input = pg + '/lib/x.js';
 		t = deferred.promisify(t);
-		t(input)
-		(function (result) {
+		t(input)(function (result) {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
 			a(program.getZ().name, 'z', "External name");
@@ -66,8 +64,7 @@ module.exports = {
 	"Unresolved path": function (t, a, d) {
 		var input = pg + '/././lib/x.js';
 		t = deferred.promisify(t);
-		t(input)
-		(function (result) {
+		t(input)(function (result) {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
 			a(program.getZ().name, 'z', "External name");
@@ -75,7 +72,8 @@ module.exports = {
 	},
 	"Error on native": function (t, a, d) {
 		t(pg + '/require-native.js', function (err) {
-			a.ok(startsWith.call(err.message, "Cannot require")); d();
+			a.ok(startsWith.call(err.message, "Cannot require"));
+			d();
 		});
 	}
 };
