@@ -8,6 +8,9 @@
 			var name, dir, exports = {}, module = { exports: exports }, fn;
 			path = path.split('/');
 			name = path.pop();
+			if (!name) {
+				name = path.pop();
+			}
 			while ((dir = path.shift())) {
 				if (dir === '..') {
 					scope = tree.pop();
