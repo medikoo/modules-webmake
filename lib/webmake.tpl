@@ -32,19 +32,21 @@
 			fn.call(exports, exports, module, getRequire(scope, tree));
 			return module.exports;
 		};
-	})(function (cmodule) {
+	}(function (cmodule) {
 		return function (ignore, module) {
 			module.exports = cmodule.exports;
 		};
-	});
+	}));
 	require = function (scope, tree, fullpath) {
 		var name, path = fullpath, t = fullpath.charAt(0);
 		if (t === '/') {
 			path = path.slice(1);
-			scope = modules['/']; tree = [];
+			scope = modules['/'];
+			tree = [];
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
-			scope = modules[name]; tree = [];
+			scope = modules[name];
+			tree = [];
 			path = path.slice(name.length + 1) || scope[':mainpath:'];
 		}
 		return getModule(scope, tree, path, fullpath);
