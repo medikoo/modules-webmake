@@ -1,6 +1,11 @@
+v0.3.5  --  2012.02.12
+* Fixed resolution of paths ended with slash (client side logic didn't handle
+  that properly)
+* Cleanup and from now on mantain code with JSLint
+
 v0.3.4  --  2012.01.22
 * Now programatically webmake can write output file (before it was just returning content)
-* Byte order mark awaraness
+* Byte order mark awareness
 * Pack properly modules without EOL at EOF
 * Better 'require' calls parser (but still primitive)
 * Allow more input files via options
