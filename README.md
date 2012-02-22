@@ -28,7 +28,7 @@ It works very well in webkit web inspector but [it's not that well supported by 
 
 ```javascript
 	var webmake = require('webmake');
-	webmake('/path/to/program-module.js', { sourcemap: true }, function (err, source) {
+	webmake('/path/to/program-module.js', function (err, source) {
 		if (err) {
 			// handle eventual error
 		}
@@ -36,10 +36,24 @@ It works very well in webkit web inspector but [it's not that well supported by 
 	});
 ````
 
-You may also create output file with _webmake_ programmatically:
+#### Options:
+
+With second argument you can pass additional options:
 
 ```javascript
-	var webmake = require('webmake');
+	webmake(inputPath[, options], callback);
+```
+
+##### `output`
+Path of output file if you want `webmake` to create one
+
+##### `include`
+Additional module(s) that need to be included (but due some specific reasons won;t be picked by parser).
+
+##### `sourcemap`
+Generate [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html) file.
+
+```javascript
 	webmake('/path/to/program-module.js', { output: outputPath }, function (err, source) {
 		if (err) {
 			// handle eventual error
@@ -47,6 +61,8 @@ You may also create output file with _webmake_ programmatically:
 		console.log("Webmake file generated!");
 	});
 ```
+
+Also `sourceMap` option is supported
 
 ## Limitations
 
