@@ -1,6 +1,6 @@
 {
 	"name": "webmake",
-	"version": "0.3.5",
+	"version": "0.3.6",
 	"description": "Bundle CommonJS modules into single script for web browser",
 	"keywords": ["browser", "browserify", "build", "builder", "bundle",
 		"generator", "deploy", "make", "modules", "package", "packager", "require",
