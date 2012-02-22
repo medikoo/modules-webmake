@@ -49,11 +49,6 @@ This will work:
 
 Let's say, required package A uses version 0.2 of package C and required package B uses version 0.3 of same package, it will most likely crash. Currently webmake will take C in version that was called first and will give it to both A and B.
 
-## TODO
-
-* Absolute path lookups
-* Support different package versions
-
 ## Tests [![Build Status](https://secure.travis-ci.org/medikoo/modules-webmake.png?branch=master)](https://secure.travis-ci.org/medikoo/modules-webmake)
 
 Before running tests make sure you've installed project with dev dependencies
