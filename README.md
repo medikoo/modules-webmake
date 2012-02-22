@@ -27,7 +27,7 @@ Program module is the main file in which you require needed stuff and make use o
 
 ## Limitations
 
-Application calculates dependencies through static analysis of source code (with help of (find-requires)[https://github.com/medikoo/find-requires] module)
+Application calculates dependencies via static analysis of source code (with help of [find-requires](https://github.com/medikoo/find-requires) module)
 
 ### Supported are relative paths and outer packages paths
 
@@ -53,3 +53,10 @@ Let's say, required package A uses version 0.2 of package C and required package
 
 * Absolute path lookups
 * Support different package versions
+
+## Tests [![Build Status](https://secure.travis-ci.org/medikoo/modules-webmake.png?branch=master)](https://secure.travis-ci.org/medikoo/modules-webmake)
+
+Before running tests make sure you've installed project with dev dependencies
+`npm install --dev`
+
+	$ npm test
