@@ -7,7 +7,7 @@
 	"author":
 	"Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
 	"bin": "./bin/webmake",
-	"main": "lib/webmake",
+	"main": "./lib/webmake",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/medikoo/modules-webmake.git"
@@ -24,7 +24,7 @@
 		"es5-ext": "0.7.x",
 		"next": "0.2.x",
 		"optimist": "0.2.x",
-		"bloodhound": "1.0.x"
+		"find-requires": "0.1.x"
 	},
 	"scripts": {
 		"test": "node ./node_modules/tad/bin/tad lib"
