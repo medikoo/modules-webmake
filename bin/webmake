@@ -3,7 +3,9 @@
 'use strict';
 
 var argv = require('optimist')
-	.usage("Usage: $0 <input> <output>")
+	.usage("Usage: $0 <options> <input> <output>")
+	.boolean('sourcemap')
+	.describe('sourcemap', "Source map")
 	.demand(2).argv
   , normalize = require('path').normalize
   , writeFile = require('fs').writeFile
@@ -18,10 +20,11 @@ if (output[0] !== '/') {
 	output = normalize(process.cwd() + '/' + output);
 }
 
-webmake(input, { output: output }, function (err, result) {
-	if (err) {
-		throw err;
-	}
-	console.log("...Done");
-	process.exit();
-});
+webmake(input, { output: output, sourceMap: argv.sourcemap },
+	function (err, result) {
+		if (err) {
+			throw err;
+		}
+		console.log("...Done");
+		process.exit();
+	});
