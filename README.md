@@ -38,19 +38,19 @@ webmake('/path/to/program-module.js', function (err, source) {
 
 #### Options:
 
-With second argument you can pass additional options:
+You can pass additional options:
 
 ```javascript
 webmake(inputPath[, options], callback);
 ```
 
-##### `output`
-Path of output file if you want `webmake` to create one
+##### `output: string`
+Path of output file, if you want `webmake` to create one
 
-##### `include`
-Additional module(s) that need to be included (but due some specific reasons won;t be picked by parser).
+##### `include: string|Array`
+Additional module(s) that need to be included (but due specific reasons can't be picked by parser).
 
-##### `sourcemap`
+##### `sourcemap: boolean`
 Generate [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html).
 
 ## Limitations
