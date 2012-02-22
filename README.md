@@ -45,7 +45,7 @@ webmake(inputPath[, options], callback);
 ```
 
 ##### `output: string`
-Path of output file, if you want `webmake` to create one
+Path of output file, if you want _webmake_ to create one
 
 ##### `include: string|Array`
 Additional module(s) that need to be included (but due specific reasons can't be picked by parser).
