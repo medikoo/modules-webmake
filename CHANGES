@@ -1,3 +1,7 @@
+v0.3.6  --  2012.02.23
+* Replace rudimentary require calls parser with solid and fast solution - find-requires module
+* Add support for sourcemaps
+
 v0.3.5  --  2012.02.12
 * Fixed resolution of paths ended with slash (client side logic didn't handle
   that properly)
