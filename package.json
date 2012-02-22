@@ -22,6 +22,7 @@
 	"dependencies": {
 		"deferred": "0.4.x",
 		"es5-ext": "0.7.x",
+		"find-requires": "0.1.x",
 		"next": "0.2.x",
 		"optimist": "0.2.x"
 	},
