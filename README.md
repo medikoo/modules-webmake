@@ -18,7 +18,7 @@ http://www.commonjs.org/specs/modules/1.0/
 
 Program module is the main file in which you require needed stuff and make use of it.
 
-Optionally you may generate [source mapped](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html) file.
+Optionally you may output modules as [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html).
 
 	$ webmake --sourcemap path/to/program-module.js path/to/output.js
 
@@ -27,13 +27,13 @@ It works very well in webkit web inspector but [it's not that well supported by 
 ### Programmatically:
 
 ```javascript
-	var webmake = require('webmake');
-	webmake('/path/to/program-module.js', function (err, source) {
-		if (err) {
-			// handle eventual error
-		}
-		// Do whatever you need with generated source
-	});
+var webmake = require('webmake');
+webmake('/path/to/program-module.js', function (err, source) {
+	if (err) {
+		// handle eventual error
+	}
+	// Do whatever you need with generated source
+});
 ````
 
 #### Options:
@@ -41,7 +41,7 @@ It works very well in webkit web inspector but [it's not that well supported by 
 With second argument you can pass additional options:
 
 ```javascript
-	webmake(inputPath[, options], callback);
+webmake(inputPath[, options], callback);
 ```
 
 ##### `output`
@@ -51,18 +51,7 @@ Path of output file if you want `webmake` to create one
 Additional module(s) that need to be included (but due some specific reasons won;t be picked by parser).
 
 ##### `sourcemap`
-Generate [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html) file.
-
-```javascript
-	webmake('/path/to/program-module.js', { output: outputPath }, function (err, source) {
-		if (err) {
-			// handle eventual error
-		}
-		console.log("Webmake file generated!");
-	});
-```
-
-Also `sourceMap` option is supported
+Generate [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html).
 
 ## Limitations
 
