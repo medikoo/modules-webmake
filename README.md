@@ -3,8 +3,7 @@
 It's about organizing JavaScript code for browser same way as we do for Node.js.
 __Modules rocks__
 
-If you're not that familiar with it (yet), see spec:
-http://www.commonjs.org/specs/modules/1.0/
+If you're not that familiar with it see plain [specification](http://www.commonjs.org/specs/modules/1.0/) and slides from Warsaw's MeetJS meetup presentation: [JavaScript Modules Done Right](http://www.slideshare.net/medikoo/javascript-modules-done-right)
 
 ## Installation
 
@@ -22,7 +21,7 @@ Optionally you may output modules as [source maps](http://pmuellr.blogspot.com/2
 
 	$ webmake --sourcemap path/to/program-module.js path/to/output.js
 
-It works very well in webkit web inspector but [it's not that well supported by firebug](http://code.google.com/p/fbug/issues/detail?id=2198)
+It works very well in webkit web inspector but [it's not that well supported by firefox's firebug](http://code.google.com/p/fbug/issues/detail?id=2198)
 
 ### Programmatically:
 
@@ -44,13 +43,13 @@ You can pass additional options:
 webmake(inputPath[, options], callback);
 ```
 
-##### `output: string`
+##### output `string`
 Path of output file, if you want _webmake_ to create one
 
-##### `include: string|Array`
+##### include `string|Array`
 Additional module(s) that need to be included (but due specific reasons can't be picked by parser).
 
-##### `sourcemap: boolean`
+##### sourcemap `boolean`
 Generate [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html).
 
 ## Limitations
