@@ -1,9 +1,9 @@
 # modules-webmake - Bundle CommonJS modules for web browser
 
 It's about organizing JavaScript code for browser same way as we do for Node.js.
-__Modules rocks__
 
-If you're not that familiar with it see plain [specification](http://www.commonjs.org/specs/modules/1.0/) and slides from Warsaw's MeetJS meetup presentation: [JavaScript Modules Done Right](http://www.slideshare.net/medikoo/javascript-modules-done-right)
+If you're not that familiar with it, see plain [specification](http://www.commonjs.org/specs/modules/1.0/) and slides from Warsaw's MeetJS meetup presentation:  
+__[JavaScript Modules Done Right](http://www.slideshare.net/medikoo/javascript-modules-done-right)__
 
 ## Installation
 
