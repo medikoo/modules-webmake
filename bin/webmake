@@ -7,18 +7,9 @@ var argv = require('optimist')
 	.boolean('sourcemap')
 	.describe('sourcemap', "Source map")
 	.demand(2).argv
-  , normalize = require('path').normalize
-  , writeFile = require('fs').writeFile
   , webmake   = require('../lib/webmake')
 
   , input = argv._[0], output = argv._[1];
-
-if (input[0] !== '/') {
-	input = normalize(process.cwd() + '/' + input);
-}
-if (output[0] !== '/') {
-	output = normalize(process.cwd() + '/' + output);
-}
 
 webmake(input, { output: output, sourceMap: argv.sourcemap },
 	function (err, result) {

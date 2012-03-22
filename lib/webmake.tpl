@@ -5,10 +5,11 @@
 	var getModule, getRequire, require;
 	getModule = (function (wrap) {
 		return function (scope, tree, path, fullpath) {
-			var name, dir, exports = {}, module = { exports: exports }, fn;
-			path = path.split('/');
+			var name, dir, exports = {}, module = { exports: exports }, fn, isDir;
+			path = path.split(SEPARATOR);
 			name = path.pop();
 			if (!name) {
+				isDir = true;
 				name = path.pop();
 			}
 			while ((dir = path.shift())) {
@@ -19,7 +20,7 @@
 					scope = scope[dir];
 				}
 			}
-			if (scope[name + '.js']) {
+			if (!isDir && scope[name + '.js']) {
 				name += '.js';
 			}
 			if (typeof scope[name] === 'object') {

@@ -33,7 +33,8 @@ module.exports = {
 			a(program.outerSubIndex.name, 'outer-index',
 				"Require index from sibling directory");
 			a(program.pathFile.name, 'path.js', "Dir/file collision: file");
-			a(program.pathIndex.name, 'path', "Dir/file collision: index");
+			a(program.pathDir.name, 'path', "Dir/file collision: dir");
+			a(program.pathIndex.name, 'path', "Dir/file collision: dir/index");
 			a(program.pathOther.name, 'path/other', "Dir/file collision: other");
 			a(program.nlComment, 'nlComment', "New line / Comment");
 			a(program.external.other.name, 'external-other',

@@ -6,6 +6,7 @@ exports.indexed = require('./indexed');
 exports.outer = require('../outer');
 exports.outerSubIndex = require('../other/sub/')
 exports.pathFile = require('./path');
+exports.pathDir = require('./path/');
 exports.pathIndex = require('./path/index');
 exports.pathOther = require('./path/other');
 
