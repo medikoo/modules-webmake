@@ -1,3 +1,12 @@
+v0.3.7  --  2012.03.22
+Fixes:
+* Input paths resolution now works properly in all cases (on both *nix and windows)
+* Require paths resolution logic is now aware of current system separator type,
+  this makes webmake 100% ready for both systems (*nix and windows)..
+* Handling of current and parent directory index requires (e.g. './' or '../')
+* Handling of paths with trailing slash (e.g. './path/') where both file
+  and directory is present (e.g. ./path.js and ./path/)
+
 v0.3.6  --  2012.02.23
 * Replace rudimentary require calls parser with solid and fast solution - find-requires module
 * Add support for sourcemaps
