@@ -12,6 +12,10 @@
 				isDir = true;
 				name = path.pop();
 			}
+			if ((name === '.') || (name === '..')) {
+				path.push(name);
+				name = '';
+			}
 			while ((dir = path.shift())) {
 				if (dir === '..') {
 					scope = tree.pop();
@@ -20,12 +24,16 @@
 					scope = scope[dir];
 				}
 			}
-			if (!isDir && scope[name + '.js']) {
-				name += '.js';
-			}
-			if (typeof scope[name] === 'object') {
-				tree.push(scope);
-				scope = scope[name];
+			if (name) {
+				if (!isDir && scope[name + '.js']) {
+					name += '.js';
+				}
+				if (typeof scope[name] === 'object') {
+					tree.push(scope);
+					scope = scope[name];
+					name = 'index.js';
+				}
+			} else {
 				name = 'index.js';
 			}
 			fn = scope[name];

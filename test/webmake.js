@@ -36,6 +36,12 @@ module.exports = {
 			a(program.pathDir.name, 'path', "Dir/file collision: dir");
 			a(program.pathIndex.name, 'path', "Dir/file collision: dir/index");
 			a(program.pathOther.name, 'path/other', "Dir/file collision: other");
+			a(program.pathOther.index.name, 'path', "'.' - index require");
+			a(program.pathOther.indexSlash.name, 'path',
+				"'./' - index require (slash)");
+			a(program.pathOther.parentIndex, 'main.index', "'..' - parent index");
+			a(program.pathOther.parentIndexSlash,
+				'main.index', "'../' - parent index (slash)");
 			a(program.nlComment, 'nlComment', "New line / Comment");
 			a(program.external.other.name, 'external-other',
 				"Require module from other package");
