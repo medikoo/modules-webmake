@@ -1,4 +1,4 @@
-# modules-webmake - Bundle CommonJS modules for web browser
+# modules-webmake - Bundle CommonJS/Node.js modules for web browser
 
 It's about organizing JavaScript code for browser same way as we do for Node.js.
 
