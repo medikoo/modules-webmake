@@ -44,7 +44,7 @@ In result we have generated _build.js_ that looks like:
 
 ```javascript
 (function (modules) {
-  // about 60 lines of import/export logic
+  // about 60 lines of import/export path resolution logic
 }) ({
   "foo": {
     "add.js": function (exports, module, require) {
