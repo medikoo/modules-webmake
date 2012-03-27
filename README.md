@@ -5,6 +5,73 @@ It's about organizing JavaScript code for browser same way as we do for Node.js.
 If you're not that familiar with it, see plain [specification](http://www.commonjs.org/specs/modules/1.0/) and slides from Warsaw's MeetJS meetup presentation:  
 __[JavaScript Modules Done Right](http://www.slideshare.net/medikoo/javascript-modules-done-right)__
 
+## How it works?
+
+Let's say in package named _foo_ we have following individual file modules:
+
+_add.js_
+
+```javascript
+module.exports = function() {
+  var sum = 0, i = 0, args = arguments, l = args.length;
+  while (i < l) sum += args[i++];
+  return sum;
+};
+```
+
+_increment.js_
+
+```javascript
+var add = require('./add');
+module.exports = function(val) {
+  return add(val, 1);
+};
+```
+
+_program.js_
+
+```javascript
+var inc = require('./increment');
+var a = 1;
+inc(a); // 2
+```
+
+Let's pack _program.js_ with all it's dependencies for browser:
+
+	$ webmake program.js build.js
+
+In result we have generated _build.js_ that looks like:
+
+```javascript
+(function (modules) {
+  // about 60 lines of import/export logic
+}) ({
+  "foo": {
+    "add.js": function (exports, module, require) {
+      module.exports = function () {
+        var sum = 0, i = 0, args = arguments, l = args.length;
+        while (i < l) sum += args[i++];
+        return sum;
+      };
+    },
+    "increment.js": function (exports, module, require) {
+      var add = require('./add');
+      module.exports = function (val) {
+        return add(val, 1);
+      };
+    },
+    "program.js": function (exports, module, require) {
+      var inc = require('./increment');
+      var a = 1;
+     inc(a); // 2
+    }
+  }
+})
+("foo/program");
+```
+
+When loaded in browser, immediately _program.js_ module is executed
+
 ## Installation
 
 	$ npm install -g webmake
