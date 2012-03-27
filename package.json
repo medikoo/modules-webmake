@@ -25,7 +25,7 @@
 		"es5-ext": "0.7.x",
 		"find-requires": "0.1.x",
 		"next": "0.2.x",
-		"optimist": "0.2.x"
+		"optimist": "0.3.x"
 	},
 	"scripts": {
 		"test": "node ./node_modules/tad/bin/tad lib",
