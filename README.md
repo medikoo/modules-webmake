@@ -13,11 +13,11 @@ __[JavaScript Modules Done Right](http://www.slideshare.net/medikoo/javascript-m
 
 ### From the shell:
 
-	$ webmake path/to/program-module.js path/to/output.js
+	$ webmake <input> <output>
 
-Program module is the main file in which you require needed stuff and make use of it.
+_input_ is path to your initial module that would be executed when script is loaded, and _output_ is path where browser ready file should land.
 
-Optionally you may output modules as [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html).
+Additionally you may output modules as [source maps](http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html).
 
 	$ webmake --sourcemap path/to/program-module.js path/to/output.js
 
