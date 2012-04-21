@@ -34,7 +34,7 @@
     "node": ">=0.1.30"
   },
   "dependencies": {
-    "deferred": "0.4.x",
+    "deferred": "0.5.x",
     "es5-ext": "git://github.com/medikoo/es5-ext.git",
     "find-requires": "0.1.x",
     "next": "0.2.x",
