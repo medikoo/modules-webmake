@@ -1,38 +1,52 @@
 {
-	"name": "webmake",
-	"version": "0.3.7",
-	"description": "Bundle CommonJS modules into single script for web browser",
-	"keywords": ["browser", "browserify", "build", "builder", "bundle",
-		"generator", "deploy", "make", "modules", "package", "packager", "require",
-		"web"],
-	"author":
-	"Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
-	"bin": "./bin/webmake",
-	"main": "lib/webmake",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/medikoo/modules-webmake.git"
-	},
-	"bugs": {
-		"mail": "medikoo+webmake@medikoo.com",
-		"url": "https://github.com/medikoo/modules-webmake/issues"
-	},
-	"engines": {
-		"node":  ">=0.1.30"
-	},
-	"dependencies": {
-		"deferred": "0.4.x",
-		"es5-ext": "git://github.com/medikoo/es5-ext.git",
-		"find-requires": "0.1.x",
-		"next": "0.2.x",
-		"optimist": "0.3.x"
-	},
-	"scripts": {
-		"test": "node ./node_modules/tad/bin/tad lib",
-		"lint": "node ./node_modules/jslint/bin/jslint.js --color --git"
-	},
-	"devDependencies": {
-		"tad": "0.1.x"
-	},
-	"licence": "MIT"
+  "name": "webmake",
+  "version": "0.3.7",
+  "description": "Bundle CommonJS modules into single script for web browser",
+  "keywords": [
+    "browser",
+    "browserify",
+    "build",
+    "builder",
+    "bundle",
+    "generator",
+    "deploy",
+    "make",
+    "modules",
+    "package",
+    "packager",
+    "require",
+    "web"
+  ],
+  "author": "Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
+  "bin": {
+    "webmake": "./bin/webmake"
+  },
+  "main": "lib/webmake",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/medikoo/modules-webmake.git"
+  },
+  "bugs": {
+    "email": "medikoo+webmake@medikoo.com",
+    "url": "https://github.com/medikoo/modules-webmake/issues"
+  },
+  "engines": {
+    "node": ">=0.1.30"
+  },
+  "dependencies": {
+    "deferred": "0.4.x",
+    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "find-requires": "0.1.x",
+    "next": "0.2.x",
+    "optimist": "0.3.x"
+  },
+  "scripts": {
+    "test": "node ./node_modules/tad/bin/tad lib",
+    "lint": "node ./node_modules/jslint/bin/jslint --color --git"
+  },
+  "devDependencies": {
+    "tad": "0.1.x"
+  },
+  "licence": "MIT",
+  "optionalDependencies": {}
 }
