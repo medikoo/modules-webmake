@@ -37,7 +37,7 @@
     "deferred": "0.5.x",
     "es5-ext": "git://github.com/medikoo/es5-ext.git",
     "find-requires": "0.1.x",
-    "next": "0.2.x",
+    "next": "git://github.com/medikoo/next.git",
     "optimist": "0.3.x"
   },
   "scripts": {
