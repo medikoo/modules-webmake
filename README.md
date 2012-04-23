@@ -88,7 +88,7 @@ Additionally you may output modules as [source maps](http://pmuellr.blogspot.com
 
 	$ webmake --sourcemap path/to/program-module.js path/to/output.js
 
-It works very well in webkit web inspector but [it's not that well supported by firefox's firebug](http://code.google.com/p/fbug/issues/detail?id=2198)
+It works very well in webkit web inspector but it's [not that well supported by firefox's firebug](http://code.google.com/p/fbug/issues/detail?id=2198)
 
 ### Programmatically:
 
