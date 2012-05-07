@@ -108,7 +108,7 @@ var http = require('http'),
     webmake = require('webmake'),
     server;
  
-    server = http.createServer(function (request, response) {
+server = http.createServer(function (request, response) {
     webmake('program.js', {'sourceMap': true}, function (err, src) {
         if (err) {
             response.writeHead(500, {'Content-Type': 'text/plain'});
