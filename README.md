@@ -112,7 +112,7 @@ server = http.createServer(function (request, response) {
     webmake('program.js', {'sourceMap': true}, function (err, src) {
         if (err) {
             response.writeHead(500, {'Content-Type': 'text/plain'});
-            response.end(src);
+            response.end(err);
         } else {
             response.writeHead(200, {'Content-Type': 'application/javascript'});
             response.end(src);
@@ -130,13 +130,16 @@ webmake(inputPath[, options], callback);
 ```
 
 ##### output `string`
+
 Path of output file, if you want _webmake_ to create one
 
 ##### include `string|Array`
+
 Additional module(s) that need to be included (but due specific reasons can't
 be picked by parser).
 
 ##### sourceMap `boolean`
+
 Include [source maps][].
 
 ## Limitations
