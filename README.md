@@ -98,14 +98,14 @@ Additionally you may output modules with [source maps][], for easier debugging.
 Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug
 however has some [issues][firebug issue].
 
-### Programmatically:
+### Programmatically
 
 Webmake can also be used programmatically. For example to create a server that
 builds a fresh bundle on each request.
 
 ```javascript
 var http = require('http'),
-webmake = require('webmake'),
+    webmake = require('webmake'),
     server;
  
     server = http.createServer(function (request, response) {
@@ -123,7 +123,7 @@ webmake = require('webmake'),
 server.listen(8000);
 ````
 
-#### Options:
+#### Options
 
 ```javascript
 webmake(inputPath[, options], callback);
