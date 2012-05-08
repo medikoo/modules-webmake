@@ -185,8 +185,8 @@ require('/Users/foo/projects/awesome/my-module');
 
 ## Contributors
 
-	* Justus Maier (@Phoscur)
-	* Jaap Roes (@jaap3)
+* [@Phoscur](https://github.com/Phoscur) (Justus Maier)
+* [@jaap3](https://github.com/jaap3) (Jaap Roes)
 
 [slides]:
   http://www.slideshare.net/medikoo/javascript-modules-done-right
