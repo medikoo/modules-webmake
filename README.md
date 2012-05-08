@@ -186,7 +186,9 @@ require('/Users/foo/projects/awesome/my-module');
 ## Contributors
 
 * [@Phoscur](https://github.com/Phoscur) (Justus Maier)
+  * Help with source map feature
 * [@jaap3](https://github.com/jaap3) (Jaap Roes)
+  * Documentation quality improvements
 
 [slides]:
   http://www.slideshare.net/medikoo/javascript-modules-done-right
