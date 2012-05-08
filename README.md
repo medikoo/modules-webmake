@@ -183,6 +183,11 @@ require('/Users/foo/projects/awesome/my-module');
 
     $ npm test
 
+## Contributors
+
+	* Justus Maier (@Phoscur)
+	* Jaap Roes (@jaap3)
+
 [slides]:
   http://www.slideshare.net/medikoo/javascript-modules-done-right
   'JavaScript Modules Done Right on SlideShare'
