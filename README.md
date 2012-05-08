@@ -181,9 +181,6 @@ require('/Users/foo/projects/awesome/my-module');
 
 ## Tests
 
-Before running tests make sure you've installed project with dev dependencies:
-
-    `npm install --dev`
     $ npm test
 
 [slides]:
