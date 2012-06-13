@@ -1,3 +1,10 @@
+v0.3.8  --  2012.06.13
+* Webmake function is now hybrid it accepts a callback and returns promise
+* Great documentation improvements from Jaap Roes
+* Update up to v0.8 branch of es5-ext and v0.5 branch of deferred
+* package.json now in npm friendly format
+* It's safe to use optimist at v0.3
+
 v0.3.7  --  2012.03.22
 Fixes:
 * Input paths resolution now works properly in all cases (on both *nix and windows)
