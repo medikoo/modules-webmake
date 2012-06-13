@@ -179,7 +179,7 @@ require('/Users/foo/projects/awesome/my-module');
    first. So in this case package B will end up with version 0.2 instead
    of 0.3.
 
-## Tests
+## Tests [![Build Status](https://secure.travis-ci.org/medikoo/webmake.png?branch=master)](https://secure.travis-ci.org/medikoo/webmake)
 
     $ npm test
 
