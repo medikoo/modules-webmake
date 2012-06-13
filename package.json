@@ -41,8 +41,7 @@
     "optimist": "0.3.x"
   },
   "scripts": {
-    "test": "node ./node_modules/tad/bin/tad lib",
-    "lint": "node ./node_modules/jslint/bin/jslint --color --git"
+    "test": "node ./node_modules/tad/bin/tad lib"
   },
   "devDependencies": {
     "tad": "0.1.x"
