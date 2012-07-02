@@ -1,3 +1,6 @@
+v0.3.9  --  2012.07.02
+* Fix bug related to external package resolution (affected only Node v0.8)
+
 v0.3.8  --  2012.06.13
 * Webmake function is now hybrid it accepts a callback and returns promise
 * Great documentation improvements from Jaap Roes
