@@ -1,3 +1,8 @@
+v0.3.11  --  2012.07.20
+* Support browser polyfills for Node.js modules. Such modules should be placed
+  in node_modules folder to be picked up by Webmake
+* Fix small resolution bug of "." path, it caused bundling same module twice
+
 v0.3.10  --  2012.07.20
 * Fix resolution of main path when working outside of package scope
 
