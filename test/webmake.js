@@ -51,6 +51,7 @@ module.exports = {
 				"Require module within other package");
 			a(program.external.noMain.name, 'no-main',
 				"Require from package that doesn't have main module");
+			a(program.nodeshim, 'path for web');
 
 			options.output = output;
 			return t(input, options)(lock.call(readFile, output, 'utf8'))(

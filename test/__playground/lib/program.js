@@ -9,6 +9,7 @@ exports.pathFile = require('./path');
 exports.pathDir = require('./path/');
 exports.pathIndex = require('./path/index');
 exports.pathOther = require('./path/other');
+exports.nodeshim = require('path');
 
 // new line/comment check
 require('./nl-comment')(exports);
