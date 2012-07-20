@@ -1,3 +1,6 @@
+v0.3.10  --  2012.07.20
+* Fix resolution of main path when working outside of package scope
+
 v0.3.9  --  2012.07.02
 * Fix bug related to external package resolution (affected only Node v0.8)
 
