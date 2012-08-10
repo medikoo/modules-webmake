@@ -10,7 +10,7 @@ see the slides from my presentation at Warsaw's MeetJS:
 
 **[JavaScript Modules Done Right][slides]**
 
-## How does it works?
+## How does it work?
 
 Let's say in package named _foo_ you have following individual module files:
 
