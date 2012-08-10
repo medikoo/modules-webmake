@@ -129,7 +129,7 @@ staticServer = new staticServer(staticsPath);
 // Initialize http server
 createServer(function (req, res) {
   // Respond to request
-  req.addListener('end', function () {
+  req.on('end', function () {
     if (req.url === programUrl) {
       // Generate bundle with Webmake
 
