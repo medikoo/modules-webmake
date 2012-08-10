@@ -251,6 +251,6 @@ require('/Users/foo/projects/awesome/my-module');
   https://github.com/medikoo/find-requires
   'find-requires: Find all require() calls'
 
-[node-static]
+[node-static]:
   https://github.com/cloudhead/node-static
   'HTTP static-file server module'
