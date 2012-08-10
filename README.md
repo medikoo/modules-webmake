@@ -98,29 +98,76 @@ Additionally you may output modules with [source maps][], for easier debugging.
 Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug
 however has some [issues][firebug issue].
 
-### Programmatically
+### Development with Webmake
 
-Webmake can also be used programmatically. For example to create a server that
-builds a fresh bundle on each request.
+Currently best way is to setup a static server and generate bundle on each request. Webmake is fast, so it's acceptable approach even you bundle hundreds of modules at once.
+
+You can setup simple static server as it's shown in following example script.  
+_It uses also [node-static] module to serve other static files (CSS, images etc.) if you don't want it just adjust code up to your needs._
 
 ```javascript
-var http = require('http'),
-    webmake = require('webmake'),
-    server;
- 
-server = http.createServer(function (request, response) {
-    webmake('program.js', {'sourceMap': true}, function (err, src) {
-        if (err) {
-            response.writeHead(500, {'Content-Type': 'text/plain'});
-            response.end(err);
-        } else {
-            response.writeHead(200, {'Content-Type': 'application/javascript'});
-            response.end(src);
-        }
-    });
-});
+'use strict';
 
-server.listen(8000);
+// Dependencies:
+var createServer = require('http').createServer;
+var staticServer = require('node-static').Server;
+var webmake      = require('webmake');
+
+// Settings:
+// Project path:
+var projectPath  = '/Users/open-web-user/Projects/Awesome';
+// Public folder path (statics)
+var staticsPath  = projectPath + '/public';
+// Path to js program file
+var programPath = projectPath + '/lib/public/main.js';
+// Server port:
+var port = 8000;
+// Url at which we want to serve generated js file
+var programUrl = '/j/main.js';
+
+// Setup statics server
+staticServer = new staticServer(staticsPath);
+
+// Initialize http server
+createServer(function (req, res) {
+  // Respond to request
+  req.addListener('end', function () {
+    if (req.url === programUrl) {
+      // Generate bundle with webmake
+
+      // Send headers
+      res.writeHead(200, {
+        'Content-Type': 'application/javascript; charset=utf-8',
+        // Do not cache generated bundle
+        'Cache-Control': 'no-cache'
+      });
+
+      var time = Date.now();
+      webmake(programPath, { sourceMap: true }, function (err, content) {
+        if (err) {
+          console.error("Webmake error: " + err.message);
+          // Expose eventual error brutally in browser
+          res.end('document.write(\'<div style="font-size: 1.6em; padding: 1em;'
+            + ' text-align: left; font-weight: bold; color: red;'
+            + ' position: absolute; top: 1em; left: 10%; width: 80%;'
+            + ' background: white; background: rgba(255,255,255,0.9);'
+            + ' border: 1px solid #ccc;"><div>Could not generate ' + programUrl
+            + '</div><div style="font-size: 0.8em; padding-top: 1em">'
+            + err.message.replace(/'/g, '\\\'') + '</div></div>\');');
+          return;
+        }
+
+        // Send script
+        console.log("Webmake OK (" + ((Date.now() - time)/1000).toFixed(3) + "s)");
+        res.end(content);
+      });
+    } else {
+      // Serve static file
+      staticServer.serve(req, res);
+    }
+  });
+}).listen(port);
+console.log("Server started");
 ````
 
 #### Options
@@ -205,3 +252,7 @@ require('/Users/foo/projects/awesome/my-module');
 [find-requires]:
   https://github.com/medikoo/find-requires
   'find-requires: Find all require() calls'
+
+[node-static]
+  https://github.com/cloudhead/node-static
+  'HTTP static-file server module'
