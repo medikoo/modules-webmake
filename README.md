@@ -5,7 +5,7 @@ _Bundle CommonJS/Node.js modules for web browsers._
 Webmake allows you to organize JavaScript code for the browser the same way
 as you would for Node.js.
 
-For a more in depth look into JavaScript modules and the reason for _webmake_,
+For a more in depth look into JavaScript modules and the reason for _Webmake_,
 see the slides from my presentation at Warsaw's MeetJS:
 
 **[JavaScript Modules Done Right][slides]**
@@ -133,7 +133,7 @@ createServer(function (req, res) {
   // Respond to request
   req.addListener('end', function () {
     if (req.url === programUrl) {
-      // Generate bundle with webmake
+      // Generate bundle with Webmake
 
       // Send headers
       res.writeHead(200, {
@@ -178,7 +178,7 @@ webmake(inputPath[, options], callback);
 
 ##### output `string`
 
-Path of output file, if you want _webmake_ to create one
+Path of output file, if you want _Webmake_ to create one
 
 ##### include `string|Array`
 
@@ -222,7 +222,7 @@ require('/Users/foo/projects/awesome/my-module');
    version 0.3 of the same package. If both package A and B are required,
    package B will most likely end up buggy.
 
-   This is because webmake will only bundle the version that was called
+   This is because Webmake will only bundle the version that was called
    first. So in this case package B will end up with version 0.2 instead
    of 0.3.
 
