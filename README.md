@@ -106,8 +106,6 @@ You can setup simple static server as it's shown in following example script.
 _It uses also [node-static] module to serve other static files (CSS, images etc.) if you don't want it just adjust code up to your needs._
 
 ```javascript
-'use strict';
-
 // Dependencies:
 var createServer = require('http').createServer;
 var staticServer = require('node-static').Server;
