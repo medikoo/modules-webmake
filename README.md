@@ -100,7 +100,7 @@ however has some [issues][firebug issue].
 
 ### Development with Webmake
 
-Currently best way is to setup a static-file server and generate bundle on each request. Webmake is fast, so it's acceptable approach even you bundle hundreds of modules at once.
+Currently best way is to use Webmake programmatically and setup a static-file server to generate bundle on each request. Webmake is fast, so it's acceptable approach even you bundle hundreds of modules at once.
 
 You can setup simple static server as it's shown in following example script.  
 _It uses also [node-static][] module to serve other static files (CSS, images etc.) if you don't want it, just adjust code up to your needs._
