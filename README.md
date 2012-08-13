@@ -194,7 +194,7 @@ The application calculates dependencies via static analysis of source code
 not all require calls can be found. You can workaround that with help
 of [`include` option](#include-stringarray)
 
-Only relative paths and outer packages paths supported, following will work:
+Only relative paths and outer packages paths are supported, following will work:
 
 ```javascript
 require('./module-in-same-folder');
