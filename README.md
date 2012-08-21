@@ -98,6 +98,26 @@ Additionally you may output modules with [source maps][], for easier debugging.
 Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug
 however has some [issues][firebug issue].
 
+### Programmatically:
+
+```javascript
+webmake(inputPath[, options], callback);
+```
+
+#### Options
+##### output `string`
+
+Path of output file, if you want _Webmake_ to create one
+
+##### include `string|Array`
+
+Additional module(s) that need to be included (but due specific reasons can't
+be picked by parser).
+
+##### sourceMap `boolean`
+
+Include [source maps][].
+
 ### Development with Webmake
 
 Currently best way is to use Webmake programmatically and setup a static-file server to generate bundle on each request. Webmake is fast, so it's acceptable approach even you bundle hundreds of modules at once.
@@ -167,25 +187,9 @@ createServer(function (req, res) {
 }).listen(port);
 console.log("Server started");
 ````
+### Using Webmake with Express or Connect
 
-#### Options
-
-```javascript
-webmake(inputPath[, options], callback);
-```
-
-##### output `string`
-
-Path of output file, if you want _Webmake_ to create one
-
-##### include `string|Array`
-
-Additional module(s) that need to be included (but due specific reasons can't
-be picked by parser).
-
-##### sourceMap `boolean`
-
-Include [source maps][].
+Try [Middleware](https://github.com/gillesruppert/webmake-middleware) prepared by Gilles Ruppert
 
 ## Limitations
 
