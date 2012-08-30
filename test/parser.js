@@ -1,12 +1,12 @@
 'use strict';
 
-var normalize = require('next/lib/path/normalize')
-  , pg        = __dirname + '/__playground';
+var resolve = require('path').resolve
+  , pg      = __dirname + '/__playground';
 
 module.exports = {
 	"": function (t, a, d) {
 		var input, parser;
-		input = normalize(pg + '/lib/program.js');
+		input = resolve(pg, 'lib/program.js');
 		parser = t();
 		parser.readInput(input)(function (path) {
 			a(path, "__playground/lib/program", "Path");
