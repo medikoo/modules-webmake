@@ -9,16 +9,16 @@ var count   = require('es5-ext/lib/Object/count')
 
   , optimist = require('optimist')
 	.usage("Usage: $0 [options] <input> <output>", {
-		sourcemap: {
-			boolean: true,
-			description: "Include source maps"
-		},
 		include: {
-			description: "Additional modules to require"
+			description: "Additional modules to include in a bundle"
 		},
 		help: {
 			boolean: true,
 			desription: "Show this help"
+		},
+		sourcemap: {
+			boolean: true,
+			description: "Include source maps"
 		}
 	}).demand(2)
   , options = optimist.argv
