@@ -1,14 +1,13 @@
 'use strict';
 
-var fs              = require('fs')
-  , runInNewContext = require('vm').runInNewContext
-  , startsWith      = require('es5-ext/lib/String/prototype/starts-with')
+var startsWith      = require('es5-ext/lib/String/prototype/starts-with')
   , lock            = require('es5-ext/lib/Function/prototype/lock')
-  , deferred        = require('deferred')
+  , promisify       = require('deferred').promisify
+  , fs              = require('fs')
+  , runInNewContext = require('vm').runInNewContext
 
-  , writeFile = deferred.promisify(fs.writeFile)
-  , readFile = deferred.promisify(fs.readFile)
-  , unlink = deferred.promisify(fs.unlink)
+  , writeFile = promisify(fs.writeFile), readFile = promisify(fs.readFile)
+  , unlink = promisify(fs.unlink)
 
   , pg = __dirname + '/__playground';
 
@@ -17,7 +16,7 @@ module.exports = {
 		var input = pg + '/lib/program.js'
 		  , output = pg + '/build.js'
 		  , options = { include: pg + '/lib/included' };
-		t = deferred.promisify(t);
+		t = promisify(t);
 		t(input, options)(function (result) {
 			var program = runInNewContext(result, {});
 			a(program.x.name, 'x', "Same path require");
@@ -64,7 +63,7 @@ module.exports = {
 	},
 	"No includes": function (t, a, d) {
 		var input = pg + '/lib/x.js';
-		t = deferred.promisify(t);
+		t = promisify(t);
 		t(input)(function (result) {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
@@ -73,7 +72,7 @@ module.exports = {
 	},
 	"Unresolved path": function (t, a, d) {
 		var input = pg + '/././lib/x.js';
-		t = deferred.promisify(t);
+		t = promisify(t);
 		t(input)(function (result) {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
