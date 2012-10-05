@@ -34,10 +34,11 @@
     "node": ">=0.4"
   },
   "dependencies": {
-    "deferred": "git://github.com/medikoo/deferred.git",
-    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "deferred": "0.6.x",
+    "es5-ext": "0.9.x",
     "find-requires": "0.1.x",
-    "next": "git://github.com/medikoo/node-ext.git",
+    "fs2": "0.1.x",
+    "next": "0.3.x",
     "optimist": "0.3.x"
   },
   "scripts": {
