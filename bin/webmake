@@ -11,13 +11,13 @@ var count     = require('es5-ext/lib/Object/count')
 
   , optimist = require('optimist')
 	.usage("Usage: $0 [options] <input> <output>", {
-		expose: {
+		name: {
 			string: true,
-			description: "Expose in global namespace with provided name"
+			description: "Expose program in your namespace with given name"
 		},
 		amd: {
-			string: true,
-			description: "Bundle as amd module of given name"
+			boolean: true,
+			description: "Expose as AMD module"
 		},
 		include: {
 			string: true,
@@ -55,10 +55,21 @@ options.output = argv._[1];
 var time = now();
 webmake(input, options)(function (parser) {
 	time = now() - time;
-	if (argv.expose) {
+	if (argv.name && argv.amd) {
 		return readFile(options.output)(function (src) {
 			return writeFile(options.output, String(src).replace('(function',
-				'window.' + String(argv.expose) + ' = (function'));
+				'define("' + String(argv.name) + '", function () { return (function') +
+				'});\n');
+		})(parser);
+	} else if (argv.name) {
+		return readFile(options.output)(function (src) {
+			return writeFile(options.output, String(src).replace('(function',
+				'window.' + String(argv.name) + ' = (function'));
+		})(parser);
+	} else if (argv.amd) {
+		return readFile(options.output)(function (src) {
+			return writeFile(options.output, String(src).replace('(function',
+				'define(function () { return (function') + '});\n');
 		})(parser);
 	}
 	return parser;
