@@ -6,8 +6,7 @@ var startsWith      = require('es5-ext/lib/String/prototype/starts-with')
   , fs              = require('fs')
   , runInNewContext = require('vm').runInNewContext
 
-  , writeFile = promisify(fs.writeFile), readFile = promisify(fs.readFile)
-  , unlink = promisify(fs.unlink)
+  , readFile = promisify(fs.readFile), unlink = promisify(fs.unlink)
 
   , pg = __dirname + '/__playground';
 

@@ -12,7 +12,7 @@ var argv = require('optimist')
   , input = argv._[0], output = argv._[1];
 
 webmake(input, { output: output, sourceMap: argv.sourcemap },
-	function (err, result) {
+	function (err) {
 		if (err) {
 			throw err;
 		}
