@@ -2,14 +2,25 @@
 
 'use strict';
 
-var count   = require('es5-ext/lib/Object/count')
-  , webmake = require('../lib/webmake')
+var count     = require('es5-ext/lib/Object/count')
+  , readFile  = require('fs2/lib/read-file')
+  , writeFile = require('fs2/lib/write-file')
+  , webmake   = require('../lib/webmake')
 
   , now = Date.now
 
   , optimist = require('optimist')
 	.usage("Usage: $0 [options] <input> <output>", {
+		expose: {
+			string: true,
+			description: "Expose in global namespace with provided name"
+		},
+		amd: {
+			string: true,
+			description: "Bundle as amd module of given name"
+		},
 		include: {
+			string: true,
 			description: "Additional modules to include in a bundle"
 		},
 		help: {
@@ -21,27 +32,37 @@ var count   = require('es5-ext/lib/Object/count')
 			description: "Include source maps"
 		}
 	}).demand(2)
-  , options = optimist.argv
-  , input, output, include;
+  , argv = optimist.argv
+  , input, options;
 
-if (options.help) {
+if (argv.help) {
 	console.log(optimist.help());
 	process.exit(0);
 }
 
-input = options._[0];
-output = options._[1];
+input = argv._[0];
+options = {};
 
-if (options.include) {
-	include = options.include;
-	if (!Array.isArray(include)) {
-		include = [include];
+if (argv.include) {
+	options.include = argv.include;
+	if (!Array.isArray(options.include)) {
+		options.include = [options.include];
 	}
 }
+options.sourceMap = argv.sourcemap;
+options.output = argv._[1];
+
 var time = now();
-webmake(input, { output: output, include: include,
-	sourceMap: options.sourcemap }).end(function (parser) {
+webmake(input, options)(function (parser) {
 	time = now() - time;
+	if (argv.expose) {
+		return readFile(options.output)(function (src) {
+			return writeFile(options.output, String(src).replace('(function',
+				'window.' + String(argv.expose) + ' = (function'));
+		})(parser);
+	}
+	return parser;
+}).end(function (parser) {
 	console.log("Done [" + parser.modulesFiles.length + " modules from " +
 		count(parser.packages) + " packages in " + (time / 1000).toFixed(2) +
 		"s]");
