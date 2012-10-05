@@ -2,20 +2,48 @@
 
 'use strict';
 
-var argv = require('optimist')
-	.usage("Usage: $0 <options> <input> <output>")
-	.boolean('sourcemap')
-	.describe('sourcemap', "Source map")
-	.demand(2).argv
-  , webmake   = require('../lib/webmake')
+var count   = require('es5-ext/lib/Object/count')
+  , webmake = require('../lib/webmake')
 
-  , input = argv._[0], output = argv._[1];
+  , now = Date.now
 
-webmake(input, { output: output, sourceMap: argv.sourcemap },
-	function (err) {
-		if (err) {
-			throw err;
+  , optimist = require('optimist')
+	.usage("Usage: $0 [options] <input> <output>", {
+		sourcemap: {
+			boolean: true,
+			description: "Include source maps"
+		},
+		include: {
+			description: "Additional modules to require"
+		},
+		help: {
+			boolean: true,
+			desription: "Show this help"
 		}
-		console.log("...Done");
-		process.exit();
-	});
+	}).demand(2)
+  , options = optimist.argv
+  , input, output, include;
+
+if (options.help) {
+	console.log(optimist.help());
+	process.exit(0);
+}
+
+input = options._[0];
+output = options._[1];
+
+if (options.include) {
+	include = options.include;
+	if (!Array.isArray(include)) {
+		include = [include];
+	}
+}
+var time = now();
+webmake(input, { output: output, include: include,
+	sourceMap: options.sourcemap }).end(function (parser) {
+	time = now() - time;
+	console.log("Done [" + parser.modulesFiles.length + " modules from " +
+		count(parser.packages) + " packages in " + (time / 1000).toFixed(2) +
+		"s]");
+	process.exit();
+});
