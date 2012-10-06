@@ -6,9 +6,7 @@ Webmake allows you to organize JavaScript code for the browser the same way
 as you would for Node.js.
 
 For a more in depth look into JavaScript modules and the reason for _Webmake_,
-see the slides from my presentation at Warsaw's MeetJS:
-
-**[JavaScript Modules Done Right][slides]**
+see the slides from my presentation at Warsaw's MeetJS: [__JavaScript Modules Done Right__][slides]
 
 ## How does it work?
 
@@ -50,7 +48,7 @@ The generated file _build.js_ now contains the following:
 ```javascript
 (function (modules) {
   // about 60 lines of import/export path resolution logic
-}) ({
+})({
   "foo": {
     "add.js": function (exports, module, require) {
       module.exports = function () {
@@ -71,8 +69,7 @@ The generated file _build.js_ now contains the following:
      inc(a); // 2
     }
   }
-})
-("foo/program");
+})("foo/program");
 ```
 
 When loaded in browser, _program.js_ is immediately executed.
@@ -85,38 +82,37 @@ When loaded in browser, _program.js_ is immediately executed.
 
 ### From the shell:
 
-    $ webmake <input> <output>
+    $ webmake [options] <input> <output>
 
-_input_ is the path to the initial module that should be executed when
-script is loaded.  
-_output_ is the path to which the bundled browser ready code is written.
+__input__ - Path to the initial module that should be executed when script is loaded.  
+__output__ - Filename at which browser ready bundle should be saved
 
-Additionally you may output modules with [source maps][], for easier debugging.
+#### Options
 
-    $ webmake --sourcemap <input> <output>
+##### name `string`
 
-Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug
-however has some [issues][firebug issue].
+Name at which program should be exposed in your namespace. Technically just assigns exported module to global namespace.
+
+##### amd `string`
+
+Expose bundle as AMD module. If used together with _[name](#name-string)_ option, module will be defined with provided name.
+
+##### include `string`
+
+Additional module(s) that should be included but due specific reasons are
+not picked by parser (can be set multiple times)
+
+##### sourceMap `boolean`
+
+Include [source maps][], for easier debugging. Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug however has some [issues][firebug issue].
 
 ### Programmatically:
 
 ```javascript
-webmake(inputPath[, options], callback);
+webmake(inputPath[, options][, callback]);
 ```
 
-#### Options
-##### output `string`
-
-Path of output file, if you want _Webmake_ to create one
-
-##### include `string|Array`
-
-Additional module(s) that need to be included (but due specific reasons can't
-be picked by parser).
-
-##### sourceMap `boolean`
-
-Include [source maps][].
+`webmake` by default returns generated source to callback, but if _output_ path is provided as one of the options, then source will be automatically saved to file
 
 ### Development with Webmake
 
