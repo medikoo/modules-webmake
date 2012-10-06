@@ -21,7 +21,8 @@ var count     = require('es5-ext/lib/Object/count')
 		},
 		include: {
 			string: true,
-			description: "Additional module(s) that should be included (and are not picked by the parser)"
+			description: "Additional module(s) that should be included (and are " +
+				"not picked by the parser)"
 		},
 		help: {
 			boolean: true,
