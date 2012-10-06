@@ -1,3 +1,9 @@
+v0.3.12  --  2012.10.05
+* Add 'name' and 'amd' options. Bundle can now be directly exposed
+  in global (or AMD) namespace
+* Update dependencies to its latest versions
+* Improve documentation
+
 v0.3.11  --  2012.07.20
 * Support browser polyfills for Node.js modules. Such modules should be placed
   in node_modules folder to be picked up by Webmake
@@ -32,10 +38,10 @@ v0.3.6  --  2012.02.23
 v0.3.5  --  2012.02.12
 * Fixed resolution of paths ended with slash (client side logic didn't handle
   that properly)
-* Cleanup and from now on mantain code with JSLint
+* Cleanup and from now on maintain code with JSLint
 
 v0.3.4  --  2012.01.22
-* Now programatically webmake can write output file (before it was just
+* Now programmatically webmake can write output file (before it was just
   returning content)
 * Byte order mark awareness
 * Pack properly modules without EOL at EOF
@@ -46,7 +52,7 @@ v0.3.4  --  2012.01.22
 * Better error messages
 * Support for packing programs that are not in package context
 * Take out parser as separate module, thanks to that, more can be done
-  programatically
+  programmatically
 * Use '.js' in paths, without that e.g. dir 'foo' collided with 'foo.js' module
 * Webmake template now safe for old JS implementations that doesn't support
   indexes on strings
@@ -61,7 +67,7 @@ Fixes, following now works:
 * Require paths ending with js file extension
 * Requiring modules from packages that not have main module
 
-Maintanance:
+Maintenance:
 * Update up to es5-ext@0.6.2
 
 v0.3.1  --  2011.08.11
@@ -70,7 +76,7 @@ v0.3.1  --  2011.08.11
 v0.3.0  --  2011.08.11
 * Rewritten whole logic with help of promises
 * Packages support (!)
-* webmake function now takes only input path paramater and returns source
+* webmake function now takes only input path parameter and returns source
   code as result. Shell binary still takes input and output paths as arguments
 * Binary is now visible in PATH (when installed globally via npm)
 * Better documentation
