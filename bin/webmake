@@ -17,11 +17,11 @@ var count     = require('es5-ext/lib/Object/count')
 		},
 		amd: {
 			boolean: true,
-			description: "Expose as AMD module"
+			description: "Expose bundle as AMD module"
 		},
 		include: {
 			string: true,
-			description: "Additional modules to include in a bundle"
+			description: "Additional module(s) that should be included (and are not picked by the parser)"
 		},
 		help: {
 			boolean: true,
