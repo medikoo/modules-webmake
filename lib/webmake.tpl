@@ -22,6 +22,9 @@
 				} else if (dir !== '.') {
 					tree.push(scope);
 					scope = scope[dir];
+					if (!scope) {
+						throw new Error("Could not find module '" + fullpath + "'");
+					}
 				}
 			}
 			if (name) {
