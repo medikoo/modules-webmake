@@ -1,3 +1,7 @@
+v0.3.13  --  2012.11.09
+* Expose parts of internal API for better configurability
+* Demand Node v0.8 at least as we depend on fs2 (for v0.6 support use v0.3.11)
+
 v0.3.12  --  2012.10.05
 * Add 'name' and 'amd' options. Bundle can now be directly exposed
   in global (or AMD) namespace
