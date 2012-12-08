@@ -40,9 +40,7 @@
 				name = 'index.js';
 			}
 			fn = scope[name];
-			if (!fn) {
-				throw new Error("Could not find module '" + fullpath + "'");
-			}
+			if (!fn) throw new Error("Could not find module '" + fullpath + "'");
 			scope[name] = wrap(module);
 			fn.call(exports, exports, module, getRequire(scope, tree));
 			return module.exports;
