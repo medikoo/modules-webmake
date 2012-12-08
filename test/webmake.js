@@ -51,6 +51,8 @@ module.exports = {
 				"Require from package that doesn't have main module");
 			a(program.nodeshim, 'path for web');
 
+			a(program.circularOther, 'circTest', "Partially broken dependecy test");
+
 			options.output = output;
 			return t(input, options)(lock.call(readFile, output, 'utf8'))(
 				function (content) {

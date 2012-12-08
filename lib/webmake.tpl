@@ -5,7 +5,7 @@
 	var getModule, getRequire, require;
 	getModule = (function (wrap) {
 		return function (scope, tree, path, fullpath) {
-			var name, dir, exports = {}, module = { exports: exports }, fn, isDir;
+			var name, dir, exports, module, fn, isDir;
 			path = path.split(SEPARATOR);
 			name = path.pop();
 			if (!name) {
@@ -41,7 +41,9 @@
 			}
 			fn = scope[name];
 			if (!fn) throw new Error("Could not find module '" + fullpath + "'");
-			scope[name] = wrap(module);
+			if (fn.hasOwnProperty('module')) return fn.module.exports;
+			exports = {};
+			fn.module = module = { exports: exports };
 			fn.call(exports, exports, module, getRequire(scope, tree));
 			return module.exports;
 		};

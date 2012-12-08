@@ -4,6 +4,8 @@ exports.x = require('./x');
 exports.y = require('./y.js');
 exports.indexed = require('./indexed');
 exports.outer = require('../outer');
+require('./circular-other');
+exports.circularOther = require('./circular-other');
 exports.outerSubIndex = require('../other/sub/')
 exports.pathFile = require('./path');
 exports.pathDir = require('./path/');
