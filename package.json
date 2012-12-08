@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "Bundle CommonJS modules into single script for web browser",
   "keywords": [
     "browser",
@@ -36,7 +36,7 @@
   "dependencies": {
     "deferred": "0.6.x",
     "es5-ext": "0.9.x",
-    "find-requires": "git://github.com/medikoo/find-requires",
+    "find-requires": "~0.1.5",
     "fs2": "0.1.x",
     "next": "0.3.x",
     "optimist": "0.3.x"
