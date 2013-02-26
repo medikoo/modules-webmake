@@ -3,6 +3,11 @@
 
 (function (modules) {
 	var getModule, getRequire, require;
+	var notFoundError = function (path) {
+		var error = new Error("Could not find module '" + path + "'");
+		error.code = 'MODULE_NOT_FOUND';
+		return error;
+	};
 	getModule = (function (wrap) {
 		return function (scope, tree, path, fullpath) {
 			var name, dir, exports, module, fn, isDir;
@@ -22,9 +27,7 @@
 				} else if (dir !== '.') {
 					tree.push(scope);
 					scope = scope[dir];
-					if (!scope) {
-						throw new Error("Could not find module '" + fullpath + "'");
-					}
+					if (!scope) throw notFoundError(fullpath);
 				}
 			}
 			if (name) {
@@ -40,7 +43,7 @@
 				name = 'index.js';
 			}
 			fn = scope[name];
-			if (!fn) throw new Error("Could not find module '" + fullpath + "'");
+			if (!fn) throw notFoundError(fullpath);
 			if (fn.hasOwnProperty('module')) return fn.module.exports;
 			exports = {};
 			fn.module = module = { exports: exports };
