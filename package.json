@@ -37,7 +37,7 @@
     "deferred": "~0.6.3",
     "es5-ext": "~0.9.2",
     "find-requires": "~0.1.5",
-    "fs2": "~0.1.4",
+    "fs2": "~0.1.5",
     "next": "~0.3.1",
     "optimist": "~0.3.7"
   },
@@ -45,7 +45,7 @@
     "test": "node ./node_modules/tad/bin/tad lib"
   },
   "devDependencies": {
-    "tad": "0.1.x"
+    "tad": "~0.1.15"
   },
   "licence": "MIT",
   "optionalDependencies": {}
