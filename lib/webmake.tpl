@@ -18,6 +18,7 @@
 				name = path.pop();
 			}
 			if ((name === '.') || (name === '..')) {
+				isDir = true;
 				path.push(name);
 				name = '';
 			}
