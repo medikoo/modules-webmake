@@ -32,9 +32,7 @@
 				}
 			}
 			if (name) {
-				if (!isDir && scope[name + '.js']) {
-					name += '.js';
-				}
+				if (!isDir && scope[name + '.js']) name += '.js';
 				if (typeof scope[name] === 'object') {
 					tree.push(scope);
 					scope = scope[name];
@@ -52,9 +50,7 @@
 			return module.exports;
 		};
 	}(function (cmodule) {
-		return function (ignore, module) {
-			module.exports = cmodule.exports;
-		};
+		return function (ignore, module) { module.exports = cmodule.exports; };
 	}));
 	require = function (scope, tree, fullpath) {
 		var name, path = fullpath, t = fullpath.charAt(0);
@@ -71,9 +67,7 @@
 		return getModule(scope, tree, path, fullpath);
 	};
 	getRequire = function (scope, tree) {
-		return function (path) {
-			return require(scope, [].concat(tree), path);
-		};
+		return function (path) { return require(scope, [].concat(tree), path); };
 	};
 	return getRequire(modules, []);
 })
