@@ -2,6 +2,7 @@ var indirectRequire = require;
 
 exports.x = require('./x');
 exports.y = require('./y.js');
+exports.dirjs = require('./dir.js');
 exports.indexed = require('./indexed');
 exports.outer = require('../outer');
 require('./circular-other');

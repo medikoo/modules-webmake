@@ -24,6 +24,7 @@ module.exports = {
 				"Requiring same object twice, should return same object");
 			a(program.y.z.name, 'z', "Require within required module");
 			a(program.y.z.y.name, 'y', "Circular dependency");
+			a(program.dirjs, 'DIR.JS', "Directory with '.js' extension");
 			a(program.indexed.name, 'indexed', "Folder index");
 			a(program.included.a.name, 'included.a', "Manually included #1");
 			a(program.included.b.name, 'included.b', "Manually included #2");
