@@ -2,58 +2,57 @@
 // See: https://github.com/medikoo/modules-webmake
 
 (function (modules) {
-	var getModule, getRequire, require;
-	var notFoundError = function (path) {
+	var resolve, getRequire, require, notFoundError;
+	notFoundError = function (path) {
 		var error = new Error("Could not find module '" + path + "'");
 		error.code = 'MODULE_NOT_FOUND';
 		return error;
 	};
-	getModule = (function (wrap) {
-		return function (scope, tree, path, fullpath) {
-			var name, dir, exports, module, fn, isDir;
-			path = path.split(SEPARATOR);
-			name = path.pop();
-			if (!name) {
-				isDir = true;
-				name = path.pop();
+	resolve = function (scope, tree, path, fullpath, forceIndex) {
+		var name, dir, exports, module, fn;
+		path = path.split(SEPARATOR);
+		name = path.pop();
+		if ((name === '.') || (name === '..')) {
+			path.push(name);
+			name = '';
+		}
+		while ((dir = path.shift()) != null) {
+			if (!dir || (dir === '.')) continue;
+			if (dir === '..') {
+				scope = tree.pop();
+			} else {
+				tree.push(scope);
+				scope = scope[dir];
 			}
-			if ((name === '.') || (name === '..')) {
-				isDir = true;
-				path.push(name);
+			if (!scope) throw notFoundError(fullpath);
+		}
+		if (name && (typeof scope[name] !== 'function')) {
+			if (typeof scope[name + '.js'] === 'function') {
+				name += '.js';
+			} else if (typeof scope[name + '.json'] === 'function') {
+				name += '.json';
+			} else if (typeof scope[name] === 'object') {
+				tree.push(scope);
+				scope = scope[name];
 				name = '';
 			}
-			while ((dir = path.shift())) {
-				if (dir === '..') {
-					scope = tree.pop();
-				} else if (dir !== '.') {
-					tree.push(scope);
-					scope = scope[dir];
-					if (!scope) throw notFoundError(fullpath);
-				}
+		}
+		if (!name) {
+			if (!forceIndex && scope[':mainpath:']) {
+				return resolve(scope, tree, scope[':mainpath:'], fullpath, true);
 			}
-			if (name) {
-				if (!isDir && scope[name + '.js']) name += '.js';
-				if (typeof scope[name] === 'object') {
-					tree.push(scope);
-					scope = scope[name];
-					name = 'index.js';
-				}
-			} else {
-				name = 'index.js';
-			}
-			fn = scope[name];
-			if (!fn) throw notFoundError(fullpath);
-			if (fn.hasOwnProperty('module')) return fn.module.exports;
-			exports = {};
-			fn.module = module = { exports: exports };
-			fn.call(exports, exports, module, getRequire(scope, tree));
-			return module.exports;
-		};
-	}(function (cmodule) {
-		return function (ignore, module) { module.exports = cmodule.exports; };
-	}));
+			name = 'index.js';
+		}
+		fn = scope[name];
+		if (!fn) throw notFoundError(fullpath);
+		if (fn.hasOwnProperty('module')) return fn.module.exports;
+		exports = {};
+		fn.module = module = { exports: exports };
+		fn.call(exports, exports, module, getRequire(scope, tree));
+		return module.exports;
+	};
 	require = function (scope, tree, fullpath) {
-		var name, path = fullpath, t = fullpath.charAt(0);
+		var name, path = fullpath, t = fullpath.charAt(0), forceIndex;
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/'];
@@ -61,10 +60,16 @@
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
 			scope = modules[name];
+			if (!scope) throw notFoundError(fullpath);
 			tree = [];
-			path = path.slice(name.length + 1) || scope[':mainpath:'];
+			path = path.slice(name.length + 1);
+			if (!path) {
+				path = scope[':mainpath:'];
+				if (!path) throw notFoundError(fullpath);
+				forceIndex = true;
+			}
 		}
-		return getModule(scope, tree, path, fullpath);
+		return resolve(scope, tree, path, fullpath, forceIndex);
 	};
 	getRequire = function (scope, tree) {
 		return function (path) { return require(scope, [].concat(tree), path); };

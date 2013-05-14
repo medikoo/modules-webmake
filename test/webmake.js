@@ -44,6 +44,8 @@ module.exports = {
 			a(program.nlComment, 'nlComment', "New line / Comment");
 			a(program.external.other.name, 'external-other',
 				"Require module from other package");
+			a(program.external.other.main, program.external.main,
+				"Require dir by package.json");
 			a(program.external.main.name, 'external-main',
 				"Require main module from other package");
 			a(program.external.main.module.name, 'module',
