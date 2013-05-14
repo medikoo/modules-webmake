@@ -106,6 +106,10 @@ not picked by parser (can be set multiple times)
 
 Include [source maps][], for easier debugging. Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug however has some [issues][firebug issue].
 
+##### cache `boolean` _programmatical usage only_
+
+When on, parsed files content with its dependencies list is cached in memory. When bundle is requested again only modified files are read and parsed. Can speed up bundle generation if Webmake is bound to server process (as in below example). Defaults to _false_.
+
 ### Programmatically:
 
 ```javascript
@@ -157,7 +161,7 @@ createServer(function (req, res) {
       });
 
       var time = Date.now();
-      webmake(programPath, { sourceMap: true }, function (err, content) {
+      webmake(programPath, { sourceMap: true, cache: true }, function (err, content) {
         if (err) {
           console.error("Webmake error: " + err.message);
           // Expose eventual error brutally in browser
