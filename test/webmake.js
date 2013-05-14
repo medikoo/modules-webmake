@@ -53,6 +53,8 @@ module.exports = {
 			a(program.external.noMain.name, 'no-main',
 				"Require from package that doesn't have main module");
 			a(program.nodeshim, 'path for web');
+			a.deep(program.json, { "raz": 0, "dwa": "trzy", "pięć": false,
+				"cztery": null, "osiem:": undefined }, "JSON");
 
 			a(program.circularOther, 'circTest', "Partially broken dependecy test");
 

@@ -13,6 +13,7 @@ exports.pathDir = require('./path/');
 exports.pathIndex = require('./path/index');
 exports.pathOther = require('./path/other');
 exports.nodeshim = require('path');
+exports.json = require('./mario');
 
 // new line/comment check
 require('./nl-comment')(exports);
