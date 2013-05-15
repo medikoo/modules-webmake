@@ -294,7 +294,7 @@ require('/Users/foo/projects/awesome/my-module');
 Different versions of same package will collide:  
 Let's say, package A uses version 0.2 of package C and package B uses version 0.3 of the same package. If both package A and B are required, package B will most likely end up buggy. This is because webmake will only bundle the version that was called first. So in this case package B will end up with version 0.2 instead of 0.3.
 
-## Tests [![Build Status](https://secure.travis-ci.org/medikoo/modules-webmake.png?branch=master)](https://secure.travis-ci.org/medikoo/modules-webmake)
+## Tests [![Build Status](https://api.travis-ci.org/medikoo/modules-webmake.png?branch=master)](https://travis-ci.org/medikoo/modules-webmake)
 
     $ npm test
 
