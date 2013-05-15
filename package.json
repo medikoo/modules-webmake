@@ -8,6 +8,8 @@
     "build",
     "builder",
     "bundle",
+    "cjs",
+    "commonjs",
     "generator",
     "deploy",
     "make",
@@ -15,6 +17,7 @@
     "package",
     "packager",
     "require",
+    "requirejs",
     "web"
   ],
   "author": "Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
