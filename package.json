@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "Bundle CommonJS modules into single script for web browser",
   "keywords": [
     "browser",
@@ -37,7 +37,7 @@
     "node": ">=0.8"
   },
   "dependencies": {
-    "deferred": "~0.6.3",
+    "deferred": "~0.6.4",
     "es5-ext": "~0.9.2",
     "find-requires": "~0.1.5",
     "fs2": "~0.1.5",
@@ -48,7 +48,7 @@
     "test": "node ./node_modules/tad/bin/tad lib"
   },
   "devDependencies": {
-    "tad": "~0.1.15"
+    "tad": "~0.1.16"
   },
   "licence": "MIT",
   "optionalDependencies": {}

@@ -1,3 +1,16 @@
+v0.3.16  --  2013.05.15
+Nearly *major* update
+* JSON files support
+* Support for custom formats via extensions (in parallel to this update
+  extensions for YAML and CoffeeScript are published).
+* Improved relative module resolution so it's on pair with Node.js design
+  (there were corner case where resolution result differed).
+* Introduce optional caching mechanism for repeated bundle generation.
+  If request file has not been modified since last read its content and
+  calculated dependencies list are taken from a cache. When used, speeds up
+  Webmake around x2, and even more if used with extensions.
+* Improve error messages on unsupported require calls
+
 v0.3.15  --  2013.04.08
 Minor improvements:
 * Meaningful error when run with unsupported Node engine
