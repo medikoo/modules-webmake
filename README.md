@@ -8,6 +8,8 @@ as you would for Node.js.
 For a more in depth look into JavaScript modules and the reason for _Webmake_,
 see the slides from my presentation at Warsaw's MeetJS: [__JavaScript Modules Done Right__][slides]
 
+Webmake naturally bundles _.js_ and _.json_ files, but this support can extended to other formats with __[custom extensions](#extensions)__
+
 ## How does it work?
 
 Let's say in package named _foo_ you have following individual module files:
@@ -131,7 +133,7 @@ webmake(programPath[, options][, callback]);
 Currently best way is to use Webmake programmatically and setup a static-file server to generate bundle on each request. Webmake is fast, so it's acceptable approach even you bundle hundreds of modules at once.
 
 You can setup simple static server as it's shown in following example script.  
-_Example als uses [node-static][] module to serve other static files (CSS, images etc.) if you don't need it, just adjust code up to your needs._
+_Example also uses [node-static][] module to serve other static files (CSS, images etc.) if you don't need it, just adjust code up to your needs._
 
 ```javascript
 // Dependencies:
@@ -206,9 +208,10 @@ See [grunt-webmake](https://github.com/sakatam/grunt-webmake) prepared by [Sakat
 
 ### Extensions
 
-Webmake naturally bundles _.js_ and _.json_ files. This support can be extended to other formats that compile to valid JavaScript code.
-
 #### Available extensions
+
+* __CoffeeScript - [webmake-coffee](https://github.com/medikoo/webmake-coffee)__
+* __YAML - [webmake-yaml](https://github.com/medikoo/webmake-yaml)__
 
 #### Using extensions with Webmake
 
@@ -226,7 +229,7 @@ When extension is installed, you need to ask Webmake to use it:
 
     $ webmake --ext=EXT program.js bundle.js
 
-Same way when used programmatically:
+Same way if used programmatically:
 
 ```javascript
 webmake(inputPath, { ext: 'EXT' }, cb);
@@ -251,10 +254,27 @@ Prepare a `webmake-*` NPM package _(replace '*' with name of your extension)_, w
 exports.extension = 'xyz';
 
 // Define a compile function, that for given source code, produces valid body of a JavaScript module:
-exports.compile = function (source, filename) {
+exports.compile = function (source, options) {
   // Return plain object, with compiled body assigned to `code` property.
   // e.g. to compile JSON file to JavaScript module, compilation is as follows:
   return { code: 'module.exports = ' + source.trim() + ';' };
+
+  // If custom format provides a way to calculate a source map and `sourceMap` options is on
+	// it's nice to generate it:
+  var data, map, code;
+  if (options.sourceMap) {
+    data = compile(source, { sourceMap: true });
+
+    // Include original file in the map.
+    map = JSON.parse(data.sourceMap);
+    map.sourcesContent = [source];
+    map = JSON.stringify(map);
+
+    code = data.code + '\n//@ sourceMappingURL=data:application/json;base64,' +
+      new Buffer(map).toString('base64') + '\n';
+
+    return { code: code };
+  }
 };
 
 // If given format doesn't expose any `require` calls in generated code
@@ -264,7 +284,8 @@ exports.compile = function (source, filename) {
 exports.noDependencies = true;
 ```
 
-Publish it, and refer to [Using extensions](#Using-extensions-with-webmake) section for usage instructions.
+Publish it and refer to [Using extensions](#Using-extensions-with-webmake) section for usage instructions.  
+Finally if everything works, notify me, so I can update this document with link to your extension.
 
 ## Current limitations of Webmake
 
@@ -301,7 +322,7 @@ Let's say, package A uses version 0.2 of package C and package B uses version 0.
 ## Proud list of SPONSORS!
 
 #### [@puzrin](https://github.com/Phoscur) (Vitaly Puzrin) member of [Nodeca](https://github.com/nodeca)
-Vitaly pushed forward development of support for _JSON_ files and [extensions functionality](#extensions). Vitaly is a member of a team that is behind [js-yaml](https://github.com/nodeca/js-yaml) JavaScript YAML parser and dumper, and powerful social platform [Nodeca](http://dev.nodeca.com/). Big Thank You!
+Vitaly pushed forward development of support for _JSON_ files, [extensions functionality](#extensions), along with [webmake-yaml](https://github.com/medikoo/webmake-yaml) extension. Vitaly is a member of a team that is behind [js-yaml](https://github.com/nodeca/js-yaml) JavaScript YAML parser and dumper, and powerful social platform [Nodeca](http://dev.nodeca.com/). Big Thank You Vitaly!
 
 ## Contributors
 
