@@ -2,14 +2,14 @@
 // See: https://github.com/medikoo/modules-webmake
 
 (function (modules) {
-	var resolve, getRequire, require, notFoundError;
+	var resolve, getRequire, require, notFoundError, extensions = EXTENSIONS;
 	notFoundError = function (path) {
 		var error = new Error("Could not find module '" + path + "'");
 		error.code = 'MODULE_NOT_FOUND';
 		return error;
 	};
 	resolve = function (scope, tree, path, fullpath, forceIndex) {
-		var name, dir, exports, module, fn;
+		var name, dir, exports, module, fn, found, i, ext;
 		path = path.split(SEPARATOR);
 		name = path.pop();
 		if ((name === '.') || (name === '..')) {
@@ -31,10 +31,19 @@
 				name += '.js';
 			} else if (typeof scope[name + '.json'] === 'function') {
 				name += '.json';
-			} else if (typeof scope[name] === 'object') {
-				tree.push(scope);
-				scope = scope[name];
-				name = '';
+			} else {
+				for (i = 0; (ext = extensions[i]); ++i) {
+					if (typeof scope[name + ext] === 'function') {
+						name += ext;
+						found = true;
+						break;
+					}
+				}
+				if (!found && (typeof scope[name] === 'object')) {
+					tree.push(scope);
+					scope = scope[name];
+					name = '';
+				}
 			}
 		}
 		if (!name) {

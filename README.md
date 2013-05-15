@@ -41,9 +41,9 @@ inc(a); // 2
 
 Let's pack _program.js_ with all it's dependencies so it will work in browsers:
 
-    $ webmake program.js build.js
+    $ webmake program.js bundle.js
 
-The generated file _build.js_ now contains the following:
+The generated file _bundle.js_ now contains the following:
 
 ```javascript
 (function (modules) {
@@ -72,7 +72,7 @@ The generated file _build.js_ now contains the following:
 })("foo/program");
 ```
 
-When loaded in browser, _program.js_ is immediately executed.
+When loaded in browser, _program.js_ module is executed immediately.
 
 ## Installation
 
@@ -102,18 +102,26 @@ Expose bundle as AMD module. If used together with _[name](#name-string)_ option
 Additional module(s) that should be included but due specific reasons are
 not picked by parser (can be set multiple times)
 
+##### ext `string`
+
+Additional extensions(s) that should be used for modules resolution from custom formats e.g. _coffee-script_ or _yaml_.  
+See [extensions](#extensions) section for more info.
+
 ##### sourceMap `boolean`
 
 Include [source maps][], for easier debugging. Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug however has some [issues][firebug issue].
 
 ##### cache `boolean` _programmatical usage only_
 
-When on, parsed files content with its dependencies list is cached in memory. When bundle is requested again only modified files are read and parsed. Can speed up bundle generation if Webmake is bound to server process (as in below example). Defaults to _false_.
+Cache files content and its calculated dependencies. On repeated request only modified files are re-read and parsed.  
+Speeds up re-generation of Webmake bundle, useful when Webmake is bound to server process, [see below example](#development-with-webmake).  
+Highly recommended if [extensions](#extensions) are used.
+Defaults to _false_.
 
 ### Programmatically:
 
 ```javascript
-webmake(inputPath[, options][, callback]);
+webmake(programPath[, options][, callback]);
 ```
 
 `webmake` by default returns generated source to callback, but if _output_ path is provided as one of the options, then source will be automatically saved to file
@@ -123,7 +131,7 @@ webmake(inputPath[, options][, callback]);
 Currently best way is to use Webmake programmatically and setup a static-file server to generate bundle on each request. Webmake is fast, so it's acceptable approach even you bundle hundreds of modules at once.
 
 You can setup simple static server as it's shown in following example script.  
-_It uses also [node-static][] module to serve other static files (CSS, images etc.) if you don't want it, just adjust code up to your needs._
+_Example als uses [node-static][] module to serve other static files (CSS, images etc.) if you don't need it, just adjust code up to your needs._
 
 ```javascript
 // Dependencies:
@@ -187,11 +195,78 @@ createServer(function (req, res) {
 }).listen(port);
 console.log("Server started");
 ````
+
 ### Using Webmake with Express or Connect
 
-Try [Middleware](https://github.com/gillesruppert/webmake-middleware) prepared by Gilles Ruppert
+See [webmake-middleware](https://github.com/gillesruppert/webmake-middleware) prepared by [Gilles Ruppert](http://latower.com/).
 
-## Limitations
+### Using Webmake with Grunt
+
+See [grunt-webmake](https://github.com/sakatam/grunt-webmake) prepared by [Sakata Makoto](https://github.com/sakatam).
+
+### Extensions
+
+Webmake naturally bundles _.js_ and _.json_ files. This support can be extended to other formats that compile to valid JavaScript code.
+
+#### Available extensions
+
+#### Using extensions with Webmake
+
+Install chosen extension:
+
+_EXT should be replaced by name of available extension of your choice_.
+
+    $ npm install webmake-EXT
+
+If you use global installation of Webmake, then extension also needs to be installed globally:
+
+    $ npm install -g webmake-EXT
+
+When extension is installed, you need to ask Webmake to use it:
+
+    $ webmake --ext=EXT program.js bundle.js
+
+Same way when used programmatically:
+
+```javascript
+webmake(inputPath, { ext: 'EXT' }, cb);
+```
+
+Multiple extensions can be used together:
+
+    $ webmake --ext=EXT --ext=EXT2 program.js bundle.js
+
+Programmatically:
+
+```javascript
+webmake(inputPath, { ext: ['EXT', 'EXT2'] }, cb);
+```
+
+#### Writing an extension for a new format
+
+Prepare a `webmake-*` NPM package _(replace '*' with name of your extension)_, where main module is configured as in following example:
+
+```javascript
+// Define a file extension of a new format, can be an array e.g. ['xy', 'xyz']
+exports.extension = 'xyz';
+
+// Define a compile function, that for given source code, produces valid body of a JavaScript module:
+exports.compile = function (source, filename) {
+  // Return plain object, with compiled body assigned to `code` property.
+  // e.g. to compile JSON file to JavaScript module, compilation is as follows:
+  return { code: 'module.exports = ' + source.trim() + ';' };
+};
+
+// If given format doesn't expose any `require` calls in generated code
+// (which is natural for formats like JSON or YAML).
+// Indicate that there's no need to look for `require` calls in it,
+// it will prevent bundler from doing obsolete work.
+exports.noDependencies = true;
+```
+
+Publish it, and refer to [Using extensions](#Using-extensions-with-webmake) section for usage instructions.
+
+## Current limitations of Webmake
 
 The application calculates dependencies via static analysis of source code
 (with the help of the [find-requires][] module). So in some edge cases
@@ -205,7 +280,7 @@ require('./module-in-same-folder');
 require('./module/path/deeper');
 require('./some/very/very/very/long' +
 '/module/path');
-require('../../module-path-up'); // unless it goes out of package scope
+require('../../module-path-up'); // unless it doesn't go out of package scope
 require('other-package');
 require('other-package/lib/some-module');
 ```
@@ -222,6 +297,11 @@ Let's say, package A uses version 0.2 of package C and package B uses version 0.
 ## Tests [![Build Status](https://secure.travis-ci.org/medikoo/modules-webmake.png?branch=master)](https://secure.travis-ci.org/medikoo/modules-webmake)
 
     $ npm test
+
+## Proud list of SPONSORS!
+
+#### [@puzrin](https://github.com/Phoscur) (Vitaly Puzrin) member of [Nodeca](https://github.com/nodeca)
+Vitaly pushed forward development of support for _JSON_ files and [extensions functionality](#extensions). Vitaly is a member of a team that is behind [js-yaml](https://github.com/nodeca/js-yaml) JavaScript YAML parser and dumper, and powerful social platform [Nodeca](http://dev.nodeca.com/). Big Thank You!
 
 ## Contributors
 

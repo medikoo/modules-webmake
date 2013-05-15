@@ -7,7 +7,7 @@ var count     = require('es5-ext/lib/Object/count')
   , writeFile = require('fs2/lib/write-file')
   , webmake   = require('../lib/webmake')
 
-  , now = Date.now
+  , isArray = Array.isArray, now = Date.now
 
   , optimist = require('optimist')
 	.usage("Usage: $0 [options] <input> <output>", {
@@ -19,10 +19,14 @@ var count     = require('es5-ext/lib/Object/count')
 			boolean: true,
 			description: "Expose bundle as AMD module"
 		},
+		ext: {
+			string: true,
+			description: "Optional extensions"
+		},
 		include: {
 			string: true,
-			description: "Additional module(s) that should be included (and are " +
-				"not picked by the parser)"
+			description: "Additional module(s) that should be included (and are" +
+				" not picked by the parser)"
 		},
 		help: {
 			boolean: true,
@@ -46,10 +50,12 @@ options = {};
 
 if (argv.include) {
 	options.include = argv.include;
-	if (!Array.isArray(options.include)) {
+	if (!isArray(options.include)) {
 		options.include = [options.include];
 	}
 }
+
+options.ext = argv.ext;
 options.sourceMap = argv.sourcemap;
 options.output = argv._[1];
 
