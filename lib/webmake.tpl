@@ -8,7 +8,7 @@
 		error.code = 'MODULE_NOT_FOUND';
 		return error;
 	};
-	resolve = function (scope, tree, path, fullpath, forceIndex) {
+	resolve = function (scope, tree, path, fullpath, state) {
 		var name, dir, exports, module, fn, found, i, ext;
 		path = path.split(SEPARATOR);
 		name = path.pop();
@@ -39,7 +39,7 @@
 						break;
 					}
 				}
-				if (!found && (typeof scope[name] === 'object')) {
+				if (!found && (state !== 2) && (typeof scope[name] === 'object')) {
 					tree.push(scope);
 					scope = scope[name];
 					name = '';
@@ -47,10 +47,10 @@
 			}
 		}
 		if (!name) {
-			if (!forceIndex && scope[':mainpath:']) {
-				return resolve(scope, tree, scope[':mainpath:'], fullpath, true);
+			if ((state !== 1) && scope[':mainpath:']) {
+				return resolve(scope, tree, scope[':mainpath:'], fullpath, 1);
 			}
-			name = 'index.js';
+			return resolve(scope, tree, 'index', fullpath, 2);
 		}
 		fn = scope[name];
 		if (!fn) throw notFoundError(fullpath);
@@ -61,7 +61,7 @@
 		return module.exports;
 	};
 	require = function (scope, tree, fullpath) {
-		var name, path = fullpath, t = fullpath.charAt(0), forceIndex;
+		var name, path = fullpath, t = fullpath.charAt(0), state = 0;
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/'];
@@ -74,11 +74,15 @@
 			path = path.slice(name.length + 1);
 			if (!path) {
 				path = scope[':mainpath:'];
-				if (!path) throw notFoundError(fullpath);
-				forceIndex = true;
+				if (path) {
+					state = 1;
+				} else {
+					path = 'index';
+					state = 2;
+				}
 			}
 		}
-		return resolve(scope, tree, path, fullpath, forceIndex);
+		return resolve(scope, tree, path, fullpath, state);
 	};
 	getRequire = function (scope, tree) {
 		return function (path) { return require(scope, [].concat(tree), path); };
