@@ -20,7 +20,8 @@ require('./nl-comment')(exports);
 
 exports.included = {
 	a: indirectRequire('./included/a'),
-	b: indirectRequire('./included/b')
+	b: indirectRequire('./included/b'),
+    c: indirectRequire('./included/c')
 };
 
 exports.external = {
@@ -28,3 +29,5 @@ exports.external = {
 	other: require('test/lib/other.js'),
 	noMain: require('no-main/lib/some-module')
 };
+
+exports.getC = require('./exclude').getC;

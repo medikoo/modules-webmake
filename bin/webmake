@@ -28,6 +28,11 @@ var count     = require('es5-ext/lib/Object/count')
 			description: "Additional module(s) that should be included (and are" +
 				" not picked by the parser)"
 		},
+		ignores: {
+			string: true,
+			description: "Module path(s) that be ignored (but are " +
+				"picked by the parser and cannot be handled)"
+		},
 		help: {
 			boolean: true,
 			desription: "Show this help"
@@ -52,6 +57,12 @@ if (argv.include) {
 	options.include = argv.include;
 	if (!isArray(options.include)) {
 		options.include = [options.include];
+	}
+}
+if (argv.ignores) {
+	options.ignores = argv.ignores;
+	if (!Array.isArray(options.ignores)) {
+		options.ignores = [options.ignores];
 	}
 }
 

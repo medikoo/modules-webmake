@@ -14,7 +14,7 @@ module.exports = {
 	"": function (t, a, d) {
 		var input = pg + '/lib/program.js'
 		  , output = pg + '/build.js'
-		  , options = { include: pg + '/lib/included' };
+		  , options = { include: pg + '/lib/included', ignores: ["'./included/' + key"]};
 		t = promisify(t);
 		t(input, options)(function (result) {
 			var program = runInNewContext(result, {});
@@ -57,6 +57,9 @@ module.exports = {
 				"cztery": null, "osiem:": undefined }, "JSON");
 
 			a(program.circularOther, 'circTest', "Partially broken dependecy test");
+
+			a(program.getC('c'), 'included.c', 'File contains exclude file');
+			a(program.included.c.name, 'included.c', "Manually included #3");
 
 			options.output = output;
 			return t(input, options)(lock.call(readFile, output, 'utf8'))(

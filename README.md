@@ -104,6 +104,10 @@ Expose bundle as AMD module. If used together with _[name](#name-string)_ option
 Additional module(s) that should be included but due specific reasons are
 not picked by parser (can be set multiple times)
 
+##### ignores `string`
+
+Module path(s) that should be ignored (Mostly for cases on ignoring some require statement in external libaries) (can be set multiple times)
+
 ##### ext `string`
 
 Additional extensions(s) that should be used for modules resolution from custom formats e.g. _coffee-script_ or _yaml_.  
