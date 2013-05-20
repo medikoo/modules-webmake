@@ -260,7 +260,7 @@ exports.compile = function (source, options) {
   return { code: 'module.exports = ' + source.trim() + ';' };
 
   // If custom format provides a way to calculate a source map and `sourceMap` options is on
-	// it's nice to generate it:
+  // it's nice to generate it:
   var data, map, code;
   if (options.sourceMap) {
     data = compile(source, { sourceMap: true });
