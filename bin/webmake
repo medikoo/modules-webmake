@@ -23,6 +23,10 @@ var count     = require('es5-ext/lib/Object/count')
 			string: true,
 			description: "Optional extensions"
 		},
+		'ignore-errors': {
+			boolean: true,
+			description: "Ignore unparsable require calls"
+		},
 		include: {
 			string: true,
 			description: "Additional module(s) that should be included (and are" +
@@ -57,6 +61,7 @@ if (argv.include) {
 
 options.ext = argv.ext;
 options.sourceMap = argv.sourcemap;
+options.ignoreErrors = argv['ignore-errors'];
 options.output = argv._[1];
 
 var time = now();

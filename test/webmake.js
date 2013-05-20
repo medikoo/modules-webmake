@@ -85,6 +85,20 @@ module.exports = {
 			a(program.getZ().name, 'z', "External name");
 		}).end(d);
 	},
+	"Dynamic": {
+		"Error": function (t, a, d) {
+			var input = pg + '/lib/dynamic.js';
+			t(input)(a.never, function (e) { a(e.code, 'DYNAMIC_REQUIRE'); })
+				.done(d, d);
+		},
+		"Ignored": function (t, a, d) {
+			var input = pg + '/lib/dynamic.js';
+			t(input, { ignoreErrors: true })(function (result) {
+				var program = runInNewContext(result, {}, input);
+				a(program.foo, 'bar');
+			}, a.never).done(d, d);
+		}
+	},
 	"Error on native": function (t, a, d) {
 		t(pg + '/require-native.js', function (err) {
 			a.ok(startsWith.call(err.message, "Cannot require"));

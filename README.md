@@ -113,6 +113,11 @@ See [extensions](#extensions) section for more info.
 
 Include [source maps][], for easier debugging. Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug however has some [issues][firebug issue].
 
+##### ignoreErrors `boolean`
+
+Ignore not parsable require paths (e.g. `require('./lang/' + lang)`) if any.
+Dynamic paths in require calls are considered a bad practice and won't be possible with upcoming _ES6 modules_ standard. Still if we deal with modules that do that, we can workaround it by turning this option on, and including missing modules with [`include`](https://github.com/medikoo/modules-webmake/edit/master/README.md#include-string) option.
+
 ##### cache `boolean` _programmatical usage only_
 
 Cache files content and its calculated dependencies. On repeated request only modified files are re-read and parsed.  
