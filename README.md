@@ -292,6 +292,12 @@ exports.noDependencies = true;
 Publish it and refer to [Using extensions](#Using-extensions-with-webmake) section for usage instructions.  
 Finally if everything works, notify me, so I can update this document with link to your extension.
 
+### Other tools
+
+#### Webassemble -> https://github.com/kenspirit/webassemble
+
+Webassemble written by [Ken Chen](https://github.com/kenspirit) provides convinient way to expose many different packages within one entry package that serves then as a starting point for a Webmake bundle.
+
 ## Current limitations of Webmake
 
 The application calculates dependencies via static analysis of source code
