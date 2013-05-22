@@ -211,6 +211,14 @@ See [webmake-middleware](https://github.com/gillesruppert/webmake-middleware) pr
 
 See [grunt-webmake](https://github.com/sakatam/grunt-webmake) prepared by [Sakata Makoto](https://github.com/sakatam).
 
+### Working with other module systems
+
+When you work with old school scripts or framework that uses different modules system, then you'd rather just bundle needed utilities (not whole application) and expose them to global scope.
+
+#### Webassemble -> https://github.com/kenspirit/webassemble
+
+Webassemble written by [Ken Chen](https://github.com/kenspirit) provides a convinient way to expose different packages, written CJS style, to outer scripts. It automatically creates one entry package that does the job and is used as a starting point for a Webmake bundle.
+
 ### Extensions
 
 #### Available extensions
@@ -291,12 +299,6 @@ exports.noDependencies = true;
 
 Publish it and refer to [Using extensions](#Using-extensions-with-webmake) section for usage instructions.  
 Finally if everything works, notify me, so I can update this document with link to your extension.
-
-### Other tools
-
-#### Webassemble -> https://github.com/kenspirit/webassemble
-
-Webassemble written by [Ken Chen](https://github.com/kenspirit) provides convinient way to expose many different packages within one entry package that serves then as a starting point for a Webmake bundle.
 
 ## Current limitations of Webmake
 
