@@ -272,6 +272,10 @@ exports.compile = function (source, options) {
   // e.g. to compile JSON file to JavaScript module, compilation is as follows:
   return { code: 'module.exports = ' + source.trim() + ';' };
 
+  // If compilation for some reason is asynchronous then assign promise
+  // (as produced by deferred library) which resolves with expected code body
+  return { code: asyncCompilaton(source) };
+
   // If custom format provides a way to calculate a source map and `sourceMap` options is on
   // it's nice to generate it:
   var data, map, code;
