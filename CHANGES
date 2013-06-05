@@ -1,3 +1,10 @@
+v0.3.18  --  2013.06.05
+* Allow asynchronous compilation of extensions
+* `prettyOutput` option through which we can prevent corrected indentation of
+  output. When bound to process that's a memory hog, indentation can
+  noticeably slow down generation of a bundle.
+* Provide information about Webassmble tool in documentation
+
 v0.3.17  --  2013.05.20
 * Provide `ignoreErrors` options, so requiring packages that pass dynamicaly
   generated paths to require calls is possible.
