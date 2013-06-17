@@ -2,11 +2,20 @@
 // See: https://github.com/medikoo/modules-webmake
 
 (function (modules) {
-	var resolve, getRequire, require, notFoundError, extensions = EXTENSIONS;
+	var resolve, getRequire, require, notFoundError, findFile
+	  , extensions = EXTENSIONS;
 	notFoundError = function (path) {
 		var error = new Error("Could not find module '" + path + "'");
 		error.code = 'MODULE_NOT_FOUND';
 		return error;
+	};
+	findFile = function (scope, name, extName) {
+		var i, ext;
+		if (typeof scope[name + extName] === 'function') return name + extName;
+		for (i = 0; (ext = extensions[extName][i]); ++i) {
+			if (typeof scope[name + ext] === 'function') return name + ext;
+		}
+		return null;
 	};
 	resolve = function (scope, tree, path, fullpath, state) {
 		var name, dir, exports, module, fn, found, i, ext;
@@ -27,23 +36,14 @@
 			if (!scope) throw notFoundError(fullpath);
 		}
 		if (name && (typeof scope[name] !== 'function')) {
-			if (typeof scope[name + '.js'] === 'function') {
-				name += '.js';
-			} else if (typeof scope[name + '.json'] === 'function') {
-				name += '.json';
-			} else {
-				for (i = 0; (ext = extensions[i]); ++i) {
-					if (typeof scope[name + ext] === 'function') {
-						name += ext;
-						found = true;
-						break;
-					}
-				}
-				if (!found && (state !== 2) && (typeof scope[name] === 'object')) {
-					tree.push(scope);
-					scope = scope[name];
-					name = '';
-				}
+			found = findFile(scope, name, '.js');
+			if (!found) found = findFile(scope, name, '.json');
+			if (found) {
+				name = found;
+			} else if ((state !== 2) && (typeof scope[name] === 'object')) {
+				tree.push(scope);
+				scope = scope[name];
+				name = '';
 			}
 		}
 		if (!name) {
