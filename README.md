@@ -258,6 +258,20 @@ Programmatically:
 webmake(inputPath, { ext: ['EXT', 'EXT2'] }, cb);
 ```
 
+#### Providing extensions programmatically
+
+Extension doesn't need to be installed as package, you may pass it programmatically:
+
+```javascript
+webmake(inputPath, { ext: {
+    name: 'EXT',
+    extension: 'ext',
+    type: 'js',
+    compile: function (source, options) { /* ... */ }
+} }, cb);
+```
+See [writing extensions](##writing-an-extension-for-a-new-format) section to see how to configure fully working extensions
+
 #### Writing an extension for a new format
 
 Prepare a `webmake-*` NPM package _(replace '*' with name of your extension)_, where main module is configured as in following example:
@@ -265,6 +279,9 @@ Prepare a `webmake-*` NPM package _(replace '*' with name of your extension)_, w
 ```javascript
 // Define a file extension of a new format, can be an array e.g. ['xy', 'xyz']
 exports.extension = 'xyz';
+
+// Which type is addressed by extension (can be either 'js', or 'json')
+exports.type = 'js';
 
 // Define a compile function, that for given source code, produces valid body of a JavaScript module:
 exports.compile = function (source, options) {
@@ -294,11 +311,6 @@ exports.compile = function (source, options) {
   }
 };
 
-// If given format doesn't expose any `require` calls in generated code
-// (which is natural for formats like JSON or YAML).
-// Indicate that there's no need to look for `require` calls in it,
-// it will prevent bundler from doing obsolete work.
-exports.noDependencies = true;
 ```
 
 Publish it and refer to [Using extensions](#Using-extensions-with-webmake) section for usage instructions.  
