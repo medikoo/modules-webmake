@@ -5,8 +5,9 @@ var webmake         = require('../../')
   , pg = require('path').resolve(__dirname, '../__playground');
 
 module.exports = function (t, a, d) {
-	webmake(pg + '/lib/css-test.js')(function (result) {
-		var style = eval(result);
-		a(style.innerHTML, 'body { color: black; background: white; }');
+	webmake(pg + '/lib/browser-test.js')(function (result) {
+		result = eval(result);
+		a(result.style.innerHTML, 'body { color: black; background: white; }');
+		a(result.html.innerHTML, '<p><span>Hello!</span></p>');
 	}).end(d);
 };
