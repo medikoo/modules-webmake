@@ -33,3 +33,10 @@ jshint.expr
 
 jslint_medikoo.predef+ console, process, __dirname
 jshint.global+ console, process, __dirname
+
+./lib/browser
+jslint_medikoo.predef+ document
+jshint.global+ document
+
+./test/browser/load-css.js
+jslint_medikoo.evil

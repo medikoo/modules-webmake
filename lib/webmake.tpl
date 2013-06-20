@@ -38,6 +38,7 @@
 		if (name && (typeof scope[name] !== 'function')) {
 			found = findFile(scope, name, '.js');
 			if (!found) found = findFile(scope, name, '.json');
+			if (!found) found = findFile(scope, name, '.css');
 			if (found) {
 				name = found;
 			} else if ((state !== 2) && (typeof scope[name] === 'object')) {
