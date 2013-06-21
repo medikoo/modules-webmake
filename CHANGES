@@ -1,3 +1,13 @@
+v0.3.19  --  2013.06.21
+* CSS as native type
+* HTML as native type
+* Support extensions passed programmatically
+* Significantly improved extensions handling and files resolution order
+* Better documentation
+* Fix double file read issue (minor, affected only input modules)
+* Update sourceURL syntax (replace '@' with '#')
+* Improve error message
+
 v0.3.18  --  2013.06.05
 * Allow asynchronous compilation of extensions
 * `prettyOutput` option through which we can prevent corrected indentation of

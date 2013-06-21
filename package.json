@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "description": "Bundle CommonJS modules into single script for web browser",
   "keywords": [
     "browser",
