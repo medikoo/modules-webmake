@@ -343,7 +343,7 @@ Prepare a `webmake-*` NPM package _(replace '*' with name of your extension)_, w
 // Define a file extension of a new format, can be an array e.g. ['xy', 'xyz']
 exports.extension = 'xyz';
 
-// Which type is addressed by extension (can be either 'js', or 'json')
+// Which type is addressed by extension (can be either 'js', 'json', 'css' or 'html')
 exports.type = 'js';
 
 // Define a compile function, that for given source code, produces valid body of a JavaScript module:
