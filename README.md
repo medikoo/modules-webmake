@@ -6,11 +6,11 @@ __Webmake allows you to organize JavaScript code for the browser the same way as
 
 Thanks to that, you can work with best dependency management system that JavaScript currently has, and easily, without extra boilerplate, reuse your modules in any environment that runs JavaScript _(server, client (any web browser), other custom stuff as e.g. Adobe Photoshop, or even your dishwasher if it speaks JavaScript)_.
 
-It additionally natively supports __CSS__ and __HTML__ files, which makes it a full stack modules loader for a web browser.
+It additionally natively supports __CSS__ and __HTML__ files, which makes it a full stack modules bundler for a web browser.
 
 <img src="http://medyk.org/webmake.png" />
 
-Files support can be extended to any other format that compiles to one of _.js_, _.json_, _.css_ or _.html_. See __[custom extensions](#extensions)__ for more information and list of already existing solutions.
+Files support can be extended to any other format that compiles to one of _.js_, _.json_, _.css_ or _.html_. See __[custom extensions](#extensions)__ for more information.
 
 For a more in depth look into JavaScript modules and the reason for _Webmake_,
 see the slides from my presentation at Warsaw's MeetJS: [__JavaScript Modules Done Right__][slides]
@@ -287,7 +287,7 @@ Webassemble written by [Ken Chen](https://github.com/kenspirit) provides a convi
 ##### HTML
 * __handlebars - [webmake-handlebars](https://github.com/medikoo/webmake-handlebars)__
 
-__Submit any missing extension via [new issue form](https://github.com/medikoo/modules-webmake/issues/new).
+__Submit any missing extension via [new issue form](https://github.com/medikoo/modules-webmake/issues/new)__.
 
 #### Using extensions with Webmake
 
