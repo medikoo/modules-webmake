@@ -15,7 +15,7 @@ Files support can be extended to any other format that compiles to one of _.js_,
 For a more in depth look into JavaScript modules and the reason for _Webmake_,
 see the slides from my presentation at Warsaw's MeetJS: [__JavaScript Modules Done Right__][slides]
 
-___If you wonder how Webmake compares with other solutions, see dedicated [comparison section](#comparison with other solutions)___
+___If you wonder how Webmake compares with other solutions, see dedicated [comparison section](#comparison-with-other-solutions)___
 
 ## How does dependency resolution work?
 
