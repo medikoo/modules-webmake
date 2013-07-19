@@ -408,7 +408,7 @@ Quirks of AMD style is that it requires you to wrap all your modules with functi
 
 Webmake cares only about bringing NodeJS modules format to other environments. Conceptually it's addition to ECMAScript and not port of Node.js to browser. It makes NodeJS modules format runnable in any environment that speaks at least ECMAScript 3. You can bundle with Webmake for Browser, TV, Adobe Photoshop or maybe a modern dishwasher.
 
-When comparing with other CJS bundlers, main difference would be that Webmake completely follows resolution logic as it works in Node.js. It resolves both packages and modules exactly as Node.js, and it doesn't introduce any extra different ways to do that. Thanks to that, you can be sure that your modules are runnable in it's direct form both on server and client-side.
+When comparing with other CJS bundlers, main difference would be that Webmake completely follows resolution logic as it works in Node.js. It resolves both packages and modules exactly as Node.js, and it doesn't introduce any different ways to do that. Thanks to that, you can be sure that your modules are runnable in it's direct form both on server and client-side.
 
 Other important difference is that Webmake doesn't do full AST scan to parse require's out of modules, it relies on [find-requires](https://github.com/medikoo/find-requires#find-requires--find-all-require-calls) module, which does only what's necessary to resolve dependencies list, and that makes it a noticeably faster solution.
 
@@ -416,7 +416,7 @@ Other important difference is that Webmake doesn't do full AST scan to parse req
 
 Soon to be released, native JavaScript modules spec shares the main concept with CommmonJS. Thanks to that eventual transition will be easy and can be fully automated. First [transpilers](http://square.github.io/es6-module-transpiler/) are already here.
 
-As soon as the standard will be finalized, implemented in first engines and possibly adapted by Node.js Webmake will support it natively as well, then in a same way it will bundle it either for the sake of a bundle or for any ECMAScript 3 environment that won't take it in natural way.
+As soon as the standard will be finalized, implemented in first engines and possibly adapted by Node.js Webmake will support it natively as well, then in a same way it will bundle it either for the sake of a bundle or for any ECMAScript 3+ environment that won't take it in natural way.
 
 ## Current limitations of Webmake
 
