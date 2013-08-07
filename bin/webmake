@@ -73,12 +73,14 @@ webmake(input, options)(function (parser) {
 				'define("' + String(argv.name) + '", function () { return (function') +
 				'});\n');
 		})(parser);
-	} else if (argv.name) {
+	}
+	if (argv.name) {
 		return readFile(options.output)(function (src) {
 			return writeFile(options.output, String(src).replace('(function',
 				'window.' + String(argv.name) + ' = (function'));
 		})(parser);
-	} else if (argv.amd) {
+	}
+	if (argv.amd) {
 		return readFile(options.output)(function (src) {
 			return writeFile(options.output, String(src).replace('(function',
 				'define(function () { return (function') + '});\n');

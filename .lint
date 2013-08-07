@@ -1,42 +1,21 @@
 @root
 
-jslint_medikoo.indent 2
-jslint_medikoo.maxlen 80
+module
 es5
 
-jslint_medikoo.tabs
-jslint_medikoo.module
-jslint_medikoo.nomen
-jslint_medikoo.plusplus
+indent 2
+maxlen 80
+tabs
 
-jshint.laxcomma
-jshint.camelcase
-jshint.eqeqeq
-jshint.evil
-jshint.forin
-jshint.immed
-jshint.latedef
-jshint.newcap
-jshint.noarg
-jshint.noempty
-jshint.nonew
-jshint.regexp
-jshint.undef
-jshint.unused
-jshint.strict
-jshint.trailing
-jshint.globalstrict
-jshint.global module, require, exports
-jshint.smarttabs
-jshint.eqnull
-jshint.expr
+ass
+nomen
+plusplus
+stupid
 
-jslint_medikoo.predef+ console, process, __dirname
-jshint.global+ console, process, __dirname
+predef+ console, process, __dirname
 
 ./lib/browser
-jslint_medikoo.predef+ document
-jshint.global+ document
+predef+ document
 
 ./test/browser/load-css.js
-jslint_medikoo.evil
+evil
