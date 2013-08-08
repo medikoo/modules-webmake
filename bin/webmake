@@ -42,7 +42,7 @@ var count     = require('es5-ext/lib/Object/count')
 		}
 	}).demand(2)
   , argv = optimist.argv
-  , input, options;
+  , input, options, time;
 
 if (argv.help) {
 	console.log(optimist.help());
@@ -64,7 +64,7 @@ options.sourceMap = argv.sourcemap;
 options.ignoreErrors = argv['ignore-errors'];
 options.output = argv._[1];
 
-var time = now();
+time = now();
 webmake(input, options)(function (parser) {
 	time = now() - time;
 	if (argv.name && argv.amd) {
