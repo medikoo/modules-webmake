@@ -1,3 +1,9 @@
+v0.3.20  --  2013.08.21
+* (Critical) Fix partial path resolution issue
+* Update context configuration for loadCSS test
+* Update dependencies to latest versions
+* Improve documentation
+
 v0.3.19  --  2013.06.21
 * CSS as native type
 * HTML as native type
