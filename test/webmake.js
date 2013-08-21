@@ -34,8 +34,31 @@ module.exports = {
 			a(program.pathFile.name, 'path.js', "Dir/file collision: file");
 			a(program.pathDir.name, 'path', "Dir/file collision: dir");
 			a(program.pathIndex.name, 'path', "Dir/file collision: dir/index");
+
 			a(program.commonPathPart.id, 'sub-longer-bar', "Common path part: main");
 			a(program.commonPathPart.sub.id, 'sub-foo', "Common path part: outer");
+			a(program.commonPathPart.subInner.id, 'sub-inner-inner',
+				"Common path part: outer #2");
+			a(program.commonPathPart.subInner.outer.id, 'sub-longer-other',
+				"Common path part: outer #3");
+			a(program.commonPathPart.sub.subOuter.id, 'sub-longer-inner-other',
+				"Common path part: outer #5");
+			a(program.commonPathPart.sub.subOuter.outer.id, 'sub-inner-other',
+				"Common path part: outer #4");
+
+			a(program.commonRootPathPart.id, 'sub-longer-bar',
+				"Common path part: main");
+			a(program.commonRootPathPart.sub.id, 'sub-foo',
+				"Common path part: outer");
+			a(program.commonRootPathPart.subInner.id, 'sub-inner-inner',
+				"Common root path part: outer #2");
+			a(program.commonRootPathPart.subInner.outer.id, 'sub-longer-other',
+				"Common root path part: outer #3");
+			a(program.commonRootPathPart.sub.subOuter.id, 'sub-longer-inner-other',
+				"Common root path part: outer #5");
+			a(program.commonRootPathPart.sub.subOuter.outer.id, 'sub-inner-other',
+				"Common root path part: outer #4");
+
 			a(program.pathOther.name, 'path/other', "Dir/file collision: other");
 			a(program.pathOther.index.name, 'path', "'.' - index require");
 			a(program.pathOther.indexSlash.name, 'path',

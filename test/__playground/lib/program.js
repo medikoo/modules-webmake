@@ -12,6 +12,7 @@ exports.pathFile = require('./path');
 exports.pathDir = require('./path/');
 exports.pathIndex = require('./path/index');
 exports.commonPathPart = require('./sub-longer/bar');
+exports.commonRootPathPart = require('../sub-longer/bar');
 exports.pathOther = require('./path/other');
 exports.nodeshim = require('path');
 exports.json = require('./mario');
