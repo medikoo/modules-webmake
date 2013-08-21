@@ -34,6 +34,8 @@ module.exports = {
 			a(program.pathFile.name, 'path.js', "Dir/file collision: file");
 			a(program.pathDir.name, 'path', "Dir/file collision: dir");
 			a(program.pathIndex.name, 'path', "Dir/file collision: dir/index");
+			a(program.commonPathPart.id, 'sub-longer-bar', "Common path part: main");
+			a(program.commonPathPart.sub.id, 'sub-foo', "Common path part: outer");
 			a(program.pathOther.name, 'path/other', "Dir/file collision: other");
 			a(program.pathOther.index.name, 'path', "'.' - index require");
 			a(program.pathOther.indexSlash.name, 'path',
