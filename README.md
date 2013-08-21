@@ -217,6 +217,8 @@ staticServer = new staticServer(staticsPath);
 
 // Initialize http server
 createServer(function (req, res) {
+  // Start the flow (new Stream API demands that)
+  req.resume();
   // Respond to request
   req.on('end', function () {
     if (req.url === programUrl) {
