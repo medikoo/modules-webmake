@@ -2,7 +2,7 @@
 
 'use strict';
 
-var count     = require('es5-ext/lib/Object/count')
+var count     = require('es5-ext/object/count')
   , readFile  = require('fs2/lib/read-file')
   , writeFile = require('fs2/lib/write-file')
   , webmake   = require('../lib/webmake')

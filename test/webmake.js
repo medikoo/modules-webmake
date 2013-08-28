@@ -1,7 +1,7 @@
 'use strict';
 
-var startsWith      = require('es5-ext/lib/String/prototype/starts-with')
-  , lock            = require('es5-ext/lib/Function/prototype/lock')
+var startsWith      = require('es5-ext/string/#/starts-with')
+  , lock            = require('es5-ext/function/#/lock')
   , promisify       = require('deferred').promisify
   , fs              = require('fs')
   , runInNewContext = require('vm').runInNewContext
