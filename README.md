@@ -8,7 +8,7 @@ Thanks to that, you can work with best dependency management system that JavaScr
 
 It additionally natively supports __CSS__ and __HTML__ files, which makes it a full stack modules bundler for a web browser.
 
-<img src="http://medyk.org/webmake.png" />
+<img src="http://medyk.org/webmake.copy.png" />
 
 Files support can be extended to any other format that compiles to one of _.js_, _.json_, _.css_ or _.html_. See __[custom extensions](#extensions)__ for more information.
 
