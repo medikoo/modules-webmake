@@ -88,7 +88,7 @@ webmake(input, options)(function (parser) {
 		})(parser);
 	}
 	return parser;
-}).end(function (parser) {
+}).done(function (parser) {
 	if (!options.output) {
 		process.stdout.write(parser);
 		return;
