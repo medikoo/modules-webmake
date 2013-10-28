@@ -139,10 +139,10 @@ See it working, by including it within document as such:
 
 ### From the shell:
 
-    $ webmake [options] <input> <output>
+    $ webmake [options] <input> [<output>]
 
 __input__ - Path to the initial module that should be executed when script is loaded.  
-__output__ - Filename at which browser ready bundle should be saved
+__output__ - (optional) Filename at which browser ready bundle should be saved. If not provided generated bundle is streamed to _stdout_.
 
 #### Options
 
