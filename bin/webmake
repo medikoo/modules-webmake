@@ -10,7 +10,7 @@ var count     = require('es5-ext/lib/Object/count')
   , isArray = Array.isArray, now = Date.now
 
   , optimist = require('optimist')
-	.usage("Usage: $0 [options] <input> <output>", {
+	.usage("Usage: $0 [options] <input> [<output>]", {
 		name: {
 			string: true,
 			description: "Expose program in your namespace with given name"
@@ -40,7 +40,7 @@ var count     = require('es5-ext/lib/Object/count')
 			boolean: true,
 			description: "Include source maps"
 		}
-	}).demand(2)
+	}).demand(1)
   , argv = optimist.argv
   , input, options, time;
 
@@ -62,11 +62,12 @@ if (argv.include) {
 options.ext = argv.ext;
 options.sourceMap = argv.sourcemap;
 options.ignoreErrors = argv['ignore-errors'];
-options.output = argv._[1];
+if (argv._[1]) options.output = argv._[1];
 
 time = now();
 webmake(input, options)(function (parser) {
 	time = now() - time;
+	if (!options.output) return parser;
 	if (argv.name && argv.amd) {
 		return readFile(options.output)(function (src) {
 			return writeFile(options.output, String(src).replace('(function',
@@ -88,8 +89,11 @@ webmake(input, options)(function (parser) {
 	}
 	return parser;
 }).end(function (parser) {
+	if (!options.output) {
+		process.stdout.write(parser);
+		return;
+	}
 	console.log("Done [" + parser.modulesFiles.length + " modules from " +
 		count(parser.packages) + " packages in " + (time / 1000).toFixed(2) +
 		"s]");
-	process.exit();
 });
