@@ -4,9 +4,10 @@ _Bundle CommonJS/Node.js modules for web browsers._
 
 __Webmake allows you to organize JavaScript code for the browser the same way as you do for Node.js.__
 
-Thanks to that, you can work with best dependency management system that JavaScript currently has, and easily, without extra boilerplate, reuse your modules in any environment that runs JavaScript _(server, client (any web browser), other custom stuff as e.g. Adobe Photoshop, or even your dishwasher if it speaks JavaScript)_.
-
-It additionally natively supports __CSS__ and __HTML__ files, which makes it a full stack modules bundler for a web browser.
+- Work with best dependency management system that JavaScript currently has.
+- Easily, without boilerplate, reuse your modules in any environment that runs JavaScript.  
+ No matter if it's a server, client (any web browser) or any other custom environment as e.g. Adobe Photoshop, or let's say your dishwasher if it speaks JavaScript.
+- Require __CSS__ and __HTML__ files same way. Webmake allows you to require them too, which makes it a full stack modules bundler for a web browser.
 
 <img src="http://medyk.org/webmake.copy.png" />
 
