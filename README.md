@@ -6,7 +6,7 @@ __Webmake allows you to organize JavaScript code for the browser the same way as
 
 - Work with best dependency management system that JavaScript currently has.
 - Easily, without boilerplate, reuse your modules in any environment that runs JavaScript.  
- No matter if it's a server, client (any web browser) or any other custom environment as e.g. Adobe Photoshop, or let's say your dishwasher if it speaks JavaScript.
+ No matter if it's a server, client (any web browser) any other custom environment as e.g. Adobe Photoshop, or let's say your dishwasher if it speaks JavaScript.
 - Require __CSS__ and __HTML__ files same way. Webmake allows you to require them too, which makes it a full stack modules bundler for a web browser.
 
 <img src="http://medyk.org/webmake.copy.png" />
@@ -16,7 +16,7 @@ Files support can be extended to any other format that compiles to one of _.js_,
 For a more in depth look into JavaScript modules and the reason for _Webmake_,
 see the slides from my presentation at Warsaw's MeetJS: [__JavaScript Modules Done Right__][slides]
 
-___If you wonder how Webmake compares with other solutions, see dedicated [comparison section](#comparison-with-other-solutions)___
+___If you wonder how Webmake compares with other solutions, see [comparison section](#comparison-with-other-solutions)___
 
 ## How does dependency resolution work?
 
@@ -401,17 +401,17 @@ AMD is different format, and although most popular loader for AMD is named [Requ
 
 Main idea behind AMD is that dependencies are resolved asynchronously (in contrary to synchronous resolution in case of CommonJS format). Sounds promising, but does it really make things better? Cause of waterfall nature of resolution and large number of HTTP requests not necessary. See [benchmark](https://github.com/medikoo/cjs-vs-amd-benchmark#compare-load-times-of-two-module-systems) that compares resolution speed of both formats when used in development mode.
 
-Agreed advantage of AMD that attributes to its success is that in it's direct form works in a browser (it doesn't require any server setup), which is hard to achieve with CJS style (but [not impossible](https://github.com/creationix/chrome-app-module-loader)). Still due to large number of requests such approach is usually not suitable for production and it appears it's also [not that performant in development mode](https://github.com/medikoo/cjs-vs-amd-benchmark#compare-load-times-of-two-module-systems).
+Agreed advantage of AMD that attributes to its success is that in it's direct form works in a browser (it doesn't require any server setup), that is hard to achieve with CJS style (but [not impossible](https://github.com/creationix/chrome-app-module-loader)). Still due to large number of requests such approach is usually not suitable for production and it appears it's also [not that performant in development mode](https://github.com/medikoo/cjs-vs-amd-benchmark#compare-load-times-of-two-module-systems).
 
-Quirks of AMD style is that it requires you to wrap all your modules with function wrappers, its modules are not runnable in direct form in Node.js and dependency resolution rules are basic and limited if you compare it with design of Node.js + NPM ecosystem.
+Quirks of AMD style is that it requires you to wrap all your modules with function wrappers, its modules are not runnable in direct form in Node.js and dependency resolution rules are basic and limited if you compare it with design of node.js + npm ecosystem.
 
 ### Browserify and other CJS bundlers
 
-[Browserify](http://browserify.org/) is most popular CJS bundler, and shares very similar idea. The subtle difference is that Browserify is about porting code as written for Node.js to web browser, so apart of resolving dependencies and bundling the code it struggles to bring what is needed and possible from Node.js API to the browser.
+[Browserify](http://browserify.org/) is most popular CJS bundler, and shares very similar idea. The subtle difference is that Browserify is about porting code as written for node.js to web browser, so apart of resolving dependencies and bundling the code it struggles to bring what is needed and possible from Node.js API to the browser.
 
-Webmake cares only about bringing NodeJS modules format to other environments. Conceptually it's addition to ECMAScript and not port of Node.js to browser. It makes NodeJS modules format runnable in any environment that speaks at least ECMAScript 3. You can bundle with Webmake for Browser, TV, Adobe Photoshop or maybe a modern dishwasher.
+Webmake cares only about bringing node.js modules format to other environments. Conceptually it's addition to ECMAScript and not port of node.js to browser. It makes node.js modules format runnable in any environment that speaks at least ECMAScript 3. You can bundle with Webmake for Browser, TV, Adobe Photoshop or maybe a modern dishwasher.
 
-When comparing with other CJS bundlers, main difference would be that Webmake completely follows resolution logic as it works in Node.js. It resolves both packages and modules exactly as Node.js, and it doesn't introduce any different ways to do that. Thanks to that, you can be sure that your modules are runnable in it's direct form both on server and client-side.
+When comparing with other CJS bundlers, main difference would be that Webmake completely follows resolution logic as it works in node.js. It resolves both packages and modules exactly as node.js, and it doesn't introduce any different ways to do that. Thanks to that, you can be sure that your modules are runnable in it's direct form both on server and client-side.
 
 Other important difference is that Webmake doesn't do full AST scan to parse require's out of modules, it relies on [find-requires](https://github.com/medikoo/find-requires#find-requires--find-all-require-calls) module, which does only what's necessary to resolve dependencies list, and that makes it a noticeably faster solution.
 
@@ -419,7 +419,7 @@ Other important difference is that Webmake doesn't do full AST scan to parse req
 
 Soon to be released, native JavaScript modules spec shares the main concept with CommmonJS. Thanks to that eventual transition will be easy and can be fully automated. First [transpilers](http://square.github.io/es6-module-transpiler/) are already here.
 
-As soon as the standard will be finalized, implemented in first engines and possibly adapted by Node.js Webmake will support it natively as well, then in a same way it will bundle it either for the sake of a bundle or for any ECMAScript 3+ environment that won't take it in natural way.
+As soon as the standard will be finalized, implemented in first engines and possibly adapted by node.js Webmake will support it natively as well, then in a same way it will bundle it either for the sake of a bundle or for any ECMAScript 3+ environment that won't take it in natural way.
 
 ## Current limitations of Webmake
 
