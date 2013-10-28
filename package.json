@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "description": "Bundle CommonJS modules into single script for web browser",
   "keywords": [
     "browser",
@@ -38,11 +38,11 @@
   },
   "dependencies": {
     "d": "git://github.com/medikoo/d.git",
-    "deferred": "~0.6.5",
+    "deferred": "~0.6.6",
     "es5-ext": "git://github.com/medikoo/es5-ext.git",
     "find-requires": "~0.1.6",
     "fs2": "~0.1.5",
-    "memoizee": "~0.2.5",
+    "memoizee": "~0.2.6",
     "next": "~0.3.3",
     "optimist": "0.6.x"
   },
@@ -50,8 +50,8 @@
     "test": "node ./node_modules/tad/bin/tad lib"
   },
   "devDependencies": {
-    "jsdom": "~0.8.3",
-    "tad": "~0.1.17"
+    "jsdom": "~0.8.8",
+    "tad": "~0.1.20"
   },
   "licence": "MIT",
   "optionalDependencies": {}

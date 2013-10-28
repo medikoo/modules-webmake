@@ -1,3 +1,9 @@
+v0.3.21  --  2013.10.28
+* Make `<output>` optional in binary script. If `<output>` not provided, output
+  generated bundle to stdout. Fix #29
+* Improve syntax error handling
+* Improve documentation
+
 v0.3.20  --  2013.08.21
 * (Critical) Fix partial path resolution issue
 * Update context configuration for loadCSS test
