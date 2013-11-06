@@ -1,4 +1,8 @@
-v0.3.22  -- 2013.11.06
+v0.3.23  --  2013.11.06
+* Support source maps provided separately (not with the code) by extensions
+* Document option output argument
+
+v0.3.22  --  2013.11.06
 * Fix sourceURL mapping when combined with extensions. Fix #30
   Great thanks to Simon Williams (@SystemParadox) for reporting the issue and
   help with sorting it out
