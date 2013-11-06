@@ -368,13 +368,12 @@ exports.compile = function (source, options) {
 
     // Include original file in the map.
     map = JSON.parse(data.sourceMap);
+    map.file = options.generatedFilename;
+    map.sources = [options.localFilename];
     map.sourcesContent = [source];
     map = JSON.stringify(map);
 
-    code = data.code + '\n//# sourceMappingURL=data:application/json;base64,' +
-      new Buffer(map).toString('base64') + '\n';
-
-    return { code: code };
+    return { code: code, sourceMap: map };
   }
 };
 ```
