@@ -1,3 +1,8 @@
+v0.3.22  -- 2013.11.06
+* Fix sourceURL mapping when combined with extensions. Fix #30
+  Great thanks to Simon Williams (@SystemParadox) for reporting the issue and
+  help with sorting it out
+
 v0.3.21  --  2013.10.28
 * Make `<output>` optional in binary script. If `<output>` not provided, output
   generated bundle to stdout. Fix #29
