@@ -1,3 +1,6 @@
+v0.3.24  --  2013.11.29
+* Silence native modules require errors with `ignoreErrors` option (#32)
+
 v0.3.23  --  2013.11.06
 * Support source maps provided separately (not with the code) by extensions
 * Document option output argument
