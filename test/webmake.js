@@ -129,5 +129,11 @@ module.exports = {
 			a.ok(startsWith.call(err.message, "Cannot require"));
 			d();
 		});
+	},
+	"Ignore error on native": function (t, a, d) {
+		t(pg + '/require-native.js', { ignoreErrors: true }, function (err, data) {
+			a(err, null);
+			d();
+		});
 	}
 };
