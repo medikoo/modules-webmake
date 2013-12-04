@@ -2,6 +2,8 @@
 // See: https://github.com/medikoo/modules-webmake
 
 (function (modules) {
+	'use strict';
+
 	var resolve, getRequire, require, notFoundError, findFile
 	  , extensions = EXTENSIONS;
 	notFoundError = function (path) {
