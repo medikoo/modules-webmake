@@ -27,6 +27,10 @@ var count     = require('es5-ext/lib/Object/count')
 			boolean: true,
 			description: "Ignore unparsable require calls"
 		},
+		'use-strict': {
+			boolean: true,
+			description: "Enforce strict mode"
+		},
 		include: {
 			string: true,
 			description: "Additional module(s) that should be included (and are" +
@@ -61,6 +65,7 @@ if (argv.include) {
 
 options.ext = argv.ext;
 options.sourceMap = argv.sourcemap;
+options.useStrict = argv['use-strict'];
 options.ignoreErrors = argv['ignore-errors'];
 if (argv._[1]) options.output = argv._[1];
 

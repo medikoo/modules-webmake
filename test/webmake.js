@@ -135,5 +135,12 @@ module.exports = {
 			a(err, null);
 			d();
 		});
+	},
+	"Enforce strict": function (t, a, d) {
+		var input = pg + '/enforce-strict.js';
+		t(input, { useStrict: true })(function (result) {
+			var program = runInNewContext(result, {}, input);
+			a(program, undefined);
+		}).end(d);
 	}
 };
