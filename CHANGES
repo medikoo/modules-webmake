@@ -1,3 +1,8 @@
+v0.3.25  --  2013.12.04
+* `useStrict` option to enfore strict mode
+* Improve documentation
+* Run client-side resolver in strict mode if supported
+
 v0.3.24  --  2013.11.29
 * Silence native modules require errors with `ignoreErrors` option (#32)
 

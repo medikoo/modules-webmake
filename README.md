@@ -164,14 +164,18 @@ not picked by parser (can be set multiple times)
 Additional extensions(s) that should be used for modules resolution from custom formats e.g. _coffee-script_ or _yaml_.  
 See [extensions](#extensions) section for more info.
 
-##### sourceMap `boolean`
+##### sourceMap `boolean` (command line: _sourcemap_)
 
 Include [source maps][], for easier debugging. Source maps work very well in WebKit and Chrome's web inspector. Firefox's Firebug however has some [issues][firebug issue].
 
-##### ignoreErrors `boolean`
+##### ignoreErrors `boolean` (command line: _ignore-errors_)
 
-Ignore not parsable require paths (e.g. `require('./lang/' + lang)`) if any.
+Ignore not parsable require paths (e.g. `require('./lang/' + lang)`) or not polyfilled native modules requires (e.g. `require('fs')`) if any.  
 Dynamic paths in require calls are considered a bad practice and won't be possible with upcoming _ES6 modules_ standard. Still if we deal with modules that do that, we can workaround it by turning this option on, and including missing modules with [`include`](https://github.com/medikoo/modules-webmake/edit/master/README.md#include-string) option.
+
+##### useStrict `boolean` (command line: _use-strict_)
+
+Enforce strict mode globally. Mind that by default in node.js environment CJS modules are not executed in strict mode. Relying on that feature may rise incompatibility issues in corner case scenarios.
 
 ##### cache `boolean` _programmatical usage only_
 
