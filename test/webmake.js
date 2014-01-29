@@ -52,6 +52,8 @@ module.exports = {
 				"Common path part: outer");
 			a(program.commonRootPathPart.subInner.id, 'sub-inner-inner',
 				"Common root path part: outer #2");
+			a(program.outerId, '__playground/lib/sub/inner/inner.js',
+				"Inner module id");
 			a(program.commonRootPathPart.subInner.outer.id, 'sub-longer-other',
 				"Common root path part: outer #3");
 			a(program.commonRootPathPart.sub.subOuter.id, 'sub-longer-inner-other',
@@ -73,6 +75,8 @@ module.exports = {
 				"Require dir by package.json");
 			a(program.external.main.name, 'external-main',
 				"Require main module from other package");
+			a(program.external.main.modId, 'test/lib/chosen-one.js',
+				"External package id");
 			a(program.external.main.module.name, 'module',
 				"Require module within other package");
 			a(program.external.noMain.name, 'no-main',
@@ -80,6 +84,7 @@ module.exports = {
 			a(program.nodeshim, 'path for web');
 			a.deep(program.json, { "raz": 0, "dwa": "trzy", "pięć": false,
 				"cztery": null, "osiem:": undefined }, "JSON");
+			a(program.modId, '__playground/lib/program.js', "Module id");
 
 			a(program.circularOther, 'circTest', "Partially broken dependecy test");
 

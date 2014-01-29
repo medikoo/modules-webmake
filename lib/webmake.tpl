@@ -19,7 +19,7 @@
 		}
 		return null;
 	};
-	resolve = function (scope, tree, path, fullpath, state) {
+	resolve = function (scope, tree, path, fullpath, state, id) {
 		var name, dir, exports, module, fn, found, i, ext;
 		path = path.split(SEPARATOR);
 		name = path.pop();
@@ -31,9 +31,11 @@
 			if (!dir || (dir === '.')) continue;
 			if (dir === '..') {
 				scope = tree.pop();
+				id = id.slice(0, id.lastIndexOf('/'));
 			} else {
 				tree.push(scope);
 				scope = scope[dir];
+				id += '/' + dir;
 			}
 			if (!scope) throw notFoundError(fullpath);
 		}
@@ -47,33 +49,36 @@
 			} else if ((state !== 2) && (typeof scope[name] === 'object')) {
 				tree.push(scope);
 				scope = scope[name];
+				id += '/' + name;
 				name = '';
 			}
 		}
 		if (!name) {
 			if ((state !== 1) && scope[':mainpath:']) {
-				return resolve(scope, tree, scope[':mainpath:'], fullpath, 1);
+				return resolve(scope, tree, scope[':mainpath:'], fullpath, 1, id);
 			}
-			return resolve(scope, tree, 'index', fullpath, 2);
+			return resolve(scope, tree, 'index', fullpath, 2, id);
 		}
 		fn = scope[name];
 		if (!fn) throw notFoundError(fullpath);
 		if (fn.hasOwnProperty('module')) return fn.module.exports;
 		exports = {};
-		fn.module = module = { exports: exports };
-		fn.call(exports, exports, module, getRequire(scope, tree));
+		fn.module = module = { exports: exports, id: id + '/' + name };
+		fn.call(exports, exports, module, getRequire(scope, tree, id));
 		return module.exports;
 	};
-	require = function (scope, tree, fullpath) {
+	require = function (scope, tree, fullpath, id) {
 		var name, path = fullpath, t = fullpath.charAt(0), state = 0;
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/'];
+			id = '/';
 			tree = [];
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
 			scope = modules[name];
 			if (!scope) throw notFoundError(fullpath);
+			id = name;
 			tree = [];
 			path = path.slice(name.length + 1);
 			if (!path) {
@@ -86,10 +91,12 @@
 				}
 			}
 		}
-		return resolve(scope, tree, path, fullpath, state);
+		return resolve(scope, tree, path, fullpath, state, id);
 	};
-	getRequire = function (scope, tree) {
-		return function (path) { return require(scope, [].concat(tree), path); };
+	getRequire = function (scope, tree, id) {
+		return function (path) {
+			return require(scope, [].concat(tree), path, id);
+		};
 	};
-	return getRequire(modules, []);
+	return getRequire(modules, [], '');
 })
