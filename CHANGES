@@ -1,3 +1,6 @@
+v0.3.26  --  2013.01.29
+* Provide `module.id`. It appears it's used within some scripts. (#35)
+
 v0.3.25  --  2013.12.04
 * `useStrict` option to enfore strict mode
 * Improve documentation
