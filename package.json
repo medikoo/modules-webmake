@@ -1,7 +1,7 @@
 {
   "name": "webmake",
   "version": "0.3.26",
-  "description": "Bundle CommonJS modules into single script for web browser",
+  "description": "Node.js/CJS modules boundler",
   "keywords": [
     "browser",
     "browserify",
