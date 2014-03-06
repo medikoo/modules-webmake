@@ -1,4 +1,9 @@
-v0.3.26  --  2013.01.29
+v0.3.27  --  2014.03.06
+* Fallback to environment provided `require` (if it exists), in case of import
+  of not bundled package. This opens the door to execute bundles in Node.js
+  environment (#36).
+
+v0.3.26  --  2014.01.29
 * Provide `module.id`. It appears it's used within some scripts. (#35)
 
 v0.3.25  --  2013.12.04
