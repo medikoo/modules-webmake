@@ -4,8 +4,10 @@
 (function (modules) {
 	'use strict';
 
-	var resolve, getRequire, require, notFoundError, findFile
-	  , extensions = EXTENSIONS;
+	var resolve, getRequire, wmRequire, notFoundError, findFile
+	  , extensions = EXTENSIONS
+	  , envRequire = typeof require === 'undefined' ? null : require;
+
 	notFoundError = function (path) {
 		var error = new Error("Could not find module '" + path + "'");
 		error.code = 'MODULE_NOT_FOUND';
@@ -19,7 +21,7 @@
 		}
 		return null;
 	};
-	resolve = function (scope, tree, path, fullpath, state, id) {
+	resolve = function (scope, tree, path, fullPath, state, id) {
 		var name, dir, exports, module, fn, found, i, ext;
 		path = path.split(SEPARATOR);
 		name = path.pop();
@@ -37,7 +39,7 @@
 				scope = scope[dir];
 				id += '/' + dir;
 			}
-			if (!scope) throw notFoundError(fullpath);
+			if (!scope) throw notFoundError(fullPath);
 		}
 		if (name && (typeof scope[name] !== 'function')) {
 			found = findFile(scope, name, '.js');
@@ -55,20 +57,20 @@
 		}
 		if (!name) {
 			if ((state !== 1) && scope[':mainpath:']) {
-				return resolve(scope, tree, scope[':mainpath:'], fullpath, 1, id);
+				return resolve(scope, tree, scope[':mainpath:'], fullPath, 1, id);
 			}
-			return resolve(scope, tree, 'index', fullpath, 2, id);
+			return resolve(scope, tree, 'index', fullPath, 2, id);
 		}
 		fn = scope[name];
-		if (!fn) throw notFoundError(fullpath);
+		if (!fn) throw notFoundError(fullPath);
 		if (fn.hasOwnProperty('module')) return fn.module.exports;
 		exports = {};
 		fn.module = module = { exports: exports, id: id + '/' + name };
 		fn.call(exports, exports, module, getRequire(scope, tree, id));
 		return module.exports;
 	};
-	require = function (scope, tree, fullpath, id) {
-		var name, path = fullpath, t = fullpath.charAt(0), state = 0;
+	wmRequire = function (scope, tree, fullPath, id) {
+		var name, path = fullPath, t = fullPath.charAt(0), state = 0;
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/'];
@@ -77,7 +79,10 @@
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
 			scope = modules[name];
-			if (!scope) throw notFoundError(fullpath);
+			if (!scope) {
+				if (envRequire) return envRequire(fullPath);
+				throw notFoundError(fullPath);
+			}
 			id = name;
 			tree = [];
 			path = path.slice(name.length + 1);
@@ -91,11 +96,11 @@
 				}
 			}
 		}
-		return resolve(scope, tree, path, fullpath, state, id);
+		return resolve(scope, tree, path, fullPath, state, id);
 	};
 	getRequire = function (scope, tree, id) {
 		return function (path) {
-			return require(scope, [].concat(tree), path, id);
+			return wmRequire(scope, [].concat(tree), path, id);
 		};
 	};
 	return getRequire(modules, [], '');

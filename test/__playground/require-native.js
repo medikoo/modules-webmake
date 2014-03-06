@@ -1,3 +1,3 @@
 'use strict';
 
-require('fs');
+exports.fs = require('fs');
