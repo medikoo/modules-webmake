@@ -137,7 +137,14 @@ module.exports = {
 	},
 	"Ignore error on native": function (t, a, d) {
 		t(pg + '/require-native.js', { ignoreErrors: true }, function (err, data) {
+			var program;
 			a(err, null);
+			if (typeof process === 'undefined') {
+				d();
+				return;
+			}
+			program = runInNewContext(data, { require: require });
+			a(program.fs, require('fs'), "Fallback to environment require");
 			d();
 		});
 	},

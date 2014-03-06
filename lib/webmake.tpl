@@ -4,8 +4,10 @@
 (function (modules) {
 	'use strict';
 
-	var resolve, getRequire, require, notFoundError, findFile
-	  , extensions = EXTENSIONS;
+	var resolve, getRequire, wmRequire, notFoundError, findFile
+	  , extensions = EXTENSIONS
+	  , envRequire = typeof require === 'undefined' ? null : require;
+
 	notFoundError = function (path) {
 		var error = new Error("Could not find module '" + path + "'");
 		error.code = 'MODULE_NOT_FOUND';
@@ -67,7 +69,7 @@
 		fn.call(exports, exports, module, getRequire(scope, tree, id));
 		return module.exports;
 	};
-	require = function (scope, tree, fullPath, id) {
+	wmRequire = function (scope, tree, fullPath, id) {
 		var name, path = fullPath, t = fullPath.charAt(0), state = 0;
 		if (t === '/') {
 			path = path.slice(1);
@@ -77,7 +79,10 @@
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
 			scope = modules[name];
-			if (!scope) throw notFoundError(fullPath);
+			if (!scope) {
+				if (envRequire) return envRequire(fullPath);
+				throw notFoundError(fullPath);
+			}
 			id = name;
 			tree = [];
 			path = path.slice(name.length + 1);
@@ -95,7 +100,7 @@
 	};
 	getRequire = function (scope, tree, id) {
 		return function (path) {
-			return require(scope, [].concat(tree), path, id);
+			return wmRequire(scope, [].concat(tree), path, id);
 		};
 	};
 	return getRequire(modules, [], '');
