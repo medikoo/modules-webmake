@@ -74,6 +74,10 @@
 		if (t === '/') {
 			path = path.slice(1);
 			scope = modules['/'];
+			if (!scope) {
+				if (envRequire) return envRequire(fullPath);
+				throw notFoundError(fullPath);
+			}
 			id = '/';
 			tree = [];
 		} else if (t !== '.') {
