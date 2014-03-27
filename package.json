@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.27",
+  "version": "0.3.28",
   "description": "Bundle CommonJS modules into single script for web browser",
   "keywords": [
     "browser",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "jsdom": "~0.8.11",
-    "tad": "~0.1.20"
+    "tad": "~0.1.21"
   },
   "licence": "MIT",
   "optionalDependencies": {}
