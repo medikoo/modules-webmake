@@ -1,3 +1,8 @@
+v0.3.28  --  2014.03.27
+* Support optional requires.
+  Optional require must be wrapped in try/catch clause and on that basis it's
+  distinguished.
+
 v0.3.27  --  2014.03.06
 * Fallback to environment provided `require` (if it exists), in case of import
   of not bundled package. This opens the door to execute bundles in Node.js

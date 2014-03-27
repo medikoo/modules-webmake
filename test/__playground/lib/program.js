@@ -19,9 +19,26 @@ exports.nodeshim = require('path');
 exports.json = require('./mario');
 exports.modId = module.id;
 
+try {
+	require('./optional-module');
+} catch (e) {
+	if (e.code !== 'MODULE_NOT_FOUND') throw e;
+}
+
+try {
+	require('optional-package');
+} catch (e) {
+	if (e.code !== 'MODULE_NOT_FOUND') throw e;
+}
+
 // new line/comment check
 require('./nl-comment')(exports);
 
+try {
+	require('util'); // optional native package
+} catch (e) {
+	if (e.code !== 'MODULE_NOT_FOUND') throw e;
+}
 exports.included = {
 	a: indirectRequire('./included/a'),
 	b: indirectRequire('./included/b')

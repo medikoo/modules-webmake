@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.27",
+  "version": "0.3.28",
   "description": "Node.js/CJS modules bundler",
   "keywords": [
     "browser",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "jsdom": "~0.8.11",
-    "tad": "~0.1.20"
+    "tad": "~0.1.21"
   },
   "licence": "MIT",
   "optionalDependencies": {}
