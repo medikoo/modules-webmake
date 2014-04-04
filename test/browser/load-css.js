@@ -9,5 +9,5 @@ module.exports = function (t, a, d) {
 		result = eval(result);
 		a(result.style.innerHTML, 'body { color: black; background: white; }');
 		a(result.html.innerHTML, '<p><span>Hello!</span></p>');
-	}).end(d);
+	}).done(d, d);
 };

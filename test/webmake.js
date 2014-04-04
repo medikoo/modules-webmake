@@ -95,7 +95,7 @@ module.exports = {
 					return unlink(output);
 				}
 			);
-		}).end(d);
+		}).done(d, d);
 	},
 	"No includes": function (t, a, d) {
 		var input = pg + '/lib/x.js';
@@ -104,7 +104,7 @@ module.exports = {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
 			a(program.getZ().name, 'z', "External name");
-		}).end(d);
+		}).done(d, d);
 	},
 	"Unresolved path": function (t, a, d) {
 		var input = pg + '/././lib/x.js';
@@ -113,7 +113,7 @@ module.exports = {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
 			a(program.getZ().name, 'z', "External name");
-		}).end(d);
+		}).done(d, d);
 	},
 	"Dynamic": {
 		"Error": function (t, a, d) {
@@ -153,6 +153,6 @@ module.exports = {
 		t(input, { useStrict: true })(function (result) {
 			var program = runInNewContext(result, {}, input);
 			a(program, undefined);
-		}).end(d);
+		}).done(d, d);
 	}
 };
