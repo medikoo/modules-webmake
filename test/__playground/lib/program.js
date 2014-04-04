@@ -49,3 +49,9 @@ exports.external = {
 	other: require('test/lib/other.js'),
 	noMain: require('no-main/lib/some-module')
 };
+
+try {
+	require('test/marko/optional-module-of-outer-package');
+} catch (e) {
+	if (e.code !== 'MODULE_NOT_FOUND') throw e;
+}
