@@ -1,3 +1,6 @@
+v0.3.29  -- 2014.04.04
+* Fix handling of not found module of outer package
+
 v0.3.28  --  2014.03.27
 * Support optional requires.
   Optional require must be wrapped in try/catch clause and on that basis it's

@@ -1,7 +1,8 @@
 {
   "name": "webmake",
-  "version": "0.3.28",
+  "version": "0.3.29",
   "description": "Node.js/CJS modules bundler",
+  "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
     "browser",
     "browserify",
@@ -20,7 +21,6 @@
     "requirejs",
     "web"
   ],
-  "author": "Mariusz Nowak <medikoo+webmake@medikoo.com> (http://www.medikoo.com/)",
   "bin": {
     "webmake": "./bin/webmake"
   },
@@ -28,10 +28,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/medikoo/modules-webmake.git"
-  },
-  "bugs": {
-    "email": "medikoo+webmake@medikoo.com",
-    "url": "https://github.com/medikoo/modules-webmake/issues"
   },
   "engines": {
     "node": ">=0.8"
@@ -54,6 +50,5 @@
     "jsdom": "~0.8.11",
     "tad": "~0.1.21"
   },
-  "licence": "MIT",
-  "optionalDependencies": {}
+  "licence": "MIT"
 }
