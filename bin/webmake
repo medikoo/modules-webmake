@@ -3,8 +3,8 @@
 'use strict';
 
 var count     = require('es5-ext/object/count')
-  , readFile  = require('fs2/lib/read-file')
-  , writeFile = require('fs2/lib/write-file')
+  , readFile  = require('fs2/read-file')
+  , writeFile = require('fs2/write-file')
   , webmake   = require('../lib/webmake')
 
   , isArray = Array.isArray, now = Date.now
