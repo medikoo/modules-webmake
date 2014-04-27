@@ -33,13 +33,13 @@
     "node": ">=0.8"
   },
   "dependencies": {
-    "d": "git://github.com/medikoo/d.git",
-    "deferred": "~0.6.6",
-    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "d": "~0.1.1",
+    "deferred": "0.7.x",
+    "es5-ext": "~0.10.2",
     "find-requires": "~0.1.6",
-    "fs2": "~0.1.5",
-    "memoizee": "~0.2.6",
-    "next": "~0.3.3",
+    "fs2": "~0.2.0",
+    "memoizee": "~0.3.1",
+    "next": "0.4.x",
     "path2": "0.1.x",
     "optimist": "0.6.x"
   },
