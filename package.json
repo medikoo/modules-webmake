@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "d": "~0.1.1",
-    "deferred": "0.7.x",
+    "deferred": "~0.7.1",
     "es5-ext": "~0.10.2",
-    "find-requires": "~0.1.6",
-    "fs2": "~0.2.0",
+    "find-requires": "0.2.x",
+    "fs2": "~0.2.1",
     "memoizee": "~0.3.1",
     "next": "0.4.x",
     "path2": "0.1.x",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "jsdom": "~0.8.11",
-    "tad": "~0.1.21"
+    "tad": "0.2.x"
   },
   "scripts": {
     "test": "node ./node_modules/tad/bin/tad"
