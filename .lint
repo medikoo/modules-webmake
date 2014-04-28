@@ -16,8 +16,8 @@ predef+ console, process, __dirname, Buffer
 ./lib/browser
 predef+ document
 
-./test/browser
+./test/lib/browser
 predef+ setTimeout, clearTimeout
 
-./test/browser/load-css.js
+./test/lib/browser/load-css.js
 evil

@@ -1,8 +1,8 @@
 'use strict';
 
-var webmake         = require('../../')
+var webmake         = require('../../../')
 
-  , pg = require('path').resolve(__dirname, '../__playground');
+  , pg = require('path').resolve(__dirname, '../../__playground');
 
 module.exports = function (t, a, d) {
 	webmake(pg + '/lib/browser-test.js')(function (result) {

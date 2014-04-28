@@ -7,10 +7,10 @@ var isFunction   = require('es5-ext/function/is-function')
   , readFile     = require('fs2/read-file')
   , writeFile    = require('fs2/write-file')
   , readdir      = require('fs2/readdir')
-  , createParser = require('./parser')
+  , createParser = require('./lib/parser')
 
   , now = Date.now, stringify = JSON.stringify
-  , templatePath = __dirname + '/webmake.tpl'
+  , templatePath = resolve(__dirname, 'lib/webmake.tpl')
   , separator = (process.env.OS === 'Windows_NT') ? '/[\\\\/]/' : '\'/\''
   , filesAtPath;
 

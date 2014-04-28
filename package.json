@@ -24,7 +24,6 @@
   "bin": {
     "webmake": "./bin/webmake"
   },
-  "main": "lib/webmake",
   "repository": {
     "type": "git",
     "url": "git://github.com/medikoo/modules-webmake.git"
@@ -45,7 +44,7 @@
     "tad": "~0.1.21"
   },
   "scripts": {
-    "test": "node ./node_modules/tad/bin/tad lib"
+    "test": "node ./node_modules/tad/bin/tad"
   },
   "engines": {
     "node": ">=0.8"

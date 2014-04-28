@@ -2,7 +2,7 @@
 
 var resolve = require('path').resolve
 
-  , pg = __dirname + '/__playground';
+  , pg = resolve(__dirname, '../__playground');
 
 module.exports = {
 	"": function (t, a, d) {
