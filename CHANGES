@@ -1,4 +1,9 @@
-v0.3.29  -- 2014.04.04
+v0.3.30  --  2014.04.28
+* Move out main module from lib folder
+* Update to use latest versions of dependencies
+* Remove Makefile (it's environment agnostic project)
+
+v0.3.29  --  2014.04.04
 * Fix handling of not found module of outer package
 
 v0.3.28  --  2014.03.27

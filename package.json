@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.29",
+  "version": "0.3.30",
   "description": "Node.js/CJS modules bundler",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
