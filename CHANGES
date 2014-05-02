@@ -1,3 +1,6 @@
+v0.3.31  --  2014.05.02
+* Support input from stdin (Fixes #41)
+
 v0.3.30  --  2014.04.28
 * Move out main module from lib folder
 * Update to use latest versions of dependencies
