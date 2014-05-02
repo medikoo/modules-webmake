@@ -10,7 +10,7 @@ var count     = require('es5-ext/object/count')
   , isArray = Array.isArray, now = Date.now
 
   , optimist = require('optimist')
-	.usage("Usage: $0 [options] <input> [<output>]", {
+	.usage("Usage: $0 [options] [<input>] [<output>]", {
 		name: {
 			string: true,
 			description: "Expose program in your namespace with given name"
@@ -44,7 +44,7 @@ var count     = require('es5-ext/object/count')
 			boolean: true,
 			description: "Include source maps"
 		}
-	}).demand(1)
+	})
   , argv = optimist.argv
   , input, options, time;
 
@@ -54,6 +54,10 @@ if (argv.help) {
 }
 
 input = argv._[0];
+if (!input) {
+	input = process.stdin;
+	process.stdin.resume();
+}
 options = {};
 
 if (argv.include) {

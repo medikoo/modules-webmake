@@ -29,7 +29,7 @@ filesAtPath = function (path) {
 };
 
 module.exports = function (input, options, cb) {
-	var promise, parser, time;
+	var promise, parser, time, methodName = 'readInput';
 	if (isFunction(options)) {
 		cb = options;
 		options = {};
@@ -38,7 +38,11 @@ module.exports = function (input, options, cb) {
 	}
 	time = now();
 	parser = createParser(options);
-	promise = parser.readInput(input)(function (path) {
+	if (input && (typeof input === 'object') && (typeof input.on === 'function') &&
+			(typeof input.pipe === 'function')) {
+		methodName = 'readStreamInput';
+	}
+	promise = parser[methodName](input)(function (path) {
 		return deferred.map([].concat(options.include || []), function (path) {
 			path = resolve(String(path));
 			return filesAtPath(path).invoke('filter', function (filename) {
