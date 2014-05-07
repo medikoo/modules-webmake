@@ -1,3 +1,6 @@
+v0.3.32  --  2014.05.07
+* Support all types and extensions in includes option (Fixes #42)
+
 v0.3.31  --  2014.05.02
 * Support input from stdin (Fixes #41)
 
