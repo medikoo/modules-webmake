@@ -1,8 +1,10 @@
 'use strict';
 
-var isFunction   = require('es5-ext/function/is-function')
+var contains     = require('es5-ext/array/#/contains')
+  , isFunction   = require('es5-ext/function/is-function')
+  , some         = require('es5-ext/object/some')
   , deferred     = require('deferred')
-  , resolve      = require('path').resolve
+  , path         = require('path')
   , stat         = deferred.promisify(require('fs').stat)
   , readFile     = require('fs2/read-file')
   , writeFile    = require('fs2/write-file')
@@ -10,6 +12,7 @@ var isFunction   = require('es5-ext/function/is-function')
   , createParser = require('./lib/parser')
 
   , now = Date.now, stringify = JSON.stringify
+  , resolve = path.resolve, extname = path.extname
   , templatePath = resolve(__dirname, 'lib/webmake.tpl')
   , separator = (process.env.OS === 'Windows_NT') ? '/[\\\\/]/' : '\'/\''
   , filesAtPath;
@@ -46,7 +49,12 @@ module.exports = function (input, options, cb) {
 		return deferred.map([].concat(options.include || []), function (path) {
 			path = resolve(String(path));
 			return filesAtPath(path).invoke('filter', function (filename) {
-				return filename.slice(-3) === '.js';
+				var ext = extname(filename);
+				if (ext === '.js') return true;
+				if (ext === '.json') return true;
+				if (ext === '.css') return true;
+				if (ext === '.html') return true;
+				return some(parser.extNames, function (data) { return contains.call(data, ext); });
 			}).map(parser.readInput, parser);
 		})(function () { return readFile(templatePath, 'utf-8'); })(function (tpl) {
 			var src = tpl.replace('SEPARATOR', separator)

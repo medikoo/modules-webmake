@@ -5,6 +5,7 @@ var startsWith      = require('es5-ext/string/#/starts-with')
   , promisify       = require('deferred').promisify
   , fs              = require('fs')
   , runInNewContext = require('vm').runInNewContext
+  , browserContext  = require('./lib/browser/__tad').context
 
   , readFile = promisify(fs.readFile), unlink = promisify(fs.unlink)
 
@@ -104,6 +105,14 @@ module.exports = {
 			var program = runInNewContext(result, {}, input);
 			a(program.name, 'x', "Same path require");
 			a(program.getZ().name, 'z', "External name");
+		}).done(d, d);
+	},
+	"Other type includes": function (t, a, d) {
+		var input = pg + '/lib/other-type-includes.js', options = { include: pg + '/includes' };
+		t = promisify(t);
+		t(input, options)(function (result) {
+			var program = runInNewContext(result, browserContext, input);
+			a(program.html, '<div>HTML</div>\n', "Same path require");
 		}).done(d, d);
 	},
 	"Unresolved path": function (t, a, d) {
