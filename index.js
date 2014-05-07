@@ -46,7 +46,14 @@ module.exports = function (input, options, cb) {
 		return deferred.map([].concat(options.include || []), function (path) {
 			path = resolve(String(path));
 			return filesAtPath(path).invoke('filter', function (filename) {
-				return filename.slice(-3) === '.js';
+				if (filename.slice(-3) === '.js') return true;
+				var ext = parser.extNames['.js'];
+				for (var i=0; i < ext.length; i++) {
+					if (filename.slice(-ext[i].length) === ext[i]) {
+						return true;
+					}
+				}
+				return false;
 			}).map(parser.readInput, parser);
 		})(function () { return readFile(templatePath, 'utf-8'); })(function (tpl) {
 			var src = tpl.replace('SEPARATOR', separator)
