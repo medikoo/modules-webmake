@@ -1,3 +1,7 @@
+v0.3.33  --  2014.05.27
+* Comment out eventual shebang. We should support modules that are made executable for *nix
+  environments
+
 v0.3.32  --  2014.05.07
 * Support all types and extensions in includes option (Fixes #42)
 
