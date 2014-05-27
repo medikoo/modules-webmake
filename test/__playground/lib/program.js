@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var indirectRequire = require;
 
 exports.x = require('./x');
