@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "description": "Node.js/CJS modules bundler",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
@@ -34,7 +34,7 @@
     "es5-ext": "~0.10.4",
     "find-requires": "0.2.x",
     "fs2": "~0.2.1",
-    "memoizee": "~0.3.2",
+    "memoizee": "~0.3.4",
     "next": "0.4.x",
     "path2": "0.1.x",
     "optimist": "~0.6.1"
