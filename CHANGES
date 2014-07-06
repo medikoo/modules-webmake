@@ -1,4 +1,7 @@
-v0.3.34  -- 2014.06.27
+v0.3.35  --  2014.07.06
+* Fix input path resolution in case of non package path. Fixes #46
+
+v0.3.34  --  2014.06.27
 * Improve input streams support. Fixes #45
 
 v0.3.33  --  2014.05.27
