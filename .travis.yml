@@ -7,3 +7,5 @@ node_js:
 notifications:
   email:
     - medikoo+webmake@medikoo.com
+
+script: "npm test && npm run lint"
