@@ -83,8 +83,8 @@ module.exports = {
 			a(program.external.noMain.name, 'no-main',
 				"Require from package that doesn't have main module");
 			a(program.nodeshim, 'path for web');
-			a.deep(program.json, { "raz": 0, "dwa": "trzy", "pięć": false,
-				"cztery": null, "osiem:": undefined }, "JSON");
+			a.deep(program.json, { raz: 0, dwa: "trzy", "pięć": false,
+				cztery: null, "osiem:": undefined }, "JSON");
 			a(program.modId, '__playground/lib/program.js', "Module id");
 
 			a(program.circularOther, 'circTest', "Partially broken dependecy test");
@@ -124,13 +124,13 @@ module.exports = {
 			a(program.getZ().name, 'z', "External name");
 		}).done(d, d);
 	},
-	"Dynamic": {
-		"Error": function (t, a, d) {
+	Dynamic: {
+		Error: function (t, a, d) {
 			var input = pg + '/lib/dynamic.js';
 			t(input)(a.never, function (e) { a(e.code, 'DYNAMIC_REQUIRE'); })
 				.done(d, d);
 		},
-		"Ignored": function (t, a, d) {
+		Ignored: function (t, a, d) {
 			var input = pg + '/lib/dynamic.js';
 			t(input, { ignoreErrors: true })(function (result) {
 				var program = runInNewContext(result, {}, input);
