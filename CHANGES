@@ -1,3 +1,7 @@
+v0.3.36  --  2014.10.15
+* Implement `transform` option, that allows to run transforms for each module. Fixes #47
+* Configure lint scripts
+
 v0.3.35  --  2014.07.06
 * Fix input path resolution in case of non package path. Fixes #46
 

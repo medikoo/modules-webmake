@@ -1,6 +1,6 @@
 {
   "name": "webmake",
-  "version": "0.3.35",
+  "version": "0.3.36",
   "description": "Node.js/CJS modules bundler",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
@@ -32,18 +32,18 @@
     "d": "~0.1.1",
     "deferred": "~0.7.1",
     "es5-ext": "~0.10.4",
-    "find-requires": "0.2.x",
+    "find-requires": "~0.2.2",
     "fs2": "~0.2.1",
-    "memoizee": "~0.3.4",
-    "next": "0.4.x",
-    "path2": "0.1.x",
+    "memoizee": "~0.3.8",
+    "next": "0.4",
+    "path2": "0.1",
     "optimist": "~0.6.1"
   },
   "devDependencies": {
-    "jsdom": "~0.10.5",
+    "jsdom": "~1.0.3",
     "tad": "0.2.x",
     "xlint": "~0.2.1",
-    "xlint-jslint-medikoo": "0.1.x"
+    "xlint-jslint-medikoo": "~0.1.2"
   },
   "scripts": {
     "lint": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --no-cache --no-stream",
