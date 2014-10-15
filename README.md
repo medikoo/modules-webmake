@@ -184,6 +184,20 @@ Speeds up re-generation of Webmake bundle, useful when Webmake is bound to serve
 Highly recommended if [extensions](#extensions) are used.
 Defaults to _false_.
 
+##### transform `function` _programmatical usage only_
+
+Provide a transform middleware. `transform` callback would be called on each module, with arguments: _absolute filename_ and _file code_ (as it is in origin file, before any internal transformations). If source module is meant to be processed by one of the extensions, you'll receive origin code before extension logic is applied, and you must return code that's valid for extension processor. So e.g. if you transform [LESS](https://github.com/acdaniel/webmake-less#webmake-less) code, you need to return valid _LESS_ code
+
+If you're interested only in applying transform to e.g. _js_ files, be sure to filter your actions on basis of filename, and return code as you received if non transforms should be applied
+
+In case of asynchronous operations, promise maybe returned, but it has to be promise that origins from [deferred](https://github.com/medikoo/deferred#deferred) package.
+
+```javascript
+webmake(programPath, { transform: function (filename, code) {
+  return transformCode(code)
+} }
+```
+
 ### Programmatically:
 
 ```javascript
