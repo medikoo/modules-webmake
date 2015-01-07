@@ -300,15 +300,15 @@ Webassemble written by [Ken Chen](https://github.com/kenspirit) provides a convi
 
 ##### JS
 * __CoffeeScript - [webmake-coffee](https://github.com/medikoo/webmake-coffee)__
+* __handlebars - [webmake-handlebars](https://github.com/acdaniel/webmake-handlebars)__
+* __ejs - [webmake-ejs](https://github.com/tswaters/webmake-ejs)__
 
 ##### JSON
 * __YAML - [webmake-yaml](https://github.com/medikoo/webmake-yaml)__
 
 ##### CSS
 * __LESS - [webmake-less](https://github.com/acdaniel/webmake-less)__
-
-##### HTML
-* __handlebars - [webmake-handlebars](https://github.com/acdaniel/webmake-handlebars)__
+* __SASS - [webmake-less](https://github.com/acdaniel/webmake-sass)__
 
 __Submit any missing extension via [new issue form](https://github.com/medikoo/modules-webmake/issues/new)__.
 
