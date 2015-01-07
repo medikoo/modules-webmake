@@ -308,7 +308,7 @@ Webassemble written by [Ken Chen](https://github.com/kenspirit) provides a convi
 
 ##### CSS
 * __LESS - [webmake-less](https://github.com/acdaniel/webmake-less)__
-* __SASS - [webmake-less](https://github.com/acdaniel/webmake-sass)__
+* __SASS - [webmake-sass](https://github.com/acdaniel/webmake-sass)__
 
 __Submit any missing extension via [new issue form](https://github.com/medikoo/modules-webmake/issues/new)__.
 
