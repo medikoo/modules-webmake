@@ -6,7 +6,7 @@
 
 	var resolve, getRequire, wmRequire, notFoundError, findFile
 	  , extensions = EXTENSIONS
-	  , envRequire = typeof require === 'undefined' ? null : require;
+	  , envRequire = typeof require === 'function' ? require : null;
 
 	notFoundError = function (path) {
 		var error = new Error("Could not find module '" + path + "'");
