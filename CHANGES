@@ -1,3 +1,8 @@
+v0.3.37  --  2015.02.10
+* Fix programmatical support for 'name' and 'amd' options.
+* Improve documentation
+* Fix spelling of License
+
 v0.3.36  --  2014.10.15
 * Implement `transform` option, that allows to run transforms for each module. Fixes #47
 * Configure lint scripts
