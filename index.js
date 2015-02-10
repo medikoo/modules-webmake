@@ -57,6 +57,14 @@ module.exports = function (input, options, cb) {
 				.replace('EXTENSIONS', stringify(parser.extNames)) +
 				'(' + parser.toString() + ')' +
 				'(' + stringify(path) + ');\n';
+			if (options.name && options.amd) {
+				src = src.replace('(function', 'define("' + options.name +
+					'", function () { return (function') + '});\n';
+			} else if (options.name) {
+				src = src.replace('(function', 'window.' + options.name + ' = (function');
+			} else if (options.amd) {
+				src = src.replace('(function', 'define(function () { return (function') + '});\n';
+			}
 			return options.output ?
 					writeFile(resolve(String(options.output)), src)(parser) : src;
 		});
