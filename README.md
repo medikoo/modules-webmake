@@ -198,6 +198,8 @@ webmake(programPath, { transform: function (filename, code) {
 } }
 ```
 
+`transformCode` function should return either plain transformed _code_ string, or an object, with `code` and `sourceMap` properties, if we want to accompany our transform with a _sourceMap_.
+
 ### Programmatically:
 
 ```javascript
