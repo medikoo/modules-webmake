@@ -1,3 +1,7 @@
+v0.3.38  --  2015.02.17
+* Support source maps in direct transforms. Fix #51
+* Improve documentation
+
 v0.3.37  --  2015.02.10
 * Fix programmatical support for 'name' and 'amd' options.
 * Improve documentation
