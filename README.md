@@ -344,27 +344,13 @@ Programmatically:
 webmake(inputPath, { ext: ['EXT', 'EXT2'] }, cb);
 ```
 
-#### Providing extensions programmatically
-
-Extension doesn't need to be installed as package, you may pass it programmatically:
-
-```javascript
-webmake(inputPath, { ext: {
-    name: 'EXT',
-    extension: 'ext',
-    type: 'js',
-    compile: function (source, options) { /* ... */ }
-} }, cb);
-```
-See [writing extensions](#writing-an-extension-for-a-new-format) section to see how to configure fully working extensions
-
 #### Writing an extension for a new format
 
 Prepare a `webmake-*` NPM package _(replace '*' with name of your extension)_, where main module is configured as in following example:
 
 ```javascript
-// Define a file extension of a new format, can be an array e.g. ['xy', 'xyz']
-exports.extension = 'xyz';
+// Define a file extension of a new format, can be an array e.g. ['sass', 'scss']
+exports.extension = 'coffee';
 
 // Which type is addressed by extension (can be either 'js', 'json', 'css' or 'html')
 exports.type = 'js';
@@ -395,13 +381,30 @@ exports.compile = function (source, options) {
   }
 };
 ```
+
+#### Providing extensions programmatically
+
+Extension doesn't need to be installed as package, you may pass it programmatically:
+
+```javascript
+webmake(inputPath, { ext: {
+    name: 'coffee-script',
+    extension: 'coffee',
+    type: 'js',
+    compile: function (source, options) { /* ... */ }
+} }, cb);
+```
+
+See below [writing extensions](#writing-an-extension-for-a-new-format) section to see how to configure fully working extensions
+
 #### Writing extesions for either JSON, CSS or HTML
 
 Be sure to state the right type, and return string that reflects addressed format (not JavaScript code)
 e.g. extension for CSS:
 
 ```javascript
-exports.type = 'css'
+exports.extension = 'less';
+exports.type = 'css';
 exports.compile = function (source, options) {
   return { code: compileToCSS(source) }; // `compileToCSS` returns plain CSS string
 };
