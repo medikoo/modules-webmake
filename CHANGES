@@ -1,3 +1,7 @@
+v0.3.39  --  2015.03.20
+* Fix error handling in shell script
+* Improve documentation
+
 v0.3.38  --  2015.02.17
 * Support source maps in direct transforms. Fix #51
 * Improve documentation
