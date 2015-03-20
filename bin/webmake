@@ -76,7 +76,7 @@ options.ignoreErrors = argv['ignore-errors'];
 if (argv._[1]) options.output = argv._[1];
 
 time = now();
-webmake(input, options)(function (parser) {
+webmake(input, options).done(function (parser) {
 	time = now() - time;
 	if (!options.output) {
 		process.stdout.write(parser);
