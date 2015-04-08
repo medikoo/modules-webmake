@@ -22,7 +22,7 @@
 		return null;
 	};
 	resolve = function (scope, tree, path, fullPath, state, id) {
-		var name, dir, exports, module, fn, found, i, ext;
+		var name, dir, exports, module, fn, found, ext;
 		path = path.split(SEPARATOR);
 		name = path.pop();
 		if ((name === '.') || (name === '..')) {
