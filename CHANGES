@@ -1,3 +1,6 @@
+v0.3.40  --  2015.08.13
+* Fix code resolution issue when source maps are generated, and we deal with empty file
+
 v0.3.39  --  2015.03.20
 * Fix error handling in shell script
 * Improve documentation
