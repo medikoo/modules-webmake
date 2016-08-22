@@ -40,7 +40,7 @@
     "optimist": "~0.6.1"
   },
   "devDependencies": {
-    "jsdom": "~3.1.1",
+    "jsdom": "~9.4.2",
     "tad": "~0.2.3",
     "xlint": "~0.2.2",
     "xlint-jslint-medikoo": "~0.1.4"
