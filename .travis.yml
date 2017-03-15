@@ -2,7 +2,6 @@ sudo: false # http://docs.travis-ci.com/user/workers/container-based-infrastruct
 language: node_js
 node_js:
   - 4
-  - 5
   - 6
   - 7
 
