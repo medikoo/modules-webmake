@@ -1,3 +1,6 @@
+v0.3.42  --  2017.03.15
+* Update dependencies
+
 v0.3.41  --  2016.11.03
 * Fix Windows issue related to internal path slash detection
 * Update test dependencies
