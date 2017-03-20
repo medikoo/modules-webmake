@@ -4,6 +4,7 @@ var startsWith      = require('es5-ext/string/#/starts-with')
   , lock            = require('es5-ext/function/#/lock')
   , promisify       = require('deferred').promisify
   , fs              = require('fs')
+  , resolve         = require('path').resolve
   , runInNewContext = require('vm').runInNewContext
   , browserContext  = require('./lib/browser/__tad').context
 
@@ -15,7 +16,7 @@ module.exports = {
 	"": function (t, a, d) {
 		var input = pg + '/lib/program.js'
 		  , output = pg + '/build.js'
-		  , options = { include: pg + '/lib/included' };
+		  , options = { include: pg + '/lib/included', ignore: [resolve(pg, "not-taken.js")] };
 		t = promisify(t);
 		t(input, options)(function (result) {
 			var program = runInNewContext(result, {});

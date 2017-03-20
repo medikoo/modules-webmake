@@ -11,7 +11,7 @@ nomen
 plusplus
 stupid
 
-predef+ console, process, __dirname, Buffer
+predef+ console, process, __dirname, Buffer, Set
 
 ./lib/browser
 predef+ document

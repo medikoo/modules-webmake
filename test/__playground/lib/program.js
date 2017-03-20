@@ -57,3 +57,9 @@ try {
 } catch (e) {
 	if (e.code !== 'MODULE_NOT_FOUND') throw e;
 }
+
+try {
+	if (true) require('../not-taken');
+} catch (e) {
+  if (e.code === 'MODULE_EXISTS') throw e;
+}
