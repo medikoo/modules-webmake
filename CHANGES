@@ -1,3 +1,7 @@
+v0.3.43  --  2017.03.20
+* Add 'ignore' option, to eventually ignore some modules
+  (at this point supported just programmatically)
+
 v0.3.42  --  2017.03.15
 * Update dependencies
 
