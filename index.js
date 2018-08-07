@@ -11,7 +11,7 @@ const contains             = require("es5-ext/array/#/contains")
     , readdir              = require("fs2/readdir")
     , createParser         = require("./lib/parser");
 
-const { now } = Date.now
+const { now } = Date
     , { stringify } = JSON
     , templatePath = resolve(__dirname, "lib/webmake.tpl")
     , separator = process.env.OS === "Windows_NT" ? "/[\\\\/]/" : "'/'";
@@ -51,21 +51,24 @@ module.exports = function (input, options, cb) {
 					})
 					.map(parser.readInput, parser);
 			})(() => readFile(templatePath, "utf-8"))(tpl => {
-				let src =
-					`${ tpl
+				let src = `${
+					tpl
 						.replace("SEPARATOR", separator)
-						.replace("EXTENSIONS", stringify(parser.extNames)) }(${ parser.toString() })` +
-					`(${ stringify(path) });\n`;
+						.replace("EXTENSIONS", stringify(parser.extNames))
+				}(${ parser.toString() })(${ stringify(path) });\n`;
 				if (options.name && options.amd) {
-					src = `${ src.replace(
-						"(function", `define("${ options.name }", function () { return (function`
-					) }});\n`;
+					src = `${
+						src.replace(
+							"(function",
+							`define("${ options.name }", function () { return (function`
+						)
+					}});\n`;
 				} else if (options.name) {
 					src = src.replace("(function", `window.${ options.name } = (function`);
 				} else if (options.amd) {
-					src = `${ src.replace(
-						"(function", "define(function () { return (function"
-					) }});\n`;
+					src = `${
+						src.replace("(function", "define(function () { return (function")
+					}});\n`;
 				}
 				return options.output
 					? writeFile(resolve(String(options.output)), src)(parser)
