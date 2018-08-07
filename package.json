@@ -30,20 +30,20 @@
   },
   "dependencies": {
     "d": "1",
-    "deferred": "~0.7.9",
-    "es5-ext": "~0.10.45",
-    "find-requires": "~0.2.3",
-    "fs2": "~0.2.7",
-    "memoizee": "~0.4.13",
-    "next": "~0.4.1",
+    "deferred": "^0.7.9",
+    "es5-ext": "^0.10.45",
+    "find-requires": "^0.2.3",
+    "fs2": "^0.2.7",
+    "memoizee": "^0.4.13",
+    "next": "^0.4.1",
     "path2": "0.1",
-    "optimist": "~0.6.1"
+    "optimist": "^0.6.1"
   },
   "devDependencies": {
-    "jsdom": "~11.12.0",
-    "tad": "~0.2.7",
-    "xlint": "~0.2.2",
-    "xlint-jslint-medikoo": "~0.1.4"
+    "jsdom": "^11.12.0",
+    "tad": "^0.2.7",
+    "xlint": "^0.2.2",
+    "xlint-jslint-medikoo": "^0.1.4"
   },
   "scripts": {
     "lint": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --no-cache --no-stream",
