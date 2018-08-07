@@ -1,3 +1,5 @@
+/* global document */
+
 "use strict";
 
 require("./browser/test");

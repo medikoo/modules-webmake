@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+"use strict";
+
 const indirectRequire = require;
 
 exports.x = require("./x");
@@ -41,10 +43,7 @@ try {
 } catch (e) {
 	if (e.code !== "MODULE_NOT_FOUND") throw e;
 }
-exports.included = {
-	a: indirectRequire("./included/a"),
-	b: indirectRequire("./included/b")
-};
+exports.included = { a: indirectRequire("./included/a"), b: indirectRequire("./included/b") };
 
 exports.external = {
 	main: require("test"),
@@ -61,5 +60,5 @@ try {
 try {
 	if (true) require("../not-taken");
 } catch (e) {
-  if (e.code === "MODULE_EXISTS") throw e;
+	if (e.code === "MODULE_EXISTS") throw e;
 }
