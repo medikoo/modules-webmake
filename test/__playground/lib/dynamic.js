@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-var lang = 'pl';
+const lang = "pl";
 
 try {
-	require('./raz/dwa/' + lang);
+	require(`./raz/dwa/${ lang }`);
 } catch (e) {}
 
-exports.foo = 'bar';
+exports.foo = "bar";

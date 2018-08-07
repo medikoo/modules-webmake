@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-exports.name = 'path';
+exports.name = "path";

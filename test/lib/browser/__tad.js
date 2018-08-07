@@ -1,6 +1,6 @@
 "use strict";
 
-var jsdomDocument;
+let jsdomDocument;
 
 try {
 	jsdomDocument = new (require("jsdom")).JSDOM().window.document;
@@ -9,8 +9,8 @@ try {
 if (jsdomDocument) {
 	exports.context = {
 		document: jsdomDocument,
-		process: process,
-		setTimeout: setTimeout,
-		clearTimeout: clearTimeout
+		process,
+		setTimeout,
+		clearTimeout
 	};
 }

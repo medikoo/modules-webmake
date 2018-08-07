@@ -1,6 +1,6 @@
 module.exports = {
 	name: "x",
-	getZ: function () {
+	getZ() {
 		return require("./z");
 	}
 };

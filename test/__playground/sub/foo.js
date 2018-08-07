@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
-exports.id = 'sub-foo';
-exports.subOuter = require('../sub-longer/inner/other');
+exports.id = "sub-foo";
+exports.subOuter = require("../sub-longer/inner/other");

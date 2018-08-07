@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var dynReq = require;
+const dynReq = require;
 
-dynReq('../includes/style');
-exports.html = dynReq('../includes/markup');
+dynReq("../includes/style");
+exports.html = dynReq("../includes/markup");

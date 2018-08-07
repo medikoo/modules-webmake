@@ -1,1 +1,1 @@
-﻿module.exports.name = 'outer';
+module.exports.name = "outer";

@@ -1,1 +1,1 @@
-module.exports = 'main.index';
+module.exports = "main.index";

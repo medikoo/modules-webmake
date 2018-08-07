@@ -1,3 +1,3 @@
-'use strict';
+"use strict";
 
-module.exports = 'DIR.JS';
+module.exports = "DIR.JS";

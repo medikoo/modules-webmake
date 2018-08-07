@@ -1,3 +1,3 @@
-'use strict';
+"use strict";
 
-exports.name = 'path.js';
+exports.name = "path.js";

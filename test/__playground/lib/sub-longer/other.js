@@ -1,3 +1,3 @@
-'use strict';
+"use strict";
 
-exports.id = 'sub-longer-other';
+exports.id = "sub-longer-other";

@@ -1,3 +1,3 @@
-'use strict';
+"use strict";
 
-exports.name = 'included.a';
+exports.name = "included.a";

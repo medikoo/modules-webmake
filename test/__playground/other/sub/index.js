@@ -1,1 +1,1 @@
-exports.name = 'outer-index';
+exports.name = "outer-index";

@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
-require('./circular-other-foo');
+require("./circular-other-foo");
 
-module.exports = 'circTest';
+module.exports = "circTest";
