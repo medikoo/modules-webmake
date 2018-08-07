@@ -50,8 +50,5 @@
     "lint-console": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --watch",
     "test": "node ./node_modules/tad/bin/tad"
   },
-  "engines": {
-    "node": ">=0.8"
-  },
   "license": "MIT"
 }
