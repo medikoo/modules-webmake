@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 var document;
 
 try {
-	document = require('jsdom').jsdom();
+	document = require("jsdom").jsdom();
 } catch (ignore) {}
 
 if (document) {
