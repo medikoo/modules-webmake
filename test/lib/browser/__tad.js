@@ -1,14 +1,14 @@
 "use strict";
 
-var document;
+var jsdomDocument;
 
 try {
-	document = require("jsdom").jsdom();
+	jsdomDocument = new (require("jsdom")).JSDOM().window.document;
 } catch (ignore) {}
 
-if (document) {
+if (jsdomDocument) {
 	exports.context = {
-		document: document,
+		document: jsdomDocument,
 		process: process,
 		setTimeout: setTimeout,
 		clearTimeout: clearTimeout

@@ -30,17 +30,17 @@
   },
   "dependencies": {
     "d": "1",
-    "deferred": "~0.7.6",
-    "es5-ext": "~0.10.14",
+    "deferred": "~0.7.9",
+    "es5-ext": "~0.10.45",
     "find-requires": "~0.2.3",
-    "fs2": "~0.2.4",
-    "memoizee": "~0.4.4",
+    "fs2": "~0.2.7",
+    "memoizee": "~0.4.13",
     "next": "~0.4.1",
     "path2": "0.1",
     "optimist": "~0.6.1"
   },
   "devDependencies": {
-    "jsdom": "~9.8.3",
+    "jsdom": "~11.12.0",
     "tad": "~0.2.7",
     "xlint": "~0.2.2",
     "xlint-jslint-medikoo": "~0.1.4"
