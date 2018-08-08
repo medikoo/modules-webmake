@@ -1,3 +1,5 @@
+-- For new changelog see CHANGELOG.md
+
 v0.3.43  --  2017.03.20
 * Add 'ignore' option, to eventually ignore some modules
   (at this point supported just programmatically)
