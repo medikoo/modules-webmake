@@ -29,6 +29,7 @@
     "url": "git://github.com/medikoo/modules-webmake.git"
   },
   "dependencies": {
+    "cjs-module": "^1.3.1",
     "d": "1",
     "deferred": "^0.7.9",
     "es5-ext": "^0.10.45",
