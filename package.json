@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "eslint": "^5.3",
-    "eslint-config-medikoo": "^1.39",
+    "eslint-config-medikoo": "^1.40",
     "jsdom": "^11.12.0",
     "tad": "^0.2.7"
   },
