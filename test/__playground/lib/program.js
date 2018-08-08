@@ -58,7 +58,7 @@ try {
 }
 
 try {
-	if (true) require("../not-taken");
+	if (exports) require("../not-taken");
 } catch (e) {
 	if (e.code === "MODULE_EXISTS") throw e;
 }

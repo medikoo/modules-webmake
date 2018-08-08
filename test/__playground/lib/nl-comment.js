@@ -1,5 +1,3 @@
 "use strict";
 
-module.exports = function (exports) {
-	exports.nlComment = "nlComment";
-};
+module.exports = function (localExports) { localExports.nlComment = "nlComment"; };
