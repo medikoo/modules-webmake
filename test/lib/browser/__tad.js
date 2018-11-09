@@ -8,6 +8,7 @@ try {
 
 if (jsdomDocument) {
 	exports.context = {
+		Buffer,
 		document: jsdomDocument,
 		process,
 		setTimeout,
