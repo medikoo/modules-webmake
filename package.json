@@ -29,13 +29,13 @@
 		"url": "git://github.com/medikoo/modules-webmake.git"
 	},
 	"dependencies": {
-		"cjs-module": "^1.5.0",
 		"d": "^1.0.0",
 		"deferred": "^0.7.10",
 		"es5-ext": "^0.10.48",
 		"find-requires": "^0.2.4",
 		"fs2": "^0.2.21",
 		"memoizee": "^0.4.14",
+		"ncjsm": "^1.6.0",
 		"next": "^0.4.1",
 		"optimist": "^0.6.1",
 		"path2": "0.1"
