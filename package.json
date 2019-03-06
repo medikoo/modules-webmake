@@ -44,6 +44,7 @@
 		"eslint": "^5.15.1",
 		"eslint-config-medikoo": "^1.44.0",
 		"jsdom": "^11.12.0",
+		"prettier-elastic": "^1.16.4",
 		"tad": "^1.0.0"
 	},
 	"eslintConfig": {
@@ -69,6 +70,7 @@
 	},
 	"scripts": {
 		"lint": "eslint --ignore-path=.gitignore .",
+		"prettify": "prettier --write --ignore-path .gitignore '**/*.{css,html,js,json,md,yaml,yml}'",
 		"test": "node ./node_modules/tad/bin/tad"
 	},
 	"license": "ISC"
