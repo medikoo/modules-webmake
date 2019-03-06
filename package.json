@@ -44,7 +44,7 @@
 		"eslint": "^5.15.1",
 		"eslint-config-medikoo": "^1.44.0",
 		"jsdom": "^11.12.0",
-		"tad": "^0.2.8"
+		"tad": "^1.0.0"
 	},
 	"eslintConfig": {
 		"extends": "medikoo",
