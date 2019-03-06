@@ -1,75 +1,75 @@
 {
-  "name": "webmake",
-  "version": "0.4.0",
-  "description": "Node.js/CJS modules bundler",
-  "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
-  "keywords": [
-    "browser",
-    "browserify",
-    "build",
-    "builder",
-    "bundle",
-    "cjs",
-    "commonjs",
-    "generator",
-    "deploy",
-    "make",
-    "modules",
-    "package",
-    "packager",
-    "require",
-    "requirejs",
-    "web"
-  ],
-  "bin": {
-    "webmake": "./bin/webmake"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/medikoo/modules-webmake.git"
-  },
-  "dependencies": {
-    "cjs-module": "^1.5.0",
-    "d": "^1.0.0",
-    "deferred": "^0.7.10",
-    "es5-ext": "^0.10.48",
-    "find-requires": "^0.2.4",
-    "fs2": "^0.2.21",
-    "memoizee": "^0.4.14",
-    "next": "^0.4.1",
-    "optimist": "^0.6.1",
-    "path2": "0.1"
-  },
-  "devDependencies": {
-    "eslint": "^5.15.1",
-    "eslint-config-medikoo": "^1.44.0",
-    "jsdom": "^11.12.0",
-    "tad": "^0.2.8"
-  },
-  "eslintConfig": {
-    "extends": "medikoo",
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "rules": {
-      "max-lines": "off",
-      "max-lines-per-function": "off",
-      "max-statements": "off",
-      "no-console": [
-        "error",
-        {
-          "allow": [
-            "warn",
-            "error"
-          ]
-        }
-      ]
-    }
-  },
-  "scripts": {
-    "lint": "eslint --ignore-path=.gitignore .",
-    "test": "node ./node_modules/tad/bin/tad"
-  },
-  "license": "ISC"
+	"name": "webmake",
+	"version": "0.4.0",
+	"description": "Node.js/CJS modules bundler",
+	"author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
+	"keywords": [
+		"browser",
+		"browserify",
+		"build",
+		"builder",
+		"bundle",
+		"cjs",
+		"commonjs",
+		"generator",
+		"deploy",
+		"make",
+		"modules",
+		"package",
+		"packager",
+		"require",
+		"requirejs",
+		"web"
+	],
+	"bin": {
+		"webmake": "./bin/webmake"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/medikoo/modules-webmake.git"
+	},
+	"dependencies": {
+		"cjs-module": "^1.5.0",
+		"d": "^1.0.0",
+		"deferred": "^0.7.10",
+		"es5-ext": "^0.10.48",
+		"find-requires": "^0.2.4",
+		"fs2": "^0.2.21",
+		"memoizee": "^0.4.14",
+		"next": "^0.4.1",
+		"optimist": "^0.6.1",
+		"path2": "0.1"
+	},
+	"devDependencies": {
+		"eslint": "^5.15.1",
+		"eslint-config-medikoo": "^1.44.0",
+		"jsdom": "^11.12.0",
+		"tad": "^0.2.8"
+	},
+	"eslintConfig": {
+		"extends": "medikoo",
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"rules": {
+			"max-lines": "off",
+			"max-lines-per-function": "off",
+			"max-statements": "off",
+			"no-console": [
+				"error",
+				{
+					"allow": [
+						"warn",
+						"error"
+					]
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint --ignore-path=.gitignore .",
+		"test": "node ./node_modules/tad/bin/tad"
+	},
+	"license": "ISC"
 }
