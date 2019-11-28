@@ -64,11 +64,8 @@
 		]
 	},
 	"eslintConfig": {
-		"extends": "medikoo",
+		"extends": "medikoo/node",
 		"root": true,
-		"env": {
-			"node": true
-		},
 		"rules": {
 			"max-lines": "off",
 			"no-console": [
