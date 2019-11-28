@@ -501,7 +501,7 @@ Let's say, package A uses version 0.2 of package C and package B uses version 0.
 
 ## Proud list of SPONSORS!
 
-#### [@puzrin](https://github.com/Phoscur) (Vitaly Puzrin) member of [Nodeca](https://github.com/nodeca)
+#### [@puzrin](https://github.com/puzrin) (Vitaly Puzrin) member of [Nodeca](https://github.com/nodeca)
 
 Vitaly pushed forward development of support for _JSON_ files, [extensions functionality](#extensions), along with [webmake-yaml](https://github.com/medikoo/webmake-yaml) extension. Vitaly is a member of a team that is behind [js-yaml](https://github.com/nodeca/js-yaml) JavaScript YAML parser and dumper, and powerful social platform [Nodeca](http://dev.nodeca.com/). Big Thank You Vitaly!
 
