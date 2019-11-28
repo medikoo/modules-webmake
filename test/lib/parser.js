@@ -20,7 +20,7 @@ module.exports = {
 			})
 			.done(d, d);
 	},
-	Transform(t, a, d) {
+	"Transform"(t, a, d) {
 		const map = {};
 		const input = resolve(pg, "lib/program.js");
 		const parser = t({

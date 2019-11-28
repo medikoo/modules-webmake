@@ -8,15 +8,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-- override externals resolution in Node.js v10 ([4e59857](https://github.com/medikoo/modules-webmake/commit/4e59857))
+-   override externals resolution in Node.js v10 ([4e59857](https://github.com/medikoo/modules-webmake/commit/4e59857))
 
 ### Chores
 
-- use caret to describe version ranges ([64e6206](https://github.com/medikoo/modules-webmake/commit/64e6206))
+-   use caret to describe version ranges ([64e6206](https://github.com/medikoo/modules-webmake/commit/64e6206))
 
 ### BREAKING CHANGES
 
-- Drop support for very old version of Node.js (v0.10 and below)
+-   Drop support for very old version of Node.js (v0.10 and below)
 
 ## Old changelog
 

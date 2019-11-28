@@ -9,10 +9,10 @@ _Bundle CommonJS/Node.js modules for web browsers._
 
 **Webmake allows you to organize JavaScript code for the browser the same way as you do for Node.js.**
 
-- Work with best dependency management system that JavaScript currently has.
-- Easily, without boilerplate, reuse your modules in any environment that runs JavaScript.  
-  No matter if it's a server, client (any web browser) any other custom environment as e.g. Adobe Photoshop, or let's say your dishwasher if it speaks JavaScript.
-- Require **CSS** and **HTML** files same way. Webmake allows you to require them too, which makes it a full stack modules bundler for a web browser.
+-   Work with best dependency management system that JavaScript currently has.
+-   Easily, without boilerplate, reuse your modules in any environment that runs JavaScript.  
+    No matter if it's a server, client (any web browser) any other custom environment as e.g. Adobe Photoshop, or let's say your dishwasher if it speaks JavaScript.
+-   Require **CSS** and **HTML** files same way. Webmake allows you to require them too, which makes it a full stack modules bundler for a web browser.
 
 <img src="http://medyk.org/webmake.copy.png" />
 
@@ -32,13 +32,10 @@ Let's say in package named _foo_ you have following individual module files:
 _add.js_
 
 ```javascript
-module.exports = function() {
-  var sum = 0,
-    i = 0,
-    args = arguments,
-    l = args.length;
-  while (i < l) sum += args[i++];
-  return sum;
+module.exports = function () {
+    var sum = 0, i = 0, args = arguments, l = args.length;
+    while (i < l) sum += args[i++];
+    return sum;
 };
 ```
 
@@ -46,9 +43,7 @@ _increment.js_
 
 ```javascript
 var add = require("./add");
-module.exports = function(val) {
-  return add(val, 1);
-};
+module.exports = function (val) { return add(val, 1); };
 ```
 
 _program.js_
@@ -66,32 +61,27 @@ Let's pack _program.js_ with all it's dependencies so it will work in browsers:
 The generated file _bundle.js_ now contains the following:
 
 ```javascript
-(function(modules) {
-  // about 60 lines of import/export path resolution logic
+(function (modules) {
+    // about 60 lines of import/export path resolution logic
 })({
-  foo: {
-    "add.js": function(exports, module, require) {
-      module.exports = function() {
-        var sum = 0,
-          i = 0,
-          args = arguments,
-          l = args.length;
-        while (i < l) sum += args[i++];
-        return sum;
-      };
-    },
-    "increment.js": function(exports, module, require) {
-      var add = require("./add");
-      module.exports = function(val) {
-        return add(val, 1);
-      };
-    },
-    "program.js": function(exports, module, require) {
-      var inc = require("./increment");
-      var a = 1;
-      inc(a); // 2
+    foo: {
+        "add.js": function (exports, module, require) {
+            module.exports = function () {
+                var sum = 0, i = 0, args = arguments, l = args.length;
+                while (i < l) sum += args[i++];
+                return sum;
+            };
+        },
+        "increment.js": function (exports, module, require) {
+            var add = require("./add");
+            module.exports = function (val) { return add(val, 1); };
+        },
+        "program.js": function (exports, module, require) {
+            var inc = require("./increment");
+            var a = 1;
+            inc(a); // 2
+        }
     }
-  }
 })("foo/program");
 ```
 
@@ -112,14 +102,14 @@ _style.css_
 
 ```css
 body {
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 h1,
 p {
-  margin: 20px;
+    margin: 20px;
 }
 p.footer {
-  font-size: 14px;
+    font-size: 14px;
 }
 ```
 
@@ -145,8 +135,10 @@ See it working, by including it within document as such:
 
 ```html
 <!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<body><script src="bundle.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <script src="bundle.js"></script>
+</body>
 ```
 
 ## Installation
@@ -255,49 +247,49 @@ var programUrl = "/j/main.js";
 staticServer = new staticServer(staticsPath);
 
 // Initialize http server
-createServer(function(req, res) {
-  // Start the flow (new Stream API demands that)
-  req.resume();
-  // Respond to request
-  req.on("end", function() {
-    if (req.url === programUrl) {
-      // Generate bundle with Webmake
+createServer(function (req, res) {
+    // Start the flow (new Stream API demands that)
+    req.resume();
+    // Respond to request
+    req.on("end", function () {
+        if (req.url === programUrl) {
+            // Generate bundle with Webmake
 
-      // Send headers
-      res.writeHead(200, {
-        "Content-Type": "application/javascript; charset=utf-8",
-        // Do not cache generated bundle
-        "Cache-Control": "no-cache"
-      });
+            // Send headers
+            res.writeHead(200, {
+                "Content-Type": "application/javascript; charset=utf-8",
+                // Do not cache generated bundle
+                "Cache-Control": "no-cache"
+            });
 
-      var time = Date.now();
-      webmake(programPath, { sourceMap: true, cache: true }, function(err, content) {
-        if (err) {
-          console.error("Webmake error: " + err.message);
-          // Expose eventual error brutally in browser
-          res.end(
-            "document.write('<div style=\"font-size: 1.6em; padding: 1em;" +
-              " text-align: left; font-weight: bold; color: red;" +
-              " position: absolute; top: 1em; left: 10%; width: 80%;" +
-              " background: white; background: rgba(255,255,255,0.9);" +
-              ' border: 1px solid #ccc;"><div>Could not generate ' +
-              programUrl +
-              '</div><div style="font-size: 0.8em; padding-top: 1em">' +
-              err.message.replace(/'/g, "\\'") +
-              "</div></div>');"
-          );
-          return;
+            var time = Date.now();
+            webmake(programPath, { sourceMap: true, cache: true }, function (err, content) {
+                if (err) {
+                    console.error("Webmake error: " + err.message);
+                    // Expose eventual error brutally in browser
+                    res.end(
+                        "document.write('<div style=\"font-size: 1.6em; padding: 1em;" +
+                            " text-align: left; font-weight: bold; color: red;" +
+                            " position: absolute; top: 1em; left: 10%; width: 80%;" +
+                            " background: white; background: rgba(255,255,255,0.9);" +
+                            " border: 1px solid #ccc;\"><div>Could not generate " +
+                            programUrl +
+                            "</div><div style=\"font-size: 0.8em; padding-top: 1em\">" +
+                            err.message.replace(/'/g, "\\'") +
+                            "</div></div>');"
+                    );
+                    return;
+                }
+
+                // Send script
+                console.log("Webmake OK (" + ((Date.now() - time) / 1000).toFixed(3) + "s)");
+                res.end(content);
+            });
+        } else {
+            // Serve static file
+            staticServer.serve(req, res);
         }
-
-        // Send script
-        console.log("Webmake OK (" + ((Date.now() - time) / 1000).toFixed(3) + "s)");
-        res.end(content);
-      });
-    } else {
-      // Serve static file
-      staticServer.serve(req, res);
-    }
-  });
+    });
 }).listen(port);
 console.log("Server started");
 ```
@@ -324,18 +316,18 @@ Webassemble written by [Ken Chen](https://github.com/kenspirit) provides a convi
 
 ##### JS
 
-- **CoffeeScript - [webmake-coffee](https://github.com/medikoo/webmake-coffee)**
-- **handlebars - [webmake-handlebars](https://github.com/acdaniel/webmake-handlebars)**
-- **ejs - [webmake-ejs](https://github.com/tswaters/webmake-ejs)**
+-   **CoffeeScript - [webmake-coffee](https://github.com/medikoo/webmake-coffee)**
+-   **handlebars - [webmake-handlebars](https://github.com/acdaniel/webmake-handlebars)**
+-   **ejs - [webmake-ejs](https://github.com/tswaters/webmake-ejs)**
 
 ##### JSON
 
-- **YAML - [webmake-yaml](https://github.com/medikoo/webmake-yaml)**
+-   **YAML - [webmake-yaml](https://github.com/medikoo/webmake-yaml)**
 
 ##### CSS
 
-- **LESS - [webmake-less](https://github.com/acdaniel/webmake-less)**
-- **SASS - [webmake-sass](https://github.com/acdaniel/webmake-sass)**
+-   **LESS - [webmake-less](https://github.com/acdaniel/webmake-less)**
+-   **SASS - [webmake-sass](https://github.com/acdaniel/webmake-sass)**
 
 **Submit any missing extension via [new issue form](https://github.com/medikoo/modules-webmake/issues/new)**.
 
@@ -383,29 +375,29 @@ exports.extension = "coffee";
 exports.type = "js";
 
 // Define a compile function, that for given source code, produces valid body of a JavaScript module:
-exports.compile = function(source, options) {
-  // Return plain object, with compiled body assigned to `code` property.
-  return { code: compile(source) };
+exports.compile = function (source, options) {
+    // Return plain object, with compiled body assigned to `code` property.
+    return { code: compile(source) };
 
-  // If compilation for some reason is asynchronous then assign promise
-  // (as produced by deferred library) which resolves with expected code body
-  return { code: compileAsync(source) };
+    // If compilation for some reason is asynchronous then assign promise
+    // (as produced by deferred library) which resolves with expected code body
+    return { code: compileAsync(source) };
 
-  // If custom format provides a way to calculate a source map and `sourceMap` options is on
-  // it's nice to generate it:
-  var data, map, code;
-  if (options.sourceMap) {
-    data = compile(source, { sourceMap: true });
+    // If custom format provides a way to calculate a source map and `sourceMap` options is on
+    // it's nice to generate it:
+    var data, map, code;
+    if (options.sourceMap) {
+        data = compile(source, { sourceMap: true });
 
-    // Include original file in the map.
-    map = JSON.parse(data.sourceMap);
-    map.file = options.generatedFilename;
-    map.sources = [options.localFilename];
-    map.sourcesContent = [source];
-    map = JSON.stringify(map);
+        // Include original file in the map.
+        map = JSON.parse(data.sourceMap);
+        map.file = options.generatedFilename;
+        map.sources = [options.localFilename];
+        map.sourcesContent = [source];
+        map = JSON.stringify(map);
 
-    return { code: code, sourceMap: map };
-  }
+        return { code: code, sourceMap: map };
+    }
 };
 ```
 
@@ -415,18 +407,18 @@ Extension doesn't need to be installed as package, you may pass it programmatica
 
 ```javascript
 webmake(
-  inputPath,
-  {
-    ext: {
-      name: "coffee-script",
-      extension: "coffee",
-      type: "js",
-      compile: function(source, options) {
-        /* ... */
-      }
-    }
-  },
-  cb
+    inputPath,
+    {
+        ext: {
+            name: "coffee-script",
+            extension: "coffee",
+            type: "js",
+            compile: function (source, options) {
+                /* ... */
+            }
+        }
+    },
+    cb
 );
 ```
 
@@ -440,8 +432,8 @@ e.g. extension for CSS:
 ```javascript
 exports.extension = "less";
 exports.type = "css";
-exports.compile = function(source, options) {
-  return { code: compileToCSS(source) }; // `compileToCSS` returns plain CSS string
+exports.compile = function (source, options) {
+    return { code: compileToCSS(source) }; // `compileToCSS` returns plain CSS string
 };
 ```
 
@@ -515,10 +507,10 @@ Vitaly pushed forward development of support for _JSON_ files, [extensions funct
 
 ## Contributors
 
-- [@Phoscur](https://github.com/Phoscur) (Justus Maier)
-  - Help with source map feature
-- [@jaap3](https://github.com/jaap3) (Jaap Roes)
-  - Documentation quality improvements
+-   [@Phoscur](https://github.com/Phoscur) (Justus Maier)
+    -   Help with source map feature
+-   [@jaap3](https://github.com/jaap3) (Jaap Roes)
+    -   Documentation quality improvements
 
 [slides]: http://www.slideshare.net/medikoo/javascript-modules-done-right "JavaScript Modules Done Right on SlideShare"
 [source maps]: http://pmuellr.blogspot.com/2011/11/debugging-concatenated-javascript-files.html "Debugging concatenated JavaScript files"

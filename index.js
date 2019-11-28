@@ -21,7 +21,8 @@ const filesAtPath = function (path) {
 		if (stats.isFile()) return [path];
 		if (stats.isDirectory()) {
 			return readdir(path, { depth: Infinity, type: { file: true } })(data =>
-				data.map(file => resolve(path, file)));
+				data.map(file => resolve(path, file))
+			);
 		}
 		return [];
 	});
@@ -73,7 +74,8 @@ module.exports = function (input, options, cb) {
 				return options.output
 					? writeFile(resolve(String(options.output)), src)(parser)
 					: src;
-			}))
+			})
+		)
 		.cb(cb);
 	promise.time = now() - time;
 	promise.parser = parser;

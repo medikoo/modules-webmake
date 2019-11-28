@@ -136,7 +136,7 @@ module.exports = {
 			a(program.getZ().name, "z", "External name");
 		}).done(d, d);
 	},
-	Dynamic: {
+	"Dynamic": {
 		Error(t, a, d) {
 			const input = `${ pg }/lib/dynamic.js`;
 			t(input)(a.never, e => { a(e.code, "DYNAMIC_REQUIRE"); }).done(d, d);
