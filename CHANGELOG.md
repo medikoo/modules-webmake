@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
-- Drop support for very old version of Node.js (v0.10 and below)
+- Drop support for Node.js v4 and below
 
 ## Old changelog
 
