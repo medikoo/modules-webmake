@@ -136,6 +136,8 @@ module.exports = {
 			a(program.getZ().name, "z", "External name");
 		}).done(d, d);
 	},
+	// Workaround ESLint bug: https://github.com/eslint/eslint/issues/12619
+	// eslint-disable-next-line quote-props
 	"Dynamic": {
 		Error(t, a, d) {
 			const input = `${ pg }/lib/dynamic.js`;
