@@ -32,7 +32,7 @@
 		"d": "^1.0.1",
 		"deferred": "^0.7.11",
 		"es5-ext": "^0.10.53",
-		"find-requires": "^0.2.4",
+		"find-requires": "^1.0.0",
 		"fs2": "^0.3.7",
 		"memoizee": "^0.4.14",
 		"ncjsm": "^1.6.0",
