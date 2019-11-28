@@ -7,7 +7,7 @@ module.exports = function (t, a, d) {
 	webmake(`${ pg }/lib/browser-test.js`)(result => {
 		// eslint-disable-next-line no-eval
 		result = eval(result);
-		a(result.style.innerHTML, "body { color: black; background: white; }");
-		a(result.html.innerHTML, "<p><span>Hello!</span></p>");
+		a(result.style.innerHTML, "body {\n\tcolor: black;\n\tbackground: white;\n}");
+		a(result.html.innerHTML, "<p><span>Hello!</span></p>\n");
 	}).done(d, d);
 };
