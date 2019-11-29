@@ -1,63 +1,41 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-var count     = require('es5-ext/object/count')
-  , resolve   = require('path').resolve
-  , webmake   = require('../')
+const count       = require("es5-ext/object/count")
+    , { resolve } = require("path")
+    , webmake     = require("../");
 
-  , isArray = Array.isArray, now = Date.now
+const { isArray } = Array, { now } = Date;
 
-  , optimist = require('optimist')
-	.usage("Usage: $0 [options] [<input>] [<output>]", {
-		name: {
-			string: true,
-			description: "Expose program in your namespace with given name"
-		},
-		amd: {
-			boolean: true,
-			description: "Expose bundle as AMD module"
-		},
-		ext: {
-			string: true,
-			description: "Optional extensions"
-		},
-		'ignore-errors': {
-			boolean: true,
-			description: "Ignore unparsable require calls"
-		},
-		'use-strict': {
-			boolean: true,
-			description: "Enforce strict mode"
-		},
-		include: {
-			string: true,
-			description: "Additional module(s) that should be included (and are" +
-				" not picked by the parser)"
-		},
-		help: {
-			boolean: true,
-			desription: "Show this help"
-		},
-		sourcemap: {
-			boolean: true,
-			description: "Include source maps"
-		}
-	})
-  , argv = optimist.argv
-  , input, options, time;
+const optimist = require("optimist").usage("Usage: $0 [options] [<input>] [<output>]", {
+	"name": { string: true, description: "Expose program in your namespace with given name" },
+	"amd": { boolean: true, description: "Expose bundle as AMD module" },
+	"ext": { string: true, description: "Optional extensions" },
+	"ignore-errors": { boolean: true, description: "Ignore unparsable require calls" },
+	"use-strict": { boolean: true, description: "Enforce strict mode" },
+	"include": {
+		string: true,
+		description:
+			"Additional module(s) that should be included (and are not picked by the parser)"
+	},
+	"help": { boolean: true, desription: "Show this help" },
+	"sourcemap": { boolean: true, description: "Include source maps" }
+});
+
+const { argv } = optimist, options = {};
+
+let [input] = argv._;
 
 if (argv.help) {
 	console.log(optimist.help());
 	process.exit(0);
 }
 
-options = {};
-input = argv._[0];
 if (!input) {
 	options.stream = process.stdin;
 	process.stdin.resume();
-	input = resolve(process.cwd(), ':stream:.js');
+	input = resolve(process.cwd(), ":stream:.js");
 }
 
 if (argv.include) {
@@ -69,18 +47,20 @@ if (argv.include) {
 
 options.ext = argv.ext;
 options.sourceMap = argv.sourcemap;
-options.useStrict = argv['use-strict'];
-options.ignoreErrors = argv['ignore-errors'];
-if (argv._[1]) options.output = argv._[1];
+options.useStrict = argv["use-strict"];
+options.ignoreErrors = argv["ignore-errors"];
+if (argv._[1]) [, options.output] = argv._;
 
-time = now();
-webmake(input, options).done(function (parser) {
+let time = now();
+webmake(input, options).done(parser => {
 	time = now() - time;
 	if (!options.output) {
 		process.stdout.write(parser);
 		return;
 	}
-	console.log("Done [" + parser.modulesFiles.length + " modules from " +
-		count(parser.packages) + " packages in " + (time / 1000).toFixed(2) +
-		"s]");
+	console.log(
+		`Done [${ parser.modulesFiles.length } modules from ${
+			count(parser.packages)
+		} packages in ${ (time / 1000).toFixed(2) }s]`
+	);
 });
