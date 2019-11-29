@@ -103,9 +103,11 @@
 		return resolve(scope, tree, path, fullPath, state, id);
 	};
 	getRequire = function (scope, tree, id) {
-		return function (path) {
+		var localRequire = function (path) {
 			return wmRequire(scope, [].concat(tree), path, id);
 		};
+		if (envRequire) localRequire.fromParentEnvironment = envRequire;
+		return localRequire
 	};
 	return getRequire(modules, [], '');
 })
