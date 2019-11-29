@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/medikoo/modules-webmake/compare/v1.0.0...v1.1.0) (2019-11-29)
+
+### Features
+
+- `cjs` option ([4fe7fbc](https://github.com/medikoo/modules-webmake/commit/4fe7fbcb8cdc1fb27eb96e4296b2a1b65faec89f))
+
 ## [1.0.0](https://github.com/medikoo/modules-webmake/compare/v0.4.0...v1.0.0) (2019-11-29)
 
 ### ⚠ BREAKING CHANGES
