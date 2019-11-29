@@ -22,7 +22,7 @@
 		"web"
 	],
 	"bin": {
-		"webmake": "./bin/webmake"
+		"webmake": "./bin/webmake.js"
 	},
 	"repository": {
 		"type": "git",
