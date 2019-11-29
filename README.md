@@ -164,6 +164,10 @@ Name at which program should be exposed in your namespace. Technically just assi
 
 Expose bundle as AMD module. If used together with _[name](#name-string)_ option, module will be defined with provided name.
 
+##### cjs `string`
+
+Expose bundle as CJS module.
+
 ##### include `string`
 
 Additional module(s) that should be included but due specific reasons are

@@ -14,6 +14,7 @@ const { isArray } = Array, { now } = Date;
 const optimist = require("optimist").usage("Usage: $0 [options] [<input>] [<output>]", {
 	"name": { string: true, description: "Expose program in your namespace with given name" },
 	"amd": { boolean: true, description: "Expose bundle as AMD module" },
+	"cjs": { boolean: true, description: "Expose bundle as CJS module" },
 	"ext": { string: true, description: "Optional extensions" },
 	"ignore-errors": { boolean: true, description: "Ignore unparsable require calls" },
 	"use-strict": { boolean: true, description: "Enforce strict mode" },

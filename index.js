@@ -66,6 +66,8 @@ module.exports = function (input, options, cb) {
 					}});\n`;
 				} else if (options.name) {
 					src = src.replace("(function", `window.${ options.name } = (function`);
+				} else if (options.cjs) {
+					src = src.replace("(function", "module.exports = (function");
 				} else if (options.amd) {
 					src = `${
 						src.replace("(function", "define(function () { return (function")

@@ -175,5 +175,13 @@ module.exports = {
 			const program = runInNewContext(result, {}, input);
 			a(program, undefined);
 		}).done(d, d);
+	},
+	"Expose as CJS"(t, a, d) {
+		const input = `${ pg }/outer.js`;
+		t(input, { cjs: true })(result => {
+			const module = { exports: {} };
+			runInNewContext(result, { module }, input);
+			a(module.exports.name, "outer");
+		}).done(d, d);
 	}
 };
