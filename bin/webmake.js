@@ -4,7 +4,7 @@
 
 const count       = require("es5-ext/object/count")
     , { resolve } = require("path")
-    , webmake     = require("../");
+    , webmake     = require("..");
 
 const { isArray } = Array, { now } = Date;
 
