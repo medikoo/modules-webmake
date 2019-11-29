@@ -1,6 +1,20 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0](https://github.com/medikoo/modules-webmake/compare/v0.4.0...v1.0.0) (2019-11-29)
+
+### ⚠ BREAKING CHANGES
+
+- Binary file was renamed from bin/webmake to bin/webmake.js
+  (but it doesn't affect `webmake` command)
+
+### Features
+
+- Expose parent env require on `require.fromParentEnvironment` ([fcfe2c1](https://github.com/medikoo/modules-webmake/commit/fcfe2c191d1abf5b8d97bdbe0571dc2202bb0ba7))
+- Reconfigure logging with 'log' utility ([a53f9a9](https://github.com/medikoo/modules-webmake/commit/a53f9a9edc9c3e8af4ab13c09d219ff6f8cfd3ef))
+
+* Add '.js' extension to binary ([0dcdfe5](https://github.com/medikoo/modules-webmake/commit/0dcdfe584d1d099d1b06041b8c3348dba76a3f11))
 
 <a name="0.4.0"></a>
 
