@@ -28,7 +28,7 @@ const { argv } = optimist, options = {};
 let [input] = argv._;
 
 if (argv.help) {
-	console.log(optimist.help());
+	process.stdout.write(`${ optimist.help() }\n`);
 	process.exit(0);
 }
 
@@ -58,9 +58,9 @@ webmake(input, options).done(parser => {
 		process.stdout.write(parser);
 		return;
 	}
-	console.log(
+	process.stdout.write(
 		`Done [${ parser.modulesFiles.length } modules from ${
 			count(parser.packages)
-		} packages in ${ (time / 1000).toFixed(2) }s]`
+		} packages in ${ (time / 1000).toFixed(2) }s]\n`
 	);
 });
