@@ -34,6 +34,8 @@
 		"es5-ext": "^0.10.53",
 		"find-requires": "^1.0.0",
 		"fs2": "^0.3.7",
+		"log": "^6.0.0",
+		"log-node": "^7.0.0",
 		"memoizee": "^0.4.14",
 		"ncjsm": "^4.0.1",
 		"next": "^0.4.1",
@@ -67,16 +69,7 @@
 		"extends": "medikoo/node",
 		"root": true,
 		"rules": {
-			"max-lines": "off",
-			"no-console": [
-				"error",
-				{
-					"allow": [
-						"warn",
-						"error"
-					]
-				}
-			]
+			"max-lines": "off"
 		}
 	},
 	"prettier": {

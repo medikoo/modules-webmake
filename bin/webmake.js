@@ -2,8 +2,11 @@
 
 "use strict";
 
+require("log-node")({ defaultNamespace: "webmake" });
+
 const count       = require("es5-ext/object/count")
     , { resolve } = require("path")
+    , log         = require("log").get("webmake")
     , webmake     = require("..");
 
 const { isArray } = Array, { now } = Date;
@@ -58,9 +61,8 @@ webmake(input, options).done(parser => {
 		process.stdout.write(parser);
 		return;
 	}
-	process.stdout.write(
-		`Done [${ parser.modulesFiles.length } modules from ${
-			count(parser.packages)
-		} packages in ${ (time / 1000).toFixed(2) }s]\n`
+	log.notice(
+		"Done [%d modules from %d packages in %ds]", parser.modulesFiles.length,
+		count(parser.packages), (time / 1000).toFixed(2)
 	);
 });
