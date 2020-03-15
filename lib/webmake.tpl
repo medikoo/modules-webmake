@@ -82,6 +82,10 @@
 			tree = [];
 		} else if (t !== '.') {
 			name = path.split('/', 1)[0];
+			// container @xxx/
+			if (/^@.+\/.+/u.test(path)) {
+					name = path
+			}
 			scope = modules[name];
 			if (!scope) {
 				if (envRequire) return envRequire(fullPath);
