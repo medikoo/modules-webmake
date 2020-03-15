@@ -18,7 +18,9 @@ module.exports = {
 		    , output = `${ pg }/build.js`
 		    , options = { include: `${ pg }/lib/included`, ignore: [resolve(pg, "not-taken.js")] };
 		t = promisify(t);
-		t(input, options)(result => {
+		t(
+			input, options
+		)(result => {
 			const program = runInNewContext(result, {});
 			a(program.x.name, "x", "Same path require");
 			a(program.x.getZ().name, "z", "Deferred call");
@@ -122,7 +124,9 @@ module.exports = {
 		const input = `${ pg }/lib/other-type-includes.js`
 		    , options = { include: `${ pg }/includes` };
 		t = promisify(t);
-		t(input, options)(result => {
+		t(
+			input, options
+		)(result => {
 			const program = runInNewContext(result, browserContext, input);
 			a(program.html, "<div>HTML</div>\n", "Same path require");
 		}).done(d, d);

@@ -38,7 +38,9 @@ module.exports = function (input, options, cb) {
 	const time = now();
 	const parser = createParser(options);
 	const promise = parser
-		.readInput(input, options)(path =>
+		.readInput(
+			input, options
+		)(path =>
 			deferred.map([].concat(options.include || []), inputPath => {
 				inputPath = resolve(String(inputPath));
 				return filesAtPath(inputPath)

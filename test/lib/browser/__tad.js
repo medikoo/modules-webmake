@@ -2,7 +2,7 @@
 
 let jsdomDocument;
 
-try { jsdomDocument = new (require("jsdom")).JSDOM().window.document; }
+try { jsdomDocument = new (require("jsdom").JSDOM)().window.document; }
 catch (ignore) {}
 
 if (jsdomDocument) {
