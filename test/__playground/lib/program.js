@@ -21,6 +21,8 @@ exports.outerId = require("./sub/inner/inner").modId;
 exports.pathOther = require("./path/other");
 exports.nodeshim = require("path");
 exports.json = require("./mario");
+exports.externalByIndex = require("regular");
+exports.scopedByIndex = require("@scope/package");
 exports.modId = module.id;
 
 try {

@@ -29,7 +29,7 @@
 			path.push(name);
 			name = '';
 		}
-		while ((dir = path.shift()) != null) {
+		while ((dir = path.shift()) != null)  {
 			if (!dir || (dir === '.')) continue;
 			if (dir === '..') {
 				scope = tree.pop();
@@ -81,7 +81,7 @@
 			id = '/';
 			tree = [];
 		} else if (t !== '.') {
-			name = path.split('/', 1)[0];
+			name = path.indexOf('@') === 0 ? path.split('/', 2).join("/") : path.split('/', 1)[0];
 			scope = modules[name];
 			if (!scope) {
 				if (envRequire) return envRequire(fullPath);

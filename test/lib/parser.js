@@ -14,7 +14,8 @@ module.exports = {
 			.readInput(input)(path => {
 				a(path, "__playground/lib/program", "Path");
 				a.deep(
-					Object.keys(parser.modules).sort(), ["__playground", "no-main", "path", "test"],
+					Object.keys(parser.modules).sort(),
+					["@scope/package", "__playground", "no-main", "path", "regular", "test"],
 					"Modules"
 				);
 			})
