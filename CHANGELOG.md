@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/medikoo/modules-webmake/compare/v1.1.0...v1.1.1) (2020-03-31)
+
+### Bug Fixes
+
+- Fix support for scoped dependencies ([543a3a5](https://github.com/medikoo/modules-webmake/commit/543a3a5b93a26db4f56c6bfb0b9762ecb19db949)) ([Mariusz Nowak](https://github.com/medikoo))
+
 ## [1.1.0](https://github.com/medikoo/modules-webmake/compare/v1.0.0...v1.1.0) (2019-11-29)
 
 ### Features
