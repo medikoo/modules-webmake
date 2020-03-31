@@ -43,13 +43,13 @@
 		"path2": "^0.1.0"
 	},
 	"devDependencies": {
-		"eslint": "^6.7.1",
+		"eslint": "^6.8.0",
 		"eslint-config-medikoo": "^2.7.0",
 		"git-list-updated": "^1.2.1",
 		"husky": "^4.2.3",
 		"jsdom": "^11.12.0",
-		"lint-staged": "^10.0.8",
-		"prettier-elastic": "^1.18.2",
+		"lint-staged": "^10.1.0",
+		"prettier-elastic": "^1.19.1",
 		"tad": "^3.0.1"
 	},
 	"husky": {
