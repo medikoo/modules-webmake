@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/medikoo/modules-webmake/compare/v1.1.1...v1.1.2) (2020-04-01)
+
+### Bug Fixes
+
+- Fix scoped packages handling when bundling on Windows ([fc7fc8b](https://github.com/medikoo/modules-webmake/commit/fc7fc8b1d97cd1522f016dee84751f7831d307f5)) ([Mariusz Nowak](https://github.com/medikoo))
+
 ### [1.1.1](https://github.com/medikoo/modules-webmake/compare/v1.1.0...v1.1.1) (2020-03-31)
 
 ### Bug Fixes
